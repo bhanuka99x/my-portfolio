@@ -1,10 +1,35 @@
-@import "tailwindcss";
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/preflight" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
+
+
 
 :root {
     --bg-color: #000000;
-    --text-color:white;
-
 }
+
+@font-face {
+    font-family: "font-ibrand";
+    src: url(/fonts/ibrand.otf);
+}
+@font-face {
+    font-family: "font-courage";
+    src: url(/fonts/Courage-Regular.otf);
+}
+@font-face {
+    font-family: "font-bilmond";
+    src: url(/fonts/bilmond-medium.otf);
+}
+.font-ibrand {
+    font-family: "font-ibrand", sans-serif;
+}
+.font-courage {
+    font-family: "font-courage", sans-serif;
+}
+.font-bilmond {
+    font-family: "font-bilmond", sans-serif;
+}
+
 
 body {
     background-color: var(--bg-color);
