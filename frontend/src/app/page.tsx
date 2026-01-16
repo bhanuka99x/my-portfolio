@@ -8,6 +8,8 @@ import { color, delay, motion } from "framer-motion";
 import home from './Home/page'
 import { div } from "framer-motion/client";
 
+//import types here
+import { barsItem } from "../types";
 
 
 
@@ -15,16 +17,14 @@ export default function LoadingPage() {
 
 const[loading,setLoading]=useState(true);
 
-const bars = [
+const bars: barsItem[] = [
   {id:1,delay: "delay-0",},
   {id:2,delay: "delay-200",},
   {id:3,delay: "delay-400",},
   {id:4,delay: "delay-600",},
   {id:5,delay: "delay-800",}, 
   {id:6,delay: "delay-1000",},
-  
-
-]
+];
  
   return (
 <div className="min-h-screen w-full relative flex flex-col justify-center items-center overflow-hidden ">
