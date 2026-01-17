@@ -31,7 +31,7 @@ jobs:
           ###### Monorepo configurations ######
           app_location: "/frontend"  
           api_location: ""           
-          output_location: ""         
+          output_location: ".next"         
           ###### End of Configurations ######
 
         env:
