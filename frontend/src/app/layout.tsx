@@ -2,7 +2,7 @@
 
 import type { Metadata } from "next";
 
-import "./index.css";
+import "../styles/index.css";
 
 
 
