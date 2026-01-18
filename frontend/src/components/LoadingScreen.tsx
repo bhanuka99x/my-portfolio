@@ -15,13 +15,7 @@ export default function LoadingScreen() {
 
   return (
     <div className="min-h-screen w-full relative flex flex-col justify-center items-center overflow-hidden">
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "radial-gradient(125% 125% at 20% 10%, #000000 20%, #010133 100%)",
-        }}
-      />
-      
+
       <div className="flex items-center pb-5 overflow-hidden z-10">
         {bars.map(bar => (
           <motion.div 
