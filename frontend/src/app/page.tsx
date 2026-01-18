@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "../components/LoadingScreen";
-import Home from './Home/page';
+import Home from './Hero/page';
+
 
 export default function RootPage() {
   const [loading, setLoading] = useState(true);
