@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 
 import "../styles/index.css";
+import Header from "../components/Header";
 
 
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="">
+        <Header />
         {children}
       </body>
     </html>
