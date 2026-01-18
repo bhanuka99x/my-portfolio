@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Bhanuka99x/Desktop/my-project/my-portfolio/frontend/src/components/Header.tsx"],"sourcesContent":["'use client';\r\n\r\nimport Link from \"next/link\"\r\nimport { usePathname } from \"next/navigation\";\r\n\r\nexport default function Header() {\r\n\r\n    const pathname = usePathname();\r\n  return (\r\n  nav\r\n  )\r\n};\r\n\r\n"],"names":[],"mappings":";;;;AAGA;;AAHA;;AAKe,SAAS;;IAEpB,MAAM,WAAW,IAAA,oJAAW;IAC9B,OACA;AAEF;GANwB;;QAEH,oJAAW;;;KAFR"}},
+    {"offset": {"line": 31, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Bhanuka99x/Desktop/my-project/my-portfolio/frontend/node_modules/next/navigation.js"],"sourcesContent":["module.exports = require('./dist/client/components/navigation')\n"],"names":[],"mappings":"AAAA,OAAO,OAAO","ignoreList":[0]}}]
+}
