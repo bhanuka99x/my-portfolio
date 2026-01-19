@@ -184,6 +184,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$LoadingScreen$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/LoadingScreen.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$Hero$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/Hero/page.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$LoadingContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/context/LoadingContext.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
@@ -191,24 +192,25 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function RootPage() {
     _s();
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const { loading, setLoading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$LoadingContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLoading"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "RootPage.useEffect": ()=>{
             const timer = setTimeout({
                 "RootPage.useEffect.timer": ()=>{
                     setLoading(false);
-                // router.push('/Home'); 
                 }
-            }["RootPage.useEffect.timer"], 3000);
+            }["RootPage.useEffect.timer"], 2000);
             return ({
                 "RootPage.useEffect": ()=>clearTimeout(timer)
             })["RootPage.useEffect"];
         }
     }["RootPage.useEffect"], [
-        router
+        router,
+        setLoading
     ]);
     if (loading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$LoadingScreen$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
@@ -223,8 +225,9 @@ function RootPage() {
         columnNumber: 10
     }, this);
 }
-_s(RootPage, "2RAYJaWg9X31kr5hXvcE+jFgF28=", false, function() {
+_s(RootPage, "GRoFbV5dIOcpo14xLbZr2cquvPY=", false, function() {
     return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$LoadingContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLoading"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
 });
