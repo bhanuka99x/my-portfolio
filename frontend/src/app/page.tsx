@@ -3,20 +3,21 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "../components/LoadingScreen";
-import Home from './Home/page';
+import Home from './Hero/page';
+import {useLoading} from "../context/LoadingContext";
+
 
 export default function RootPage() {
-  const [loading, setLoading] = useState(true);
+  const { loading, setLoading } = useLoading();
   const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-      // router.push('/Home'); 
-    }, 3000); 
+    }, 2000); 
     
     return () => clearTimeout(timer);
-  }, [router]);
+  }, [router,setLoading]);
 
   if (loading) {
     return <LoadingScreen />;
