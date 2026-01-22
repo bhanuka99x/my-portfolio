@@ -14,10 +14,21 @@ export default function Home() {
   ];
   return (
     <section className="">
-      <div className="relative max-w-[1920px]  lg:h-[700px] md:h-screen h-screen mx-auto justify-center items-center transform transition-all duration-500 ">
-        {/* <video src="/videos/hero.mp4" className="absolute lg:mt-35 md:mt-0 mt-0 w-full h-full rounded-4xl object-cover opacity-10 transition-all duration-300" autoPlay loop muted></video> */}
+      <div className="relative max-w-[1920px]  md:h-screen h-screen mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
+        {/* Video positioned on the right side as background */}
+        <div className="absolute right-0 top-0 h-full max-w-7xl border lg:block">
+          <video 
+            src="/videos/fish.mp4" 
+            className="w-full object-cover" 
+            autoPlay 
+            loop 
+            muted
+            playsInline
+          />
+        </div>
+        
         <div className="relative z-10 flex items-start justify-start h-full">
-          <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-90 md:pt-40 pt-32 space-y-5">
+          <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-80 md:pt-40 pt-32 space-y-5">
             <h1 className="font-semibold">
               Beyond
               <span className="inline-block relative h-12 ml-4 ">
