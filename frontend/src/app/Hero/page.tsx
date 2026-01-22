@@ -1,3 +1,4 @@
+"use client";
 import { section } from "framer-motion/client";
 import { motion } from "framer-motion";
 import { NotebookPen, PencilRuler, Code, Bug, Warehouse } from "lucide-react";
