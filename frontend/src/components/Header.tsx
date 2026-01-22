@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <nav className="fixed top-0 left-0 w-full flex justify-center font-bilmond pt-4 md:pt-8 z-50 px-4">
-      <div className="flex items-center justify-between w-full max-w-7xl gap-4 md:gap-8 px-4 md:px-6 py-3 rounded-full transition-all duration-300">
+      <div className="flex items-center justify-between w-full  gap-4 md:gap-8 px-4 md:px-20 py-3 rounded-full transition-all duration-300">
         {/* Logo - Left */}
         <Link href="/" className="flex items-center z-50">
           <span className="text-white font-bold text-base md:text-lg tracking-tight hover:scale-110 transition-transform duration-200">
@@ -41,12 +41,12 @@ export default function Header() {
               <Link
                 href={item.path}
                 className={`
-                  relative px-5 py-3.5 text-md font-medium capitalize rounded-full
+                  relative px-5 py-3 text-md font-medium capitalize rounded-full
                   transition-all duration-300 ease-out
                   ${
                     pathname === item.path
                       ? "text-black bg-white "
-                      : "text-white/80 hover:text-white hover:bg-white/10"
+                      : "text-white/90 hover:text-white hover:bg-white/10"
                   }
                 `}
               >
@@ -67,7 +67,7 @@ export default function Header() {
           <Link
             href="/contact"
             className="flex items-center justify-center gap-2
-                   text-white bg-white/10 border border-white/20 backdrop-blur-md px-2 py-2 rounded-full
+                   text-black bg-white border border-white/20 backdrop-blur-md px-2 py-2 rounded-full
                    font-medium text-md"
           >
             <motion.div
@@ -78,7 +78,7 @@ export default function Header() {
                 },
               }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="bg-white text-black p-2.5 rounded-full"
+              className="bg-black text-white p-2.5 rounded-full"
             >
               <ArrowRight className="h-5 w-5" />
             </motion.div>
