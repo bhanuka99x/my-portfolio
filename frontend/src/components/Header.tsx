@@ -67,7 +67,7 @@ export default function Header() {
           <Link
             href="/contact"
             className="flex items-center justify-center gap-2
-                   text-black bg-white border border-white/20 backdrop-blur-md px-2 py-2 rounded-full
+                   text-black bg-white border border-white/20 backdrop-blur-md px-1.5 py-1.5 rounded-full
                    font-medium text-md"
           >
             <motion.div
