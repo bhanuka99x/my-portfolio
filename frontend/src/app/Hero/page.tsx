@@ -1,9 +1,10 @@
 "use client";
 import { section } from "framer-motion/client";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { NotebookPen, PencilRuler, Code, Bug, Warehouse } from "lucide-react";
 
 import { dynamicWord } from "@/src/types";
+import "../../styles/hero.css";
 
 export default function Home() {
   const dynamicWords: dynamicWord[] = [
@@ -90,7 +91,12 @@ export default function Home() {
             </div>
 
             <div className="mt-10">
-              <button className="border py-4 px-24 lg:text-lg tracking-wider rounded-full">SEE MY WORK</button>
+              <button 
+              className="gradient-button   w-80 h-18 transition-transform duration-300">
+              <span
+              className="gradient-text"
+              >See My Work</span>
+              </button>
             </div>
           </div>
         </div>
