@@ -51,7 +51,7 @@ export default function Header() {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3, delay: 0.2 }}
-          className="hidden lg:flex gap-1 md:gap-2 backdrop-blur-2xl px-[8px] py-4 font-bilmond tracking-wide border border-white/20 bg-white/10 rounded-full"
+          className="hidden lg:flex gap-1 md:gap-2 backdrop-blur-2xl px-[8px] py-4 font-bilmond tracking-wide border border-white/20 bg-white rounded-full"
         >
           {navItems.map((item) => (
             <li key={item.path}>
@@ -64,7 +64,7 @@ export default function Header() {
                   ${
                     pathname === item.path
                       ? "text-black bg-white "
-                      : "text-white/90 hover:text-white hover:bg-white/10"
+                      : "text-black/90 hover:text-black hover:bg-white/10"
                   }
                 `}
               >
