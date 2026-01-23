@@ -1,12 +1,11 @@
 "use client";
-import { section } from "framer-motion/client";
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { NotebookPen, PencilRuler, Code, Bug, Warehouse } from "lucide-react";
 
 import { dynamicWord } from "@/src/types";
-import "../../styles/hero.css";
+import "@/src/styles/hero.css";
 
-export default function Home() {
+export default function HeroSection() {
   const dynamicWords: dynamicWord[] = [
     { id: 1, icon: <NotebookPen />, word: "Planning" },
     { id: 2, icon: <PencilRuler />, word: "Designing" },
@@ -14,8 +13,9 @@ export default function Home() {
     { id: 4, icon: <Bug />, word: "Testing" },
     { id: 5, icon: <Warehouse />, word: "Deploying" },
   ];
+
   return (
-    <section className="">
+    <section id="home" className="">
       <div className="relative max-w-[1920px]  md:h-screen h-screen mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
         {/* Video positioned on the right side as background */}
         <div className="absolute right-0 top-0 h-full max-w-7xl border lg:block">
