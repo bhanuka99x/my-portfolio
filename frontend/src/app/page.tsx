@@ -3,12 +3,12 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "@/src/components/LoadingScreen";
-import HeroSection from '@/src/components/sections/HeroSection';
-import AboutSection from '@/src/components/sections/AboutSection';
-import SkillsSection from '@/src/components/sections/SkillsSection';
-import ExperienceSection from '@/src/components/sections/ExperienceSection';
-import ProjectsSection from '@/src/components/sections/ProjectsSection';
-import ContactSection from '@/src/components/sections/ContactSection';
+import HeroSection from '@/src/components/sections/experience/HeroSection';
+import AboutSection from '@/src/components/sections/about/AboutSection';
+import SkillsSection from '@/src/components/sections/skill/SkillsSection';
+import ExperienceSection from '@/src/components/sections/experience/ExperienceSection';
+import ProjectsSection from '@/src/components/sections/project/ProjectsSection';
+import ContactSection from '@/src/components/sections/contact/ContactSection';
 import { useLoading } from "@/src/context/LoadingContext";
 
 
