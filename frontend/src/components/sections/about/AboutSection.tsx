@@ -26,7 +26,7 @@ export default function AboutSection() {
     },
     {
       label: "Projects Completed",
-      value: "50+",
+      value: "13+",
       icon: <Rocket className="w-5 h-5" />,
     },
     {
