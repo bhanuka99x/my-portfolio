@@ -38,6 +38,7 @@ export default function SkillsSection() {
         "Bash/Shell Scripting",
         "HTML5",
         "CSS3",
+        "Python"
       ],
     },
     {
@@ -47,7 +48,7 @@ export default function SkillsSection() {
       color: "from-purple-400 to-pink-400",
       skills: [
         "React.js",
-        "Next.js (App Router)",
+        "Next.js",
         "Tailwind CSS",
         "Framer Motion",
         "Redux / Zustand",
@@ -81,6 +82,7 @@ export default function SkillsSection() {
         "MySQL",
         "Redis",
         "Supabase",
+        "Firebase",
         "Prisma ORM",
         "Database Design",
         "Indexing",
@@ -136,6 +138,7 @@ export default function SkillsSection() {
         "VS Code",
         "GitHub Copilot",
         "Cursor AI",
+        "Antigravity",
         "Vite",
         "Turborepo",
       ],
@@ -219,7 +222,7 @@ export default function SkillsSection() {
                   <div
                     className={`bg-gradient-to-br ${category.color} p-3 rounded-xl group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <div className="text-black">{category.icon}</div>
+                    
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors duration-300">
                     {category.category}
@@ -242,10 +245,7 @@ export default function SkillsSection() {
                   ))}
                 </div>
 
-                {/* Skill Count Badge */}
-                <div className="absolute top-0 right-0 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 text-amber-400 text-xs font-bold px-3 py-1 rounded-full">
-                  {category.skills.length} skills
-                </div>
+               
               </div>
             </motion.div>
           ))}
@@ -269,7 +269,7 @@ export default function SkillsSection() {
               <div className="text-gray-400 text-sm">Skill Categories</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-green-400 mb-2">3+</div>
+              <div className="text-4xl font-bold text-green-400 mb-2">1+</div>
               <div className="text-gray-400 text-sm">Years Experience</div>
             </div>
             <div>
@@ -288,7 +288,7 @@ export default function SkillsSection() {
           className="mt-12 text-center"
         >
           <p className="text-gray-400 font-NeueHaas">
-            💡 Constantly learning and adapting to new technologies and industry best practices
+             Constantly learning and adapting to new technologies and industry best practices
           </p>
         </motion.div>
       </div>
