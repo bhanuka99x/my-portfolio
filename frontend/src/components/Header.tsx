@@ -5,19 +5,36 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
-import "../styles/header.css";
+import "@/src/styles/header.css";
 
 export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "home", path: "/" },
-    { name: "about", path: "/about" },
-    { name: "skills", path: "/skills" },
-    { name: "experience", path: "/experience" },
-    { name: "projects", path: "/projects" },
+    { name: "home", path: "#home", isSection: true },
+    { name: "about", path: "#about", isSection: true },
+    { name: "skills", path: "/skills", isSection: false },
+    { name: "experience", path: "/experience", isSection: false },
+    { name: "projects", path: "/projects", isSection: false },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[0]) => {
+    if (item.isSection) {
+      e.preventDefault();
+      
+      // If we're not on the home page, navigate there first
+      if (pathname !== '/') {
+        window.location.href = '/' + item.path;
+        return;
+      }
+      
+      const element = document.querySelector(item.path);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full flex justify-center font-bilmond pt-4 md:pt-8 z-50 px-4">
@@ -34,19 +51,20 @@ export default function Header() {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3, delay: 0.2 }}
-          className="hidden lg:flex gap-1 md:gap-2 backdrop-blur-2xl px-[8px] py-4 font-bilmond tracking-wide border border-white/20 bg-white/10 rounded-full"
+          className="hidden lg:flex gap-1 md:gap-2 backdrop-blur-2xl px-[8px] py-4 font-bilmond tracking-wide border border-white/20 bg-white rounded-full"
         >
           {navItems.map((item) => (
             <li key={item.path}>
               <Link
                 href={item.path}
+                onClick={(e) => handleNavClick(e, item)}
                 className={`
                   relative px-5 py-3 text-md font-medium capitalize rounded-full
                   transition-all duration-300 ease-out
                   ${
                     pathname === item.path
                       ? "text-black bg-white "
-                      : "text-white/90 hover:text-white hover:bg-white/10"
+                      : "text-black/90 hover:text-black hover:bg-white/10"
                   }
                 `}
               >
@@ -67,7 +85,7 @@ export default function Header() {
           <Link
             href="/contact"
             className="flex items-center justify-center gap-2
-                   text-black bg-white border border-white/20 backdrop-blur-md px-2 py-2 rounded-full
+                   text-black bg-white border border-white/20 backdrop-blur-md px-1.5 py-1.5 rounded-full
                    font-medium text-md"
           >
             <motion.div
@@ -118,7 +136,10 @@ export default function Header() {
                 <li key={item.path}>
                   <Link
                     href={item.path}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => {
+                      handleNavClick(e, item);
+                      setIsMenuOpen(false);
+                    }}
                     className={`
                       block px-6 py-4 text-lg font-medium capitalize rounded-2xl
                       transition-all duration-300
