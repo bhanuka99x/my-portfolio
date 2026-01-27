@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "@/src/components/LoadingScreen";
-import HeroSection from '@/src/components/sections/experience/HeroSection';
+import HeroSection from '@/src/components/sections/hero/HeroSection';
 import AboutSection from '@/src/components/sections/about/AboutSection';
 import SkillsSection from '@/src/components/sections/skill/SkillsSection';
 import ExperienceSection from '@/src/components/sections/experience/ExperienceSection';
@@ -31,11 +31,11 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
+      {/* <AboutSection />
       <SkillsSection />
       <ExperienceSection />
       <ProjectsSection />
-      <ContactSection />
+      <ContactSection /> */}
     </>
   ); 
 }
