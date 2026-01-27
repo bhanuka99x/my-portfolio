@@ -15,21 +15,21 @@ export default function HeroSection() {
   ];
 
   return (
-    <section id="home" className=" px-4">
-      <div className="relative max-w-[1600px]  md:h-screen h-screen mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
+    <section id="home" className="">
+      <div className="relative max-w-[1600px]   md:h-screen h-screen mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
         {/* Video positioned on the right side as background */}
-        <div className="absolute right-0 top-0 h-full max-w-7xl border lg:block">
-          <video 
-            src="/videos/fish.mp4" 
-            className="w-full object-cover" 
-            autoPlay 
-            loop 
+        <div className="absolute left-0 top-0 md:left-50 md:top-15 lg:left-100 lg:top-30  h-screen    lg:h-full lg:block">
+          <video
+            src="/videos/fish.mp4"
+            className=" lg:w-[1500px] lg:h-[600px] md:w-[1000px] md:h-[500px] w-[1600px] h-[600px] object-cover opacity-40 lg:opacity-100"
+            autoPlay
+            loop
             muted
             playsInline
           />
         </div>
-        
-        <div className="relative z-10 flex items-start justify-start h-full">
+
+        <div className="relative px-4 z-10  flex items-start justify-start h-full">
           <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-80 md:pt-40 pt-32 space-y-5">
             <h1 className="font-semibold transition-all duration-500 ">
               Beyond
@@ -84,20 +84,22 @@ export default function HeroSection() {
                 ))}
               </span>
             </h1>
-            <h1 className="font-semibold text-[40px] md:text-[60px] lg:text-[60px] text-center md:text-left lg:text-left mt-10 lg:mt-0 transition-all duration-500">Turning complex problems</h1>
-            <h1 className="font-semibold text-center md:text-[60px] md:text-left lg:text-left text-[40px] lg:text-[60px] transition-all duration-500">into elegant reality.</h1>
+            <h1 className="  font-semibold text-[40px] md:text-[60px] lg:text-[60px] text-center md:text-left lg:text-left mt-10 lg:mt-0 transition-all duration-500">
+              Turning complex problems
+            </h1>
+            <h1 className="font-semibold text-center md:text-[60px] md:text-left lg:text-left text-[40px] lg:text-[60px] transition-all duration-500">
+              into elegant reality.
+            </h1>
             <div className=" ">
               <p className="text-lg mt-10 max-w-4xl text-center md:text-left lg:text-left mx-auto tracking-wider transition-all duration-800">
-                I'm Bhanuka Gihan, a Software Engineer turning innovative ideas into robust, high-performance code.
+                I'm Bhanuka Gihan, a Software Engineer turning innovative ideas
+                into robust, high-performance code.
               </p>
             </div>
 
             <div className="mt-10   flex justify-center md:justify-start lg:justify-start">
-              <button 
-              className="gradient-button w-60 h-15  lg:w-80 lg:h-18 transition-transform duration-300">
-              <span
-              className="gradient-text"
-              >See My Work</span>
+              <button className="gradient-button w-60 h-18 lg:w-80 lg:h-18 transition-transform duration-300">
+                <span className="gradient-text">See My Work</span>
               </button>
             </div>
           </div>
