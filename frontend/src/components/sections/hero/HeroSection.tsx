@@ -30,7 +30,7 @@ export default function HeroSection() {
         </div>
 
         <div className="relative px-4 z-10  flex items-start justify-start h-full">
-          <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-60 md:pt-40 pt-20 space-y-5">
+          <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-60 md:pt-40 pt-10 space-y-5">
             <h1 className="font-semibold transition-all duration-500 ">
               Beyond
               <span className="inline-block relative h-12 ml-4 ">

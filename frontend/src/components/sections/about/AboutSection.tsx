@@ -14,7 +14,7 @@ import {
   Download,
   ArrowLeft,
 } from "lucide-react";
-import { Document, Page, pdfjs } from 'react-pdf';
+import { Document, Page, pdfjs } from "react-pdf";
 import "../../../styles/about.css";
 
 // Set up PDF.js worker
@@ -99,32 +99,23 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="min-h-screen text-white  py-20  font-bilmond">
+    <section
+      id="about"
+      className="min-h-screen text-white  py-20  font-bilmond"
+    >
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            About <motion.span 
-    
-            className="text-amber-400">Me</motion.span>
+            About <motion.span className="text-amber-400">Me</motion.span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full"></div>
-        </motion.div>
+        </div>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left Side - Image & Status */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div
             className="relative"
           >
             <div className="relative group">
@@ -138,15 +129,12 @@ export default function AboutSection() {
                   />
 
                   {/* CV Buttons */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                  <div
+                   
                     className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[calc(100%-3rem)]"
                   >
                     <div className="flex gap-3">
-                      <button 
+                      <button
                         onClick={() => setShowCV(true)}
                         className="animated-button backdrop-blur-sm mx-auto bg-gray-700"
                       >
@@ -168,17 +156,18 @@ export default function AboutSection() {
                         </svg>
                       </button>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
+                <div
+                  
                   className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 overflow-hidden"
                 >
                   {/* CV Viewer */}
-                  <div className="bg-gray-900 rounded-2xl overflow-auto relative" style={{ height: '600px' }}>
+                  <div
+                    className="bg-gray-900 rounded-2xl overflow-auto relative"
+                    style={{ height: "600px" }}
+                  >
                     <div className="flex flex-col items-center p-4">
                       <Document
                         file="/cv/se-intern.pdf"
@@ -224,19 +213,14 @@ export default function AboutSection() {
                       Download CV
                     </a>
                   </div>
-                </motion.div>
+                </div>
               )}
             </div>
-
-    
-          </motion.div>
+          </div>
 
           {/* Right Side - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div
+         
             className="space-y-8"
           >
             {/* Introduction */}
@@ -303,21 +287,17 @@ export default function AboutSection() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Stats Grid - Full Width Bottom */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
+        
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16"
         >
           {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
+            <div
+           
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30 hover:scale-105 transition-all duration-300 group"
             >
               <div className="flex flex-col items-center text-center">
@@ -329,9 +309,9 @@ export default function AboutSection() {
                 </span>
                 <p className="text-gray-400 text-sm">{stat.label}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
