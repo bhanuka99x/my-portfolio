@@ -31,11 +31,11 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      {/* <AboutSection />
+      <AboutSection />
       <SkillsSection />
       <ExperienceSection />
       <ProjectsSection />
-      <ContactSection /> */}
+      <ContactSection />
     </>
   ); 
 }

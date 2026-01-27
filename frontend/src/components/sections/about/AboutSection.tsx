@@ -14,14 +14,24 @@ import {
   Download,
   ArrowLeft,
 } from "lucide-react";
+import { Document, Page, pdfjs } from 'react-pdf';
 import "../../../styles/about.css";
+
+// Set up PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs`;
 
 export default function AboutSection() {
   const [showCV, setShowCV] = useState(false);
+  const [numPages, setNumPages] = useState<number>();
+  const [pageNumber, setPageNumber] = useState<number>(1);
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+    setNumPages(numPages);
+  }
   const stats = [
     {
       label: "Years Experience",
-      value: "3+",
+      value: "1+",
       icon: <Award className="w-5 h-5" />,
     },
     {
@@ -89,7 +99,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="min-h-screen text-white py-20 font-bilmond">
+    <section id="about" className="min-h-screen text-white  py-20  font-bilmond">
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
         {/* Section Header */}
         <motion.div
@@ -168,12 +178,32 @@ export default function AboutSection() {
                   className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 overflow-hidden"
                 >
                   {/* CV Viewer */}
-                  <div className="bg-white rounded-2xl overflow-hidden" style={{ height: '600px' }}>
-                    <iframe
-                      src="/cv.pdf"
-                      className="w-full h-full"
-                      title="CV Preview"
-                    />
+                  <div className="bg-gray-900 rounded-2xl overflow-auto relative" style={{ height: '600px' }}>
+                    <div className="flex flex-col items-center p-4">
+                      <Document
+                        file="/cv/se-intern.pdf"
+                        onLoadSuccess={onDocumentLoadSuccess}
+                        loading={
+                          <div className="flex items-center justify-center h-96 text-white">
+                            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
+                          </div>
+                        }
+                        error={
+                          <div className="flex items-center justify-center h-96 text-white">
+                            <p>Failed to load PDF file.</p>
+                          </div>
+                        }
+                      >
+                        {Array.from(new Array(numPages), (el, index) => (
+                          <Page
+                            key={`page_${index + 1}`}
+                            pageNumber={index + 1}
+                            width={Math.min(window.innerWidth * 0.4, 600)}
+                            className="mb-4"
+                          />
+                        ))}
+                      </Document>
+                    </div>
                   </div>
 
                   {/* Action Buttons */}
@@ -186,8 +216,8 @@ export default function AboutSection() {
                       Back
                     </button>
                     <a
-                      href="/cv.pdf"
-                      download
+                      href="/cv/se-intern.pdf"
+                      download="Bhanuka_Gihan_CV.pdf"
                       className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-amber-400/50 hover:scale-105 transition-all duration-300"
                     >
                       <Download className="w-5 h-5" />
@@ -198,30 +228,7 @@ export default function AboutSection() {
               )}
             </div>
 
-            {/* Social Links */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="flex justify-center gap-4 mt-8"
-            >
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={index}
-                  variants={itemVariants}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl hover:bg-white/10 hover:border-amber-400/50 hover:scale-110 transition-all duration-300 group"
-                >
-                  <div className="text-white group-hover:text-amber-400 transition-colors duration-300">
-                    {link.icon}
-                  </div>
-                </motion.a>
-              ))}
-            </motion.div>
+    
           </motion.div>
 
           {/* Right Side - Content */}

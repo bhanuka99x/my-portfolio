@@ -15,8 +15,8 @@ export default function HeroSection() {
   ];
 
   return (
-    <section id="home" className="">
-      <div className="relative max-w-[1600px]   md:h-screen h-screen mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
+    <section id="home" className="  py-20">
+      <div className="relative max-w-[1600px]    mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
         {/* Video positioned on the right side as background */}
         <div className="absolute left-0 top-0 md:left-50 md:top-15 lg:left-100 lg:top-30  h-screen    lg:h-full lg:block">
           <video
@@ -30,7 +30,7 @@ export default function HeroSection() {
         </div>
 
         <div className="relative px-4 z-10  flex items-start justify-start h-full">
-          <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-80 md:pt-40 pt-32 space-y-5">
+          <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-60 md:pt-40 pt-20 space-y-5">
             <h1 className="font-semibold transition-all duration-500 ">
               Beyond
               <span className="inline-block relative h-12 ml-4 ">

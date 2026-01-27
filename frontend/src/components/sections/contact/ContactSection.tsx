@@ -122,7 +122,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-screen text-white py-20 font-bilmond"
+      className="min-h-screen text-white py-20 font-bilmond overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
         {/* Section Header */}
