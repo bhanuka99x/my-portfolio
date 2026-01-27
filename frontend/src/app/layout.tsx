@@ -15,7 +15,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
     <>
       {!loading && <Header />}
       {children}
-      {!loading && <Footer />}
+      {/* {!loading && <Footer />} */}
     </>
   );
 }
