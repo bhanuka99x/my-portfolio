@@ -115,9 +115,7 @@ export default function AboutSection() {
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left Side - Image & Status */}
-          <div
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative group">
               {/* Image Container */}
               {!showCV ? (
@@ -129,10 +127,7 @@ export default function AboutSection() {
                   />
 
                   {/* CV Buttons */}
-                  <div
-                   
-                    className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[calc(100%-3rem)]"
-                  >
+                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[calc(100%-3rem)]">
                     <div className="flex gap-3">
                       <button
                         onClick={() => setShowCV(true)}
@@ -159,10 +154,7 @@ export default function AboutSection() {
                   </div>
                 </div>
               ) : (
-                <div
-                  
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 overflow-hidden"
-                >
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 overflow-hidden">
                   {/* CV Viewer */}
                   <div
                     className="bg-gray-900 rounded-2xl overflow-auto relative"
@@ -219,10 +211,7 @@ export default function AboutSection() {
           </div>
 
           {/* Right Side - Content */}
-          <div
-         
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             {/* Introduction */}
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/[0.07] transition-all duration-300">
               <h3 className="text-3xl font-bold mb-4 text-[#e8f5fd]">
@@ -256,13 +245,7 @@ export default function AboutSection() {
               </h4>
               <div className="space-y-6">
                 {skills.map((skill, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                  >
+                  <div>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <div className="text-amber-400">{skill.icon}</div>
@@ -283,7 +266,7 @@ export default function AboutSection() {
                         className="h-full bg-gradient-to-r from-amber-400 to-blue-400 rounded-full"
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -291,15 +274,9 @@ export default function AboutSection() {
         </div>
 
         {/* Stats Grid - Full Width Bottom */}
-        <div
-        
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16">
           {stats.map((stat, index) => (
-            <div
-           
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30 hover:scale-105 transition-all duration-300 group"
-            >
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30 hover:scale-105 transition-all duration-300 group">
               <div className="flex flex-col items-center text-center">
                 <div className="text-amber-400 group-hover:scale-110 transition-transform duration-300 mb-3">
                   {stat.icon}

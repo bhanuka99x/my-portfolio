@@ -21,7 +21,7 @@ export default function HeroSection() {
         <div className="absolute left-0 top-0 md:left-50 md:top-15 lg:left-100 lg:top-30  h-screen    lg:h-full lg:block">
           <video
             src="/videos/fish.mp4"
-            className=" lg:w-[1500px] lg:h-[600px] md:w-[1000px] md:h-[500px] w-[1600px] h-[600px] object-cover opacity-40 lg:opacity-100"
+            className=" lg:w-[1600px] lg:h-[600px] md:w-[1000px] md:h-[500px] w-[1600px] h-[600px] object-cover opacity-40 lg:opacity-100"
             autoPlay
             loop
             muted
