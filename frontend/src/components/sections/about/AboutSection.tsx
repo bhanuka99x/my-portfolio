@@ -121,7 +121,7 @@ export default function AboutSection() {
               {!showCV ? (
                 <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-2 overflow-hidden">
                   <img
-                    src="/images/about.png"
+                    src="/images/about.jpg"
                     alt="Bhanuka Gihan"
                     className="w-full h-auto object-cover rounded-2xl transform group-hover:scale-105 transition duration-500"
                   />
