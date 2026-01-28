@@ -50,8 +50,7 @@ export default function SkillsSection() {
         "Next.js",
         "Tailwind CSS",
         "Framer Motion",
-        "Redux / Zustand",
-        "Figma",
+        "Redux",
         "Responsive Design",
       ],
     },
@@ -63,12 +62,13 @@ export default function SkillsSection() {
       skills: [
         "Node.js",
         "Express.js",
-        "NestJS",
+        ".NET Core",
         "RESTful APIs",
         "WebSockets",
-        "tRPC",
-        "Stripe / PayPal",
-        "JWT & OAuth 2.0",
+        "Stripe payment gateway",
+        "JWT",
+        "firebase Auth",
+        "supabase Auth",
       ],
     },
     {
@@ -84,7 +84,6 @@ export default function SkillsSection() {
         "Firebase",
         "Prisma ORM",
         "Database Design",
-        "Indexing",
       ],
     },
     {
@@ -98,7 +97,6 @@ export default function SkillsSection() {
         "Linux Server",
         "Nginx",
         "SSL/TLS (Certbot)",
-        "DNS Configuration",
         "AWS (EC2/S3)",
       ],
     },
@@ -109,7 +107,8 @@ export default function SkillsSection() {
       color: "from-yellow-400 to-amber-400",
       skills: [
         "Unit Testing (Vitest/Jest)",
-        "E2E Testing (Playwright)",
+        "Integration Testing",
+        "E2E Testing (Cypress)",
         "API Testing (Postman)",
         "Error Monitoring (Sentry)",
       ],
@@ -121,6 +120,8 @@ export default function SkillsSection() {
       color: "from-indigo-400 to-purple-400",
       skills: [
         "System Design",
+        "Design Patterns",
+        "Clean Architecture",
         "Microservices",
         "OWASP Top 10",
         "Load Balancing",
@@ -136,10 +137,11 @@ export default function SkillsSection() {
         "Git & GitHub",
         "VS Code",
         "GitHub Copilot",
+        "Ai agents",
         "Cursor AI",
         "Antigravity",
         "Vite",
-        "Turborepo",
+        "Postman",
       ],
     },
     {
@@ -154,17 +156,19 @@ export default function SkillsSection() {
         "Problem Solving",
         "Continuous Learning",
         "Time Management",
+        "Team Collaboration",
+        "Communication"
       ],
     },
   ];
 
   return (
-    <section id="skills" className="min-h-screen text-white py-20 font-bilmond">
+    <section id="skills" className="min-h-screen text-white py-20 font-bilmond overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            Technical <span className="text-amber-400">Skills</span>
+            <span className="text-amber-400">Skills</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full mb-6"></div>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto font-NeueHaas">
@@ -179,7 +183,7 @@ export default function SkillsSection() {
               key={category.id}
               onMouseEnter={() => setActiveCategory(category.category)}
               onMouseLeave={() => setActiveCategory(null)}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500 cursor-pointer"
+              className="group relative bg-white/5 backdrop-blur-sm  rounded-3xl p-6 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500 cursor-pointer"
             >
               {/* Gradient Glow Effect */}
               <div
@@ -190,12 +194,8 @@ export default function SkillsSection() {
               <div className="relative">
                 {/* Icon & Title */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div
-                    className={`bg-gradient-to-br ${category.color} p-3 rounded-xl group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    
-                  </div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors duration-300">
+                
+                  <h3 className="text-2xl tracking-wide  text-white group-hover:text-amber-400 transition-colors duration-300">
                     {category.category}
                   </h3>
                 </div>
@@ -205,7 +205,7 @@ export default function SkillsSection() {
                   {category.skills.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
-                      className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm text-gray-300 group-hover:bg-white/20 group-hover:border-amber-400/30 group-hover:text-white transition-all duration-300"
+                      className="px-3 py-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg text-sm tracking-wide text-gray-300 group-hover:bg-white/20 group-hover:border-amber-400/30 group-hover:text-white transition-all duration-300"
                     >
                       {skill}
                     </span>
@@ -219,7 +219,7 @@ export default function SkillsSection() {
         </div>
 
         {/* Bottom Stats */}
-        <div className="mt-16 bg-gradient-to-r from-amber-400/10 to-blue-400/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+        <div className="mt-16 bg-gradient-to-r from-amber-400/10 to-blue-400/10 backdrop-blur-sm  rounded-3xl p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-amber-400 mb-2">50+</div>

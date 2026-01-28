@@ -15,7 +15,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section id="home" className="  py-20">
+    <section id="home" className="  py-20 overflow-hidden ">
       <div className="relative max-w-[1600px]    mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
         {/* Video positioned on the right side as background */}
         <div className="absolute left-0 top-0 md:left-50 md:top-15 lg:left-100 lg:top-30  h-screen    lg:h-full lg:block">
