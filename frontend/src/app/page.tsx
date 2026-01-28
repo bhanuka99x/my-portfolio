@@ -8,6 +8,8 @@ import HeroSection from '@/src/components/sections/hero/HeroSection';
 import SkillsSection from '@/src/components/sections/skill/SkillsSection';
 import ExperienceSection from '@/src/components/sections/experience/ExperienceSection';
 import ProjectsSection from '@/src/components/sections/project/ProjectsSection';
+import CertificateSection from '@/src/components/sections/certificate/CertifiateSection';
+import RecommendationSection from '@/src/components/sections/recommendation/RecomondationSection';
 import ContactSection from '@/src/components/sections/contact/ContactSection';
 import { useLoading } from "@/src/context/LoadingContext";
 
@@ -41,6 +43,8 @@ export default function HomePage() {
       <SkillsSection />
       <ExperienceSection />
       <ProjectsSection />
+      <CertificateSection />
+      <RecommendationSection />
       <ContactSection />
     </>
   ); 
