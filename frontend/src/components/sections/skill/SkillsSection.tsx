@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
   Code2,
   Palette,
@@ -159,32 +158,11 @@ export default function SkillsSection() {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <section id="skills" className="min-h-screen text-white py-20 font-bilmond">
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold mb-4">
             Technical <span className="text-amber-400">Skills</span>
           </h2>
@@ -192,22 +170,15 @@ export default function SkillsSection() {
           <p className="text-gray-400 text-lg max-w-2xl mx-auto font-NeueHaas">
             A comprehensive toolkit for building robust, scalable, and modern web applications
           </p>
-        </motion.div>
+        </div>
 
         {/* Skills Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillsData.map((category, index) => (
-            <motion.div
+            <div
               key={category.id}
-              variants={itemVariants}
-              onHoverStart={() => setActiveCategory(category.category)}
-              onHoverEnd={() => setActiveCategory(null)}
+              onMouseEnter={() => setActiveCategory(category.category)}
+              onMouseLeave={() => setActiveCategory(null)}
               className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500 cursor-pointer"
             >
               {/* Gradient Glow Effect */}
@@ -232,33 +203,23 @@ export default function SkillsSection() {
                 {/* Skills List */}
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <motion.span
+                    <span
                       key={skillIndex}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
                       className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm text-gray-300 group-hover:bg-white/20 group-hover:border-amber-400/30 group-hover:text-white transition-all duration-300"
                     >
                       {skill}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
 
                
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 bg-gradient-to-r from-amber-400/10 to-blue-400/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8"
-        >
+        <div className="mt-16 bg-gradient-to-r from-amber-400/10 to-blue-400/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-amber-400 mb-2">50+</div>
@@ -277,20 +238,14 @@ export default function SkillsSection() {
               <div className="text-gray-400 text-sm">Learning Mindset</div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Certifications or Additional Info */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 text-center"
-        >
+        <div className="mt-12 text-center">
           <p className="text-gray-400 font-NeueHaas">
              Constantly learning and adapting to new technologies and industry best practices
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
