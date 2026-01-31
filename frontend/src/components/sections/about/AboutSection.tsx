@@ -213,7 +213,7 @@ export default function AboutSection() {
           {/* Right Side - Content */}
           <div className="space-y-8">
             {/* Introduction */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/[0.07] transition-all duration-300">
+            <div className="bg-white/5 backdrop-blur-sm  rounded-3xl p-8 hover:bg-white/[0.07] transition-all duration-300">
               <h3 className="text-3xl font-bold mb-4 text-[#e8f5fd]">
                 Hi, I'm <span className="text-amber-400">Bhanuka Gihan</span>
               </h3>
@@ -245,7 +245,7 @@ export default function AboutSection() {
               </h4>
               <div className="space-y-6">
                 {skills.map((skill, index) => (
-                  <div>
+                  <div key={index}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <div className="text-amber-400">{skill.icon}</div>
@@ -276,7 +276,7 @@ export default function AboutSection() {
         {/* Stats Grid - Full Width Bottom */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16">
           {stats.map((stat, index) => (
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30 hover:scale-105 transition-all duration-300 group">
+            <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30 hover:scale-105 transition-all duration-300 group">
               <div className="flex flex-col items-center text-center">
                 <div className="text-amber-400 group-hover:scale-110 transition-transform duration-300 mb-3">
                   {stat.icon}
