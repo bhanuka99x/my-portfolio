@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+import React, { useState,useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -18,14 +19,20 @@ import {
 } from "lucide-react";
 
 export default function ContactSection() {
+
+  const formRef = useRef<HTMLFormElement>(null);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
 
   const contactInfo = [
     {
@@ -65,12 +72,6 @@ export default function ContactSection() {
       color: "hover:text-blue-400",
     },
     {
-      icon: <Twitter className="w-5 h-5" />,
-      name: "Twitter",
-      url: "https://twitter.com/bhanuka99x",
-      color: "hover:text-sky-400",
-    },
-    {
       icon: <Instagram className="w-5 h-5" />,
       name: "Instagram",
       url: "https://instagram.com/bhanuka99x",
@@ -87,21 +88,36 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+// Form Submit වෙද්දි වැඩ කරන Function එක
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+    // --- EmailJS Configuration ---
+    // EmailJS Dashboard එකෙන් මේවා අරන් දාන්න
+    const serviceID = 'service_14ggknr'; 
+    const templateID = 'template_b1skc65';
+    const publicKey = 'ZHlh_wFapRkTRV-rU';
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 2000);
+    // formRef.current හරහා කෙලින්ම form data ටික යවනවා
+    if (formRef.current) {
+      emailjs.sendForm(serviceID, templateID, formRef.current, publicKey)
+        .then((result) => {
+          console.log('Email sent:', result.text);
+          setIsSubmitted(true);
+          setFormData({ name: '', email: '', subject: '', message: '' }); // Form එක clear කරන්න
+          
+          // තත්පර 5කට පස්සේ Success message එක අයින් කරන්න
+          setTimeout(() => setIsSubmitted(false), 5000);
+        })
+        .catch((error) => {
+          console.error('Email error:', error.text);
+          alert("Failed to send message. Please try again.");
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    }
   };
 
   const containerVariants = {
@@ -170,7 +186,7 @@ export default function ContactSection() {
                 </motion.div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Input */}
                 <div>
                   <label className="block text-sm font-semibold mb-2 text-gray-300">
@@ -331,53 +347,8 @@ export default function ContactSection() {
                 ))}
               </div>
             </motion.div>
-
-            {/* Availability Status */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-gradient-to-r from-green-400/10 to-emerald-400/10 backdrop-blur-sm border border-green-400/20 rounded-2xl p-6"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
-                <span className="text-green-400 font-bold">
-                  Available for Freelance
-                </span>
-              </div>
-              <p className="text-gray-300 text-sm font-NeueHaas">
-                I'm currently available for freelance projects and full-time opportunities. 
-                Let's build something amazing together!
-              </p>
-            </motion.div>
           </motion.div>
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="bg-gradient-to-r from-amber-400/10 to-blue-400/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8 text-center"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Ready to Start Your Project?
-          </h3>
-          <p className="text-gray-400 mb-6 font-NeueHaas max-w-2xl mx-auto">
-            Whether you need a new website, web application, or want to discuss a custom solution, 
-            I'm here to help bring your ideas to life.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-amber-400/50 hover:scale-105 transition-all duration-300">
-              Schedule a Call
-            </button>
-            <button className="bg-white/5 backdrop-blur-sm border border-white/20 text-white font-bold px-8 py-4 rounded-2xl hover:bg-white/10 hover:border-amber-400/50 hover:scale-105 transition-all duration-300">
-              View Portfolio
-            </button>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
