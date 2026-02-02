@@ -11,7 +11,7 @@ import {
   Users,
   Boxes,
 } from "lucide-react";
-import { skillsData } from "@/src/constants/skills";
+import { skillsData } from "@/constants/skills";
 
 export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);

@@ -17,7 +17,7 @@ import {
 import { Document, Page, pdfjs } from "react-pdf";
 import "../../../styles/about.css";
 
-import { skill } from "@/src/constants/about";
+import { skill } from "@/constants/about";
 
 // Set up PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs`;

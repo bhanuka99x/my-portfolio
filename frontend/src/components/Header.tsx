@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
-import "@/src/styles/header.css";
+import "@/styles/header.css";
 
 export default function Header() {
   const pathname = usePathname();

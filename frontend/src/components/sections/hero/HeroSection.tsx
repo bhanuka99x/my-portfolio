@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 import { NotebookPen, PencilRuler, Code, Bug, Warehouse } from "lucide-react";
 
-import { dynamicWord } from "@/src/types";
-import "@/src/styles/hero.css";
+import { dynamicWord } from "@/types";
+import "@/styles/hero.css";
 
 export default function HeroSection() {
   const dynamicWords: dynamicWord[] = [
@@ -15,7 +15,8 @@ export default function HeroSection() {
   ];
 
   return (
-    <section id="home" className="  py-20 overflow-hidden ">
+
+    <section id="home" className="  py-20 overflow-hidden  ">
       <div className="relative max-w-[1600px]    mx-auto justify-center items-center transform transition-all duration-500 overflow-hidden">
         {/* Video positioned on the right side as background */}
         <div className="absolute left-0 top-0 md:left-50 md:top-15 lg:left-100 lg:top-30  h-screen    lg:h-full lg:block">
@@ -28,6 +29,7 @@ export default function HeroSection() {
             playsInline
           />
         </div>
+        
 
         <div className="relative px-4 z-10  flex items-start justify-start h-full">
           <div className=" text-[#e8f5fd] font-bilmond text-6xl lg:pl-20 md:pl-10 pl-5 lg:pt-60 md:pt-40 pt-10 space-y-5">
