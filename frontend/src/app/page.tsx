@@ -39,13 +39,16 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <CertificateSection />
-      <RecommendationSection />
-      <ContactSection />
+      <div className="relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-500/10 blur-[120px] pointer-events-none -z-10" />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <CertificateSection />
+        <RecommendationSection />
+        <ContactSection />
+      </div>
     </>
   ); 
 }
