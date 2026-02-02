@@ -237,7 +237,7 @@ export default function AboutSection() {
         {/* Stats Grid - Full Width Bottom */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16">
           {stats.map((stat, index) => (
-            <div key={index} className=" backdrop-blur-sm rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30  transition-all duration-300 group">
+            <div key={index} className=" backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 group">
               <div className="flex flex-col items-center text-center">
                 <div className="text-amber-400 group-hover:scale-110 transition-transform duration-300 mb-3">
                   {stat.icon}
