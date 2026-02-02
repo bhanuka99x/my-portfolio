@@ -17,17 +17,24 @@ import {
 import { Document, Page, pdfjs } from "react-pdf";
 import "../../../styles/about.css";
 
+import { skill } from "@/src/constants/about";
+
 // Set up PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs`;
 
 export default function AboutSection() {
   const [showCV, setShowCV] = useState(false);
   const [numPages, setNumPages] = useState<number>();
-  const [pageNumber, setPageNumber] = useState<number>(1);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
     setNumPages(numPages);
   }
+
+  // Icon mapping
+  const iconMap: { [key: string]: React.ReactNode } = {
+    Code2: <Code2 className="w-5 h-5" />,
+    Palette: <Palette className="w-5 h-5" />,
+  };
   const stats = [
     {
       label: "Years Experience",
@@ -51,52 +58,7 @@ export default function AboutSection() {
     },
   ];
 
-  const skills = [
-    {
-      name: "Frontend Development",
-      level: 95,
-      icon: <Code2 className="w-5 h-5" />,
-    },
-    { name: "UI/UX Design", level: 88, icon: <Palette className="w-5 h-5" /> },
-    {
-      name: "Backend Development",
-      level: 85,
-      icon: <Code2 className="w-5 h-5" />,
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github className="w-5 h-5" />,
-      href: "https://github.com",
-      label: "GitHub",
-    },
-    {
-      icon: <Linkedin className="w-5 h-5" />,
-      href: "https://linkedin.com",
-      label: "LinkedIn",
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      href: "mailto:contact@example.com",
-      label: "Email",
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+ 
 
   return (
     <section
@@ -113,17 +75,17 @@ export default function AboutSection() {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           {/* Left Side - Image & Status */}
-          <div className="relative">
-            <div className="relative group">
+          <div className="relative flex flex-col">
+            <div className="relative group h-full flex flex-col">
               {/* Image Container */}
               {!showCV ? (
-                <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-2 overflow-hidden">
+                <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-2 overflow-hidden h-full flex flex-col">
                   <img
                     src="/images/about.jpg"
                     alt="Bhanuka Gihan"
-                    className="w-full h-auto object-cover rounded-2xl transform group-hover:scale-105 transition duration-500"
+                    className="w-full flex-1 object-cover rounded-2xl transform group-hover:scale-105 transition duration-500"
                   />
 
                   {/* CV Buttons */}
@@ -154,11 +116,10 @@ export default function AboutSection() {
                   </div>
                 </div>
               ) : (
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 overflow-hidden">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 overflow-hidden h-full flex flex-col">
                   {/* CV Viewer */}
                   <div
-                    className="bg-gray-900 rounded-2xl overflow-auto relative"
-                    style={{ height: "600px" }}
+                    className="bg-gray-900 rounded-2xl overflow-auto relative flex-1"
                   >
                     <div className="flex flex-col items-center p-4">
                       <Document
@@ -211,9 +172,9 @@ export default function AboutSection() {
           </div>
 
           {/* Right Side - Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 flex flex-col h-full">
             {/* Introduction */}
-            <div className="bg-white/5 backdrop-blur-sm  rounded-3xl p-8 hover:bg-white/[0.07] transition-all duration-300">
+            <div className="bg- backdrop-blur-sm  rounded-3xl p-8 transition-all duration-300">
               <h3 className="text-3xl font-bold mb-4 text-[#e8f5fd]">
                 Hi, I'm <span className="text-amber-400">Bhanuka Gihan</span>
               </h3>
@@ -239,28 +200,28 @@ export default function AboutSection() {
             </div>
 
             {/* Skills Progress */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/[0.07] transition-all duration-300">
+            <div className=" backdrop-blur-sm rounded-3xl p-8 transition-all duration-300">
               <h4 className="text-2xl font-bold mb-6 text-[#e8f5fd]">
                 Core Skills
               </h4>
               <div className="space-y-6">
-                {skills.map((skill, index) => (
+                {skill.map((s, index) => (
                   <div key={index}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <div className="text-amber-400">{skill.icon}</div>
+                        <div className="text-amber-400">{iconMap[s.icon]}</div>
                         <span className="text-gray-200 font-medium">
-                          {skill.name}
+                          {s.name}
                         </span>
                       </div>
                       <span className="text-amber-400 font-bold">
-                        {skill.level}%
+                        {s.level}%
                       </span>
                     </div>
                     <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
+                        whileInView={{ width: `${s.level}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: index * 0.1 }}
                         className="h-full bg-gradient-to-r from-amber-400 to-blue-400 rounded-full"
@@ -276,7 +237,7 @@ export default function AboutSection() {
         {/* Stats Grid - Full Width Bottom */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16">
           {stats.map((stat, index) => (
-            <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30 hover:scale-105 transition-all duration-300 group">
+            <div key={index} className=" backdrop-blur-sm rounded-2xl p-6 hover:bg-white/[0.07] hover:border-amber-400/30  transition-all duration-300 group">
               <div className="flex flex-col items-center text-center">
                 <div className="text-amber-400 group-hover:scale-110 transition-transform duration-300 mb-3">
                   {stat.icon}
