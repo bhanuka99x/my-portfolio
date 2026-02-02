@@ -10,3 +10,10 @@ export interface dynamicWord {
     icon:ReactNode,
     word: string;
 };
+
+export interface skillProgress {
+    name: string;
+    level: number;
+    icon: string;
+};
+
