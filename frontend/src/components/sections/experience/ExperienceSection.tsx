@@ -10,82 +10,16 @@ import {
   Users,
   Award,
 } from "lucide-react";
+import Link from "next/link";
+import { experiences } from "@/constants/experience";
 
 export default function ExperienceSection() {
-  const experiences = [
-    {
-      id: 1,
-      title: "Senior Full Stack Developer",
-      company: "Tech Innovations Inc.",
-      location: "Remote",
-      period: "2024 - Present",
-      type: "Full-time",
-      icon: <Rocket className="w-5 h-5" />,
-      description:
-        "Leading the development of scalable web applications using Next.js, Node.js, and PostgreSQL. Architecting microservices and implementing CI/CD pipelines.",
-      achievements: [
-        "Reduced application load time by 40% through optimization",
-        "Led a team of 5 developers in agile environment",
-        "Implemented automated testing, increasing code coverage to 85%",
-      ],
-      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Docker", "AWS"],
-      color: "from-blue-400 to-cyan-400",
-    },
-    {
-      id: 2,
-      title: "Full Stack Developer",
-      company: "Digital Solutions Ltd.",
-      location: "Colombo, Sri Lanka",
-      period: "2022 - 2024",
-      type: "Full-time",
-      icon: <Code className="w-5 h-5" />,
-      description:
-        "Developed and maintained multiple client projects, focusing on React.js frontend and Node.js backend development with modern best practices.",
-      achievements: [
-        "Delivered 15+ client projects on time and within budget",
-        "Integrated payment gateways (Stripe, PayPal, PayHere)",
-        "Built RESTful APIs serving 10K+ daily requests",
-      ],
-      technologies: ["React", "Node.js", "Express", "MySQL", "Redis"],
-      color: "from-purple-400 to-pink-400",
-    },
-    {
-      id: 3,
-      title: "Junior Web Developer",
-      company: "Creative Web Studio",
-      location: "Remote",
-      period: "2021 - 2022",
-      type: "Contract",
-      icon: <Users className="w-5 h-5" />,
-      description:
-        "Collaborated with designers and senior developers to build responsive websites and web applications for small to medium businesses.",
-      achievements: [
-        "Converted 20+ Figma designs to pixel-perfect responsive websites",
-        "Improved website performance scores to 90+ on Lighthouse",
-        "Learned and applied modern frontend frameworks",
-      ],
-      technologies: ["JavaScript", "React", "Tailwind CSS", "Firebase"],
-      color: "from-green-400 to-emerald-400",
-    },
-    {
-      id: 4,
-      title: "Freelance Developer",
-      company: "Self-Employed",
-      location: "Remote",
-      period: "2020 - 2021",
-      type: "Freelance",
-      icon: <Award className="w-5 h-5" />,
-      description:
-        "Started freelancing journey, building websites and web applications for local businesses and international clients through various platforms.",
-      achievements: [
-        "Completed 10+ freelance projects with 5-star ratings",
-        "Built strong client relationships and repeat business",
-        "Mastered full-stack development fundamentals",
-      ],
-      technologies: ["HTML", "CSS", "JavaScript", "PHP", "WordPress"],
-      color: "from-amber-400 to-orange-400",
-    },
-  ];
+  const iconMap: any = {
+    Code: <Code className="w-5 h-5" />,
+    Rocket: <Rocket className="w-5 h-5" />,
+    Users: <Users className="w-5 h-5" />,
+    Award: <Award className="w-5 h-5" />,
+  };
 
   return (
     <section
@@ -124,7 +58,7 @@ export default function ExperienceSection() {
                 <div
                   className={`absolute left-4 sm:left-6 md:left-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center border-4 border-black z-10 hover:scale-110 transition-transform duration-300`}
                 >
-                  <div className="text-black">{exp.icon}</div>
+                  <div className="text-black">{iconMap[exp.icon]}</div>
                 </div>
 
                 {/* Content Card */}
@@ -133,80 +67,88 @@ export default function ExperienceSection() {
                     index % 2 === 0 ? "lg:pr-16" : "lg:pl-16"
                   }`}
                 >
-                  <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500">
-                    {/* Gradient Glow */}
-                    <div
-                      className={`absolute -inset-0.5 bg-gradient-to-r ${exp.color} rounded-2xl sm:rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500`}
-                    ></div>
+                  <Link href={`/view_experience?id=${exp.id}`}>
+                    <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500 cursor-pointer">
+                      {/* Gradient Glow */}
+                      <div
+                        className={`absolute -inset-0.5 bg-gradient-to-r ${exp.color} rounded-2xl sm:rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500`}
+                      ></div>
 
-                    {/* Content */}
-                    <div className="relative">
-                      {/* Header */}
-                      <div className="mb-3 sm:mb-4">
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors duration-300">
-                            {exp.title}
-                          </h3>
-                          <span className="px-3 py-1 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 text-amber-400 text-xs font-bold rounded-full self-start">
-                            {exp.type}
-                          </span>
-                        </div>
-                        <div className="text-base sm:text-lg font-semibold text-gray-300 mb-2 sm:mb-3">
-                          {exp.company}
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400">
-                          <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                            <span>{exp.period}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                            <span>{exp.location}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 font-NeueHaas">
-                        {exp.description}
-                      </p>
-
-                      {/* Achievements */}
-                      <div className="mb-3 sm:mb-4">
-                        <h4 className="text-xs sm:text-sm font-bold text-amber-400 mb-2 uppercase tracking-wide">
-                          Key Achievements
-                        </h4>
-                        <ul className="space-y-1.5 sm:space-y-2">
-                          {exp.achievements.map((achievement, i) => (
-                            <li
-                              key={i}
-                              className="flex items-start gap-2 text-gray-400 text-xs sm:text-sm font-NeueHaas"
-                            >
-                              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                              <span>{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Technologies */}
-                      <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-blue-400 mb-2 uppercase tracking-wide">
-                          Technologies Used
-                        </h4>
-                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                          {exp.technologies.map((tech, i) => (
-                            <span
-                              key={i}
-                              className="px-2.5 sm:px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-gray-300 group-hover:bg-white/20 group-hover:border-blue-400/30 transition-all duration-300"
-                            >
-                              {tech}
+                      {/* Content */}
+                      <div className="relative">
+                        {/* Header */}
+                        <div className="mb-3 sm:mb-4">
+                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors duration-300">
+                              {exp.title}
+                            </h3>
+                            <span className="px-3 py-1 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 text-amber-400 text-xs font-bold rounded-full self-start">
+                              {exp.type}
                             </span>
-                          ))}
+                          </div>
+                          <div className="text-base sm:text-lg font-semibold text-gray-300 mb-2 sm:mb-3">
+                            {exp.company}
+                          </div>
+                          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                              <span>{exp.period}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <MapPin className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                              <span>{exp.location}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 font-NeueHaas">
+                          {exp.description}
+                        </p>
+
+                        {/* Achievements */}
+                        <div className="mb-3 sm:mb-4">
+                          <h4 className="text-xs sm:text-sm font-bold text-amber-400 mb-2 uppercase tracking-wide">
+                            Key Achievements
+                          </h4>
+                          <ul className="space-y-1.5 sm:space-y-2">
+                            {exp.achievements.map((achievement, i) => (
+                              <li
+                                key={i}
+                                className="flex items-start gap-2 text-gray-400 text-xs sm:text-sm font-NeueHaas"
+                              >
+                                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                                <span>{achievement}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Technologies */}
+                        <div>
+                          <h4 className="text-xs sm:text-sm font-bold text-blue-400 mb-2 uppercase tracking-wide">
+                            Technologies Used
+                          </h4>
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                            {exp.technologies.map((tech, i) => (
+                              <span
+                                key={i}
+                                className="px-2.5 sm:px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-gray-300 group-hover:bg-white/20 group-hover:border-blue-400/30 transition-all duration-300"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* View More Indicator */}
+                        <div className="mt-4 flex items-center gap-2 text-amber-400 font-semibold text-sm group-hover:gap-4 transition-all duration-300">
+                          <span>View Full Details</span>
+                          <ArrowRight className="w-4 h-4" />
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Empty space for alternating layout on desktop */}
@@ -214,17 +156,7 @@ export default function ExperienceSection() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-12 sm:mt-14 md:mt-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400/10 to-blue-400/10 backdrop-blur-sm border border-white/10 rounded-full px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-gray-300">
-            <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 flex-shrink-0" />
-            <span className="font-NeueHaas">
-              Want to work together? Let's connect!
-            </span>
-          </div>
-        </div>
+        </div>  
       </div>
     </section>
   );
