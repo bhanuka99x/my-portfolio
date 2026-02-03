@@ -329,7 +329,7 @@ export default function ContactSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
             >
-              <h4 className="text-xl font-bold mb-4">Connect With Me</h4>
+              <h4 className="text-xl font-bold mb-4">Connect Me</h4>
               <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social, index) => (
                   <a

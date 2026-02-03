@@ -375,19 +375,6 @@ export default function RecommendationSection() {
             </div>
           </div>
         </div>
-
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-gray-400 font-NeueHaas mb-4">
-            Want to work together? Let's create something amazing!
-          </p>
-          <a
-            href="#contact"
-            className="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold px-10 py-4 rounded-2xl hover:shadow-lg hover:shadow-amber-400/50 hover:scale-105 transition-all duration-300"
-          >
-            Get In Touch
-          </a>
-        </div>
       </div>
     </section>
   );
