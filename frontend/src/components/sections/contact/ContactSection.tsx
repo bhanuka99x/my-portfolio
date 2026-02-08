@@ -22,6 +22,9 @@ export default function ContactSection() {
 
   const formRef = useRef<HTMLFormElement>(null);
 
+  
+  const [backgroundImage] = useState("/images/beautiful-shot-snowy-mountain-sunset.jpg");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,15 +41,15 @@ export default function ContactSection() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      value: "hello@bhanuka.dev",
-      link: "mailto:hello@bhanuka.dev",
+      value: "bhanuka99xdev@gmail.com",
+      link: "mailto:bhanuka99xdev@gmail.com",
       color: "from-blue-400 to-cyan-400",
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      value: "+94 77 123 4567",
-      link: "tel:+94771234567",
+      value: "+94 75 2960845",
+      link: "tel:+94752960845",
       color: "from-green-400 to-emerald-400",
     },
     {
@@ -88,26 +91,26 @@ export default function ContactSection() {
     });
   };
 
-// Form Submit වෙද්දි වැඩ කරන Function එක
+// Form Submit 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     // --- EmailJS Configuration ---
-    // EmailJS Dashboard එකෙන් මේවා අරන් දාන්න
+    // EmailJS Dashboard 
     const serviceID = 'service_14ggknr'; 
     const templateID = 'template_b1skc65';
     const publicKey = 'ZHlh_wFapRkTRV-rU';
 
-    // formRef.current හරහා කෙලින්ම form data ටික යවනවා
+   
     if (formRef.current) {
       emailjs.sendForm(serviceID, templateID, formRef.current, publicKey)
         .then((result) => {
           console.log('Email sent:', result.text);
           setIsSubmitted(true);
-          setFormData({ name: '', email: '', subject: '', message: '' }); // Form එක clear කරන්න
+          setFormData({ name: '', email: '', subject: '', message: '' }); 
           
-          // තත්පර 5කට පස්සේ Success message එක අයින් කරන්න
+          
           setTimeout(() => setIsSubmitted(false), 5000);
         })
         .catch((error) => {
@@ -120,56 +123,88 @@ export default function ContactSection() {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   return (
     <section
       id="contact"
-      className="min-h-screen text-white py-20 font-bilmond overflow-hidden"
+      className="min-h-screen text-white py-20 font-bilmond overflow-hidden relative"
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            Get In <span className="text-amber-400">Touch</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto font-NeueHaas">
-            Have a project in mind or just want to chat? I'd love to hear from you!
-          </p>
-        </motion.div>
-
+     
+     
+      {/* Content Container */}
+      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 p-10 relative z-10 rounded-3xl "
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+     
+      }}
+      
+      >
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Left Side - Contact Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
+          {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col justify-center"
           >
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <MessageSquare className="w-6 h-6 text-amber-400" />
+            <h2 className="text-3xl md:text-6xl font-bold mb-4 p-1 bg-gradient-to-br from-blue-400 via-blue-50 to-blue-50 bg-clip-text text-transparent">
+              Let's Work Together
+            </h2>
+            <p className="text-base text-gray-300 mb-4 font-NeueHaas leading-relaxed">
+              Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or partnerships. Let's build something amazing together.
+            </p>
+            <p className="text-sm text-gray-400 mb-4 font-NeueHaas">
+              Whether you need a full-stack developer, a consultation, or just want to say hello, feel free to reach out. I typically respond within 24 hours.
+            </p>
+            
+            {/* Social Links */}
+            <div className="flex flex-wrap items-center gap-3 mt-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`   p-2.5  transition-all duration-300 ${social.color}`}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+            
+            {/* Contact Info Cards */}
+            <div className="flex flex-wrap items-center gap-3 mt-3">
+              {contactInfo.map((info, index) => (
+                <a
+                  key={index}
+                  href={info.link}
+                  className="flex items-center mt-3 p-3 rounded-xl  transition-all duration-300 group"
+                >
+                 
+                  <div>
+                    <p className="text-xs text-gray-400">{info.title}</p>
+                    <p className="text-sm text-white tracking-wide">{info.value}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right Side - Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-5 max-w-md ml-auto">
+              <h3 className="text-lg  mb-4 flex items-center gap-2">
                 Send Me a Message
               </h3>
 
@@ -177,23 +212,23 @@ export default function ContactSection() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-6 bg-green-500/20 border border-green-500/30 rounded-2xl p-4 flex items-center gap-3"
+                  className="mb-4 bg-green-500/20 border border-green-500/30 rounded-xl p-3 flex items-center gap-2"
                 >
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="text-green-400 font-NeueHaas">
-                    Message sent successfully! I'll get back to you soon.
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span className="text-sm text-green-400 font-NeueHaas">
+                    Message sent successfully!
                   </span>
                 </motion.div>
               )}
 
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                 {/* Name Input */}
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300">
+                  <label className="block text-sm mb-1.5 text-gray-300">
                     Your Name
                   </label>
                   <div className="relative">
-                    <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="text"
                       name="name"
@@ -201,18 +236,18 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       placeholder="John Doe"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300"
+                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300"
                     />
                   </div>
                 </div>
 
                 {/* Email Input */}
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300">
+                  <label className="block text-xs  mb-1.5 text-gray-300">
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="email"
                       name="email"
@@ -220,18 +255,18 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       placeholder="john@example.com"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300"
+                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300"
                     />
                   </div>
                 </div>
 
                 {/* Subject Input */}
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300">
+                  <label className="block text-xs  mb-1.5 text-gray-300">
                     Subject
                   </label>
                   <div className="relative">
-                    <FileText className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <FileText className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="text"
                       name="subject"
@@ -239,14 +274,14 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       placeholder="Project Inquiry"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300"
+                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300"
                     />
                   </div>
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-300">
+                  <label className="block text-xs  mb-1.5 text-gray-300">
                     Your Message
                   </label>
                   <textarea
@@ -254,9 +289,9 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
+                    rows={3}
                     placeholder="Tell me about your project..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300 resize-none"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:bg-white/10 transition-all duration-300 resize-none"
                   ></textarea>
                 </div>
 
@@ -264,89 +299,22 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-amber-400/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full bg-white text-black font-semibold px-6 py-2.5 rounded-full transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader className="w-5 h-5 animate-spin" />
+                      <Loader className="w-4 h-4 animate-spin" />
                       Sending...
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
+                      <Send className="w-4 h-4" />
                       Send Message
                     </>
                   )}
                 </button>
               </form>
             </div>
-          </motion.div>
-
-          {/* Right Side - Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            {/* Contact Info Cards */}
-            <div className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={index}
-                  href={info.link}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="group block bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300"
-                >
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={`bg-gradient-to-br ${info.color} p-4 rounded-xl group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <div className="text-black">{info.icon}</div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-400 mb-1">
-                        {info.title}
-                      </div>
-                      <div className="text-lg font-semibold text-white group-hover:text-amber-400 transition-colors duration-300">
-                        {info.value}
-                      </div>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
-            >
-              <h4 className="text-xl font-bold mb-4">Connect Me</h4>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group ${social.color}`}
-                  >
-                    <div className="group-hover:scale-110 transition-transform duration-300">
-                      {social.icon}
-                    </div>
-                    <span className="font-semibold">{social.name}</span>
-                  </a>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
