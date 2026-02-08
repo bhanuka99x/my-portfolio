@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Quote,
   Star,
@@ -113,280 +114,109 @@ export default function RecommendationSection() {
       color: "from-indigo-400 to-purple-400",
     },
   ];
-
-  const nextRecommendation = () => {
-    setCurrentIndex((prev) => (prev + 1) % recommendations.length);
-  };
-
-  const prevRecommendation = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? recommendations.length - 1 : prev - 1
-    );
-  };
-
-  const currentRec = recommendations[currentIndex];
-
   return (
     <section
       id="recommendations"
-      className="min-h-screen text-white py-20 font-bilmond overflow-hidden "
+      className=" text-white py-10 pb-30 font-bilmond  border-red-500 overflow-hidden "
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
+      <div className=" w-full  border-r-amber-600 overflow-hidden ">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            Client <span className="text-amber-400">Recommendations</span>
+        <div className="text-center max-w-7xl pr-20 mb-16 justify-center  mx-auto">
+          <h2 className="text-5xl bg-gradient-to-bl from-blue-400 via-blue-50 to-blue-50 bg-clip-text text-transparent  md:text-6xl font-bold mb-4">
+            Client <span className="">Recommendations</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto font-NeueHaas">
-            Testimonials from clients and colleagues I've had the pleasure of working with
+          <p className="text-gray-400 text-lg  font-NeueHaas">
+            Testimonials from clients and colleagues I've had the pleasure of
+            working with
           </p>
         </div>
-
-        {/* Featured Recommendation Card */}
-        <div className="max-w-5xl mx-auto mb-12">
-          <div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500">
-            {/* Gradient Glow */}
-            <div
-              className={`absolute -inset-0.5 bg-gradient-to-r ${currentRec.color} rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500`}
-            ></div>
-
-            <div className="relative p-8 md:p-12">
-              {/* Quote Icon */}
-              <div
-                className={`absolute top-8 right-8 opacity-10 bg-gradient-to-br ${currentRec.color} p-4 rounded-2xl`}
-              >
-                <Quote className="w-16 h-16 text-white" />
-              </div>
-
-              {/* Header Section */}
-              <div className="flex flex-col md:flex-row gap-6 items-start md:items-center mb-8">
-                {/* Avatar */}
-                <div className="relative">
-                  <div
-                    className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${currentRec.color} p-1`}
-                  >
-                    <div className="w-full h-full bg-gray-800 rounded-xl flex items-center justify-center">
-                      <User className="w-12 h-12 text-white/50" />
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 bg-amber-400 rounded-full p-2 border-4 border-gray-900">
-                    <ThumbsUp className="w-4 h-4 text-black" />
-                  </div>
-                </div>
-
-                {/* Info */}
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    {currentRec.name}
-                  </h3>
-                  <p className="text-amber-400 font-semibold mb-1">
-                    {currentRec.position}
-                  </p>
-                  <div className="flex items-center gap-2 text-gray-400 text-sm mb-3">
-                    <Building2 className="w-4 h-4" />
-                    <span>{currentRec.company}</span>
-                  </div>
-                  <div className="flex items-center gap-1 mb-2">
-                    {[...Array(currentRec.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 text-amber-400 fill-amber-400"
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-500 text-sm font-NeueHaas">
-                    {currentRec.relationship}
-                  </p>
-                </div>
-
-                {/* Date */}
-                <div className="text-sm text-gray-500 font-NeueHaas">
-                  {currentRec.date}
-                </div>
-              </div>
-
-              {/* Recommendation Text */}
-              <div className="mb-8">
-                <p className="text-gray-300 text-lg leading-relaxed font-NeueHaas italic">
-                  "{currentRec.recommendation}"
-                </p>
-              </div>
-
-              {/* Skills */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {currentRec.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm text-gray-300 group-hover:bg-white/20 group-hover:border-amber-400/30 transition-all duration-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-
-              {/* Contact Links */}
-              <div className="flex gap-4">
-                <a
-                  href={currentRec.linkedinUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 rounded-xl text-blue-400 hover:bg-blue-500/30 hover:scale-105 transition-all duration-300"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  <span className="text-sm font-semibold">LinkedIn</span>
-                </a>
-                <a
-                  href={`mailto:${currentRec.email}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 rounded-xl text-amber-400 hover:bg-amber-400/30 hover:scale-105 transition-all duration-300"
-                >
-                  <Mail className="w-4 h-4" />
-                  <span className="text-sm font-semibold">Email</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={prevRecommendation}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 p-3 rounded-full hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 hover:scale-110"
-            >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-
-            {/* Dots Indicator */}
-            <div className="flex gap-2">
-              {recommendations.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`transition-all duration-300 rounded-full ${
-                    index === currentIndex
-                      ? "w-8 h-3 bg-amber-400"
-                      : "w-3 h-3 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={nextRecommendation}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 p-3 rounded-full hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 hover:scale-110"
-            >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </div>
-        </div>
-
-        {/* All Recommendations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recommendations.map((rec, index) => (
-            <button
-              key={rec.id}
-              onClick={() => setCurrentIndex(index)}
-              className={`group relative bg-white/5 backdrop-blur-sm border rounded-2xl p-6 text-left transition-all duration-500 ${
-                index === currentIndex
-                  ? "border-amber-400/50 bg-white/[0.07]"
-                  : "border-white/10 hover:bg-white/[0.07] hover:border-white/20"
-              }`}
-            >
-              {/* Gradient Glow */}
-              <div
-                className={`absolute -inset-0.5 bg-gradient-to-r ${rec.color} rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-500`}
-              ></div>
-
-              <div className="relative">
-                {/* Avatar & Name */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${rec.color} p-0.5`}
-                  >
-                    <div className="w-full h-full bg-gray-800 rounded-lg flex items-center justify-center">
-                      <User className="w-6 h-6 text-white/50" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-white font-bold">{rec.name}</h4>
-                    <p className="text-gray-400 text-sm">{rec.position}</p>
-                  </div>
-                </div>
-
-                {/* Stars */}
-                <div className="flex items-center gap-1 mb-3">
-                  {[...Array(rec.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 text-amber-400 fill-amber-400"
-                    />
-                  ))}
-                </div>
-
-                {/* Short Recommendation */}
-                <p className="text-gray-400 text-sm leading-relaxed font-NeueHaas line-clamp-3 mb-3">
-                  "{rec.recommendation}"
-                </p>
-
-                {/* Company */}
-                <div className="flex items-center gap-2 text-gray-500 text-xs">
-                  <Building2 className="w-3 h-3" />
-                  <span>{rec.company}</span>
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Bottom Stats */}
-        <div className="mt-16 bg-gradient-to-r from-amber-400/10 to-blue-400/10 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="flex items-center justify-center mb-2">
-                <ThumbsUp className="w-8 h-8 text-amber-400" />
-              </div>
-              <div className="text-4xl font-bold text-amber-400 mb-2">
-                {recommendations.length}+
-              </div>
-              <div className="text-gray-400 text-sm">Recommendations</div>
-            </div>
-            <div>
-              <div className="flex items-center justify-center mb-2">
-                <Star className="w-8 h-8 text-blue-400 fill-blue-400" />
-              </div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">5.0</div>
-              <div className="text-gray-400 text-sm">Average Rating</div>
-            </div>
-            <div>
-              <div className="flex items-center justify-center mb-2">
-                <Building2 className="w-8 h-8 text-green-400" />
-              </div>
-              <div className="text-4xl font-bold text-green-400 mb-2">
-                {new Set(recommendations.map((r) => r.company)).size}
-              </div>
-              <div className="text-gray-400 text-sm">Companies</div>
-            </div>
-            <div>
-              <div className="flex items-center justify-center mb-2">
-                <User className="w-8 h-8 text-purple-400" />
-              </div>
-              <div className="text-4xl font-bold text-purple-400 mb-2">100%</div>
-              <div className="text-gray-400 text-sm">Would Recommend</div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-gray-400 font-NeueHaas mb-4">
-            Want to work together? Let's create something amazing!
-          </p>
-          <a
-            href="#contact"
-            className="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold px-10 py-4 rounded-2xl hover:shadow-lg hover:shadow-amber-400/50 hover:scale-105 transition-all duration-300"
+        {/* Auto-Scrolling Infinite Loop */}
+        <div className="w-full overflow-hidden relative  [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]  ">
+          <motion.div
+            initial={{ x: "0%" }}
+            animate={{ x: "-50%" }}
+            transition={{
+              duration: 30,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="flex gap-4"
           >
-            Get In Touch
-          </a>
+            {/* First Set */}
+            {recommendations.map((rec, index) => (
+              <motion.button
+                key={`first-${rec.id}`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setCurrentIndex(index)}
+                className={`group relative  backdrop-blur-lg border rounded-2xl p-6 text-left transition-all duration-500 w-[350px] flex-shrink-0 ${
+                  index === currentIndex
+                    ? "  border-white/10  "
+                    : "border-white/10 "
+                }`}
+              >
+                <div className="relative">
+                  {/* Avatar & Name */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex-1">
+                      <h4 className="text-white text-[19px]">{rec.name}</h4>
+                      <p className="text-gray-400 text-sm">{rec.position}</p>
+                    </div>
+                  </div>
+
+                  {/* Short Recommendation */}
+                  <p className="text-gray-400 text-sm leading-relaxed font-NeueHaas line-clamp-3 mb-3">
+                    "{rec.recommendation}"
+                  </p>
+
+                  {/* Company */}
+                  <div className="flex items-center gap-2 text-gray-500 text-xs">
+                    <Building2 className="w-3 h-3" />
+                    <span>{rec.company}</span>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+            {/* Second Set - Duplicate for seamless loop */}
+            {recommendations.map((rec, index) => (
+              <motion.button
+                key={`second-${rec.id}`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setCurrentIndex(index)}
+                className={`group relative  backdrop-blur-lg border rounded-2xl p-6 text-left transition-all duration-500 w-[350px] flex-shrink-0 ${
+                  index === currentIndex
+                    ? "  border-white/10  "
+                    : "border-white/10 "
+                }`}
+              >
+                <div className="relative">
+                  {/* Avatar & Name */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex-1">
+                      <h4 className="text-white text-[19px]">{rec.name}</h4>
+                      <p className="text-gray-400 text-sm">{rec.position}</p>
+                    </div>
+                  </div>
+
+                  {/* Short Recommendation */}
+                  <p className="text-gray-400 text-sm leading-relaxed font-NeueHaas line-clamp-3 mb-3">
+                    "{rec.recommendation}"
+                  </p>
+
+                  {/* Company */}
+                  <div className="flex items-center gap-2 text-gray-500 text-xs">
+                    <Building2 className="w-3 h-3" />
+                    <span>{rec.company}</span>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
