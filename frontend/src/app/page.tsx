@@ -3,8 +3,11 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import SplashCursor from '@/components/SplashCursor';
+import TargetCursor from "@/components/TargetCursor";
+import TechStackLoop from "@/components/sections/logoloop/logoloop";
 import LoadingScreen from "@/components/LoadingScreen";
-import HeroSection from '@/components/sections/hero/HeroSection';
+import Heropage from '@/components/sections/hero/Heropage';
 import SkillsSection from '@/components/sections/skill/SkillsSection';
 import ExperienceSection from '@/components/sections/experience/ExperienceSection';
 import ProjectsSection from '@/components/sections/project/ProjectsSection';
@@ -38,10 +41,29 @@ export default function HomePage() {
 
   return (
     <>
-      <HeroSection />
+     <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor
+        parallaxOn
+  hoverDuration={0.2}
+/>
+      <Heropage />
       <div className="relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-500/10 blur-[120px] pointer-events-none -z-10" />
-        <AboutSection />
+        {/* Pattern Background for all sections except Heropage */}
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            background: "#000000",
+            backgroundImage: `
+              radial-gradient(circle, rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px)
+            `,
+            backgroundSize: "30px 30px",
+            backgroundPosition: "0 0",
+          }}
+        />
+
+        <AboutSection  />
+        <TechStackLoop />
         <SkillsSection />
         <ExperienceSection />
         <ProjectsSection />

@@ -30,18 +30,14 @@ export default function ExperienceSection() {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-14 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
-            Work <span className="text-amber-400">Experience</span>
+            Work <span className="text-white">Experience</span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-amber-400 to-blue-400 mx-auto rounded-full mb-4 sm:mb-6"></div>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-NeueHaas px-4">
-            My professional journey in building innovative digital solutions
-          </p>
         </div>
 
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-4 sm:left-6 md:left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-400 via-blue-400 to-purple-400 lg:transform lg:-translate-x-1/2"></div>
+          <div className="absolute left-4 sm:left-6 md:left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-white/60 lg:transform lg:-translate-x-1/2"></div>
 
           {/* Timeline Items */}
           <div className="space-y-8 sm:space-y-10 md:space-y-12">
@@ -56,7 +52,7 @@ export default function ExperienceSection() {
               >
                 {/* Timeline Dot */}
                 <div
-                  className={`absolute left-4 sm:left-6 md:left-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${exp.color} flex items-center justify-center border-4 border-black z-10 hover:scale-110 transition-transform duration-300`}
+                  className={`absolute left-4 sm:left-6 md:left-8 lg:left-1/2 lg:transform lg:-translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center border-4 border-black z-10 hover:scale-110 transition-transform duration-300`}
                 >
                   <div className="text-black">{iconMap[exp.icon]}</div>
                 </div>
@@ -68,47 +64,47 @@ export default function ExperienceSection() {
                   }`}
                 >
                   <Link href={`/view_experience?id=${exp.id}`}>
-                    <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500 cursor-pointer">
-                      {/* Gradient Glow */}
-                      <div
-                        className={`absolute -inset-0.5 bg-gradient-to-r ${exp.color} rounded-2xl sm:rounded-3xl blur opacity-0 group-hover:opacity-20 transition duration-500`}
-                      ></div>
-
+                    <div className="group     rounded-2xl sm:rounded-3xl   transition-all duration-500 cursor-pointer">
+                      
+              
                       {/* Content */}
                       <div className="relative">
                         {/* Header */}
-                        <div className="mb-3 sm:mb-4">
+                        <div className="mb-3 sm:mb-4 bg-white p-6 rounded-3xl rounded-tr-2xl">
+                          
                           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors duration-300">
+                            <h3 className="text-xl sm:text-2xl lg:text-3xl text-black font-semibold  transition-colors duration-300">
                               {exp.title}
                             </h3>
-                            <span className="px-3 py-1 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 text-amber-400 text-xs font-bold rounded-full self-start">
+                            <span className="px-3 py-1 mt-2 tracking-wide  backdrop-blur-sm border text-black text-xs  rounded-full self-start">
                               {exp.type}
                             </span>
                           </div>
-                          <div className="text-base sm:text-lg font-semibold text-gray-300 mb-2 sm:mb-3">
+                          <div className="text-base sm:text-lg tracking-wider font-semibold text-gray-600 mb-2 sm:mb-3">
                             {exp.company}
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400">
+                        
+                          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
                             <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                              <Calendar className="w-4 h-4  flex-shrink-0" />
                               <span>{exp.period}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <MapPin className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                              <MapPin className="w-4 h-4  flex-shrink-0" />
                               <span>{exp.location}</span>
                             </div>
                           </div>
                         </div>
-
+                        
+                        <div>
                         {/* Description */}
-                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 font-NeueHaas">
+                        <p className="text-gray-300 px-5 tracking-wide text-sm sm:text-base text-center leading-relaxed mb-3 sm:mb-4 font-NeueHaas">
                           {exp.description}
                         </p>
 
                         {/* Achievements */}
-                        <div className="mb-3 sm:mb-4">
-                          <h4 className="text-xs sm:text-sm font-bold text-amber-400 mb-2 uppercase tracking-wide">
+                        <div className="mb-3 sm:mb-4 px-5">
+                          <h4 className="text-xs sm:text-sm tracking-wide text-white mb-2 uppercase ">
                             Key Achievements
                           </h4>
                           <ul className="space-y-1.5 sm:space-y-2">
@@ -146,16 +142,20 @@ export default function ExperienceSection() {
                           <span>View Full Details</span>
                           <ArrowRight className="w-4 h-4" />
                         </div>
+                        </div>
                       </div>
                     </div>
                   </Link>
                 </div>
+                
 
                 {/* Empty space for alternating layout on desktop */}
                 <div className="hidden lg:block lg:w-[calc(50%-4rem)]"></div>
               </div>
             ))}
+            
           </div>
+          
         </div>  
       </div>
     </section>
