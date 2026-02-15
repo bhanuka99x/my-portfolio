@@ -121,43 +121,31 @@ export default function RecommendationSection() {
     >
       <div className=" w-full  border-r-amber-600 overflow-hidden ">
         {/* Section Header */}
-        <div className="text-center max-w-7xl pr-20 mb-16 justify-center  mx-auto">
-          <h2 className="text-5xl bg-gradient-to-bl from-blue-400 via-blue-50 to-blue-50 bg-clip-text text-transparent  md:text-6xl font-bold mb-4">
+        <div className="text-center   mb-16 justify-center  mx-auto">
+          <h2 className="text-5xl text-white bg-clip-text text-transparent  md:text-6xl font-bold mb-4">
             Client <span className="">Recommendations</span>
           </h2>
-          <p className="text-gray-400 text-lg  font-NeueHaas">
-            Testimonials from clients and colleagues I've had the pleasure of
-            working with
-          </p>
+     
         </div>
         {/* Auto-Scrolling Infinite Loop */}
-        <div className="w-full overflow-hidden relative  [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]  ">
+        <div className="w-full overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] pointer-events-none">
           <motion.div
             initial={{ x: "0%" }}
             animate={{ x: "-50%" }}
             transition={{
-              duration: 30,
+              duration: 40,
               repeat: Infinity,
               ease: "linear",
             }}
-            className="flex gap-4"
+            className="flex gap-6 will-change-transform"
           >
             {/* First Set */}
             {recommendations.map((rec, index) => (
-              <motion.button
+              <div
                 key={`first-${rec.id}`}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setCurrentIndex(index)}
-                className={`group relative  backdrop-blur-lg border rounded-2xl p-6 text-left transition-all duration-500 w-[350px] flex-shrink-0 ${
-                  index === currentIndex
-                    ? "  border-white/10  "
-                    : "border-white/10 "
-                }`}
+                className="group relative bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-left w-[350px] flex-shrink-0"
               >
-                <div className="relative">
+                <div className="relative pointer-events-auto">
                   {/* Avatar & Name */}
                   <div className="flex items-center gap-3 mb-4">
                     <div className="flex-1">
@@ -177,24 +165,15 @@ export default function RecommendationSection() {
                     <span>{rec.company}</span>
                   </div>
                 </div>
-              </motion.button>
+              </div>
             ))}
             {/* Second Set - Duplicate for seamless loop */}
             {recommendations.map((rec, index) => (
-              <motion.button
+              <div
                 key={`second-${rec.id}`}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setCurrentIndex(index)}
-                className={`group relative  backdrop-blur-lg border rounded-2xl p-6 text-left transition-all duration-500 w-[350px] flex-shrink-0 ${
-                  index === currentIndex
-                    ? "  border-white/10  "
-                    : "border-white/10 "
-                }`}
+                className="group relative bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-left w-[350px] flex-shrink-0"
               >
-                <div className="relative">
+                <div className="relative pointer-events-auto">
                   {/* Avatar & Name */}
                   <div className="flex items-center gap-3 mb-4">
                     <div className="flex-1">
@@ -214,7 +193,7 @@ export default function RecommendationSection() {
                     <span>{rec.company}</span>
                   </div>
                 </div>
-              </motion.button>
+              </div>
             ))}
           </motion.div>
         </div>

@@ -28,9 +28,11 @@ export default function ExperienceSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-14 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
-            Work <span className="text-white">Experience</span>
+        <div className=" mb-12 sm:mb-14 md:mb-16 text-right">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4">
+            Work 
+            <div></div>
+            <span className="text-white text-8xl">Experience</span>
           </h2>
         </div>
 
@@ -96,7 +98,7 @@ export default function ExperienceSection() {
                           </div>
                         </div>
                         
-                        <div>
+                        <div className="bg-white/10 px-5 py-6 rounded-3xl backdrop-blur-sm">
                         {/* Description */}
                         <p className="text-gray-300 px-5 tracking-wide text-sm sm:text-base text-center leading-relaxed mb-3 sm:mb-4 font-NeueHaas">
                           {exp.description}
@@ -113,7 +115,7 @@ export default function ExperienceSection() {
                                 key={i}
                                 className="flex items-start gap-2 text-gray-400 text-xs sm:text-sm font-NeueHaas"
                               >
-                                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white flex-shrink-0 mt-0.5" />
                                 <span>{achievement}</span>
                               </li>
                             ))}
@@ -122,14 +124,14 @@ export default function ExperienceSection() {
 
                         {/* Technologies */}
                         <div>
-                          <h4 className="text-xs sm:text-sm font-bold text-blue-400 mb-2 uppercase tracking-wide">
+                          <h4 className="text-xs sm:text-sm  text-white mb-2 uppercase tracking-wide">
                             Technologies Used
                           </h4>
                           <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {exp.technologies.map((tech, i) => (
                               <span
                                 key={i}
-                                className="px-2.5 sm:px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-xs text-gray-300 group-hover:bg-white/20 group-hover:border-blue-400/30 transition-all duration-300"
+                                className="px-2.5 sm:px-3 py-1 bg-black/30   backdrop-blur-sm rounded-md text-[14px] text-gray-300  transition-all duration-300"
                               >
                                 {tech}
                               </span>
@@ -138,7 +140,7 @@ export default function ExperienceSection() {
                         </div>
 
                         {/* View More Indicator */}
-                        <div className="mt-4 flex items-center gap-2 text-amber-400 font-semibold text-sm group-hover:gap-4 transition-all duration-300">
+                        <div className="mt-4 flex items-center gap-2 text-white  text-sm group-hover:gap-4 transition-all duration-300">
                           <span>View Full Details</span>
                           <ArrowRight className="w-4 h-4" />
                         </div>
