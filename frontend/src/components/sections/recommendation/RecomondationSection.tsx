@@ -128,24 +128,33 @@ export default function RecommendationSection() {
      
         </div>
         {/* Auto-Scrolling Infinite Loop */}
-        <div className="w-full overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] pointer-events-none">
+        <div className="w-full overflow-hidden relative  [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]  ">
           <motion.div
             initial={{ x: "0%" }}
             animate={{ x: "-50%" }}
             transition={{
-              duration: 40,
+              duration: 30,
               repeat: Infinity,
               ease: "linear",
             }}
-            className="flex gap-6 will-change-transform"
+            className="flex gap-4"
           >
             {/* First Set */}
             {recommendations.map((rec, index) => (
-              <div
+              <motion.button
                 key={`first-${rec.id}`}
-                className="group relative bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-left w-[350px] flex-shrink-0"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setCurrentIndex(index)}
+                className={`group relative  backdrop-blur-lg border rounded-2xl p-6 text-left transition-all duration-500 w-[350px] flex-shrink-0 ${
+                  index === currentIndex
+                    ? "  border-white/10  "
+                    : "border-white/10 "
+                }`}
               >
-                <div className="relative pointer-events-auto">
+                <div className="relative">
                   {/* Avatar & Name */}
                   <div className="flex items-center gap-3 mb-4">
                     <div className="flex-1">
@@ -165,15 +174,24 @@ export default function RecommendationSection() {
                     <span>{rec.company}</span>
                   </div>
                 </div>
-              </div>
+              </motion.button>
             ))}
             {/* Second Set - Duplicate for seamless loop */}
             {recommendations.map((rec, index) => (
-              <div
+              <motion.button
                 key={`second-${rec.id}`}
-                className="group relative bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-left w-[350px] flex-shrink-0"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setCurrentIndex(index)}
+                className={`group relative  backdrop-blur-lg border rounded-2xl p-6 text-left transition-all duration-500 w-[350px] flex-shrink-0 ${
+                  index === currentIndex
+                    ? "  border-white/10  "
+                    : "border-white/10 "
+                }`}
               >
-                <div className="relative pointer-events-auto">
+                <div className="relative">
                   {/* Avatar & Name */}
                   <div className="flex items-center gap-3 mb-4">
                     <div className="flex-1">
@@ -193,7 +211,7 @@ export default function RecommendationSection() {
                     <span>{rec.company}</span>
                   </div>
                 </div>
-              </div>
+              </motion.button>
             ))}
           </motion.div>
         </div>
