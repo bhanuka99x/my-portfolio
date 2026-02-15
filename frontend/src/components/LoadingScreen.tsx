@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { barsItem } from "../types";
+import '../styles/loading.css'
 
 export default function LoadingScreen() {
   const bars: barsItem[] = [
@@ -16,30 +17,17 @@ export default function LoadingScreen() {
   return (
     <div className="min-h-screen w-full relative flex flex-col justify-center items-center overflow-hidden">
 
-      <div className="flex items-center pb-5 overflow-hidden z-10">
-        {bars.map(bar => (
-          <motion.div 
-            initial={{y:0}}
-            animate={{y:[0,-40,0]}}
-            transition={{duration:1.3, ease:"easeInOut", repeat:Infinity, repeatType:"loop", delay: bar.id * 0.2}}
-            key={bar.id} 
-            className="w-1.5 h-10 rounded-3xl bg-amber-400 mx-1"
-          />
-        ))}
-      </div>
-
-      <motion.div
-        initial={{opacity:1}}
-        animate={{opacity:0}}
-        transition={{duration:2, ease:"easeInOut", repeat:Infinity, repeatType:"mirror"}}
-        className="z-10"
-      >
-        <h1 className="text-white text-3xl font-bold font-bilmond tracking-wider">bhanuka99x</h1>
-      </motion.div>
-
-      <div className="z-10 text-white mt-5 font-bilmond tracking-wider">
-        <span>please wait...</span>
-      </div>
+      <div className="loader">
+  <div className="square" id="sq1"></div>
+  <div className="square" id="sq2"></div>
+  <div className="square" id="sq3"></div>
+  <div className="square" id="sq4"></div>
+  <div className="square" id="sq5"></div>
+  <div className="square" id="sq6"></div>
+  <div className="square" id="sq7"></div>
+  <div className="square" id="sq8"></div>
+  <div className="square" id="sq9"></div>
+</div>
     </div>
   );
 }

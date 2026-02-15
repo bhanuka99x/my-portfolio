@@ -121,14 +121,11 @@ export default function RecommendationSection() {
     >
       <div className=" w-full  border-r-amber-600 overflow-hidden ">
         {/* Section Header */}
-        <div className="text-center max-w-7xl pr-20 mb-16 justify-center  mx-auto">
-          <h2 className="text-5xl bg-gradient-to-bl from-blue-400 via-blue-50 to-blue-50 bg-clip-text text-transparent  md:text-6xl font-bold mb-4">
+        <div className="text-center   mb-16 justify-center  mx-auto">
+          <h2 className="text-5xl text-white bg-clip-text text-transparent  md:text-6xl font-bold mb-4">
             Client <span className="">Recommendations</span>
           </h2>
-          <p className="text-gray-400 text-lg  font-NeueHaas">
-            Testimonials from clients and colleagues I've had the pleasure of
-            working with
-          </p>
+     
         </div>
         {/* Auto-Scrolling Infinite Loop */}
         <div className="w-full overflow-hidden relative  [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)]  ">

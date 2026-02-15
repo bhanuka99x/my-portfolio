@@ -11,6 +11,8 @@ import Heropage from '@/components/sections/hero/Heropage';
 import SkillsSection from '@/components/sections/skill/SkillsSection';
 import ExperienceSection from '@/components/sections/experience/ExperienceSection';
 import ProjectsSection from '@/components/sections/project/ProjectsSection';
+import TextScroll from "@/components/sections/Textscroll/textSroll";
+
 import CertificateSection from '@/components/sections/certificate/CertifiateSection';
 import RecommendationSection from '@/components/sections/recommendation/RecomondationSection';
 import ContactSection from '@/components/sections/contact/ContactSection';
@@ -67,6 +69,7 @@ export default function HomePage() {
         <SkillsSection />
         <ExperienceSection />
         <ProjectsSection />
+        <TextScroll />
         <CertificateSection />
         <RecommendationSection />
         <ContactSection />

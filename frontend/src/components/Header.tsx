@@ -2,15 +2,29 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "@/styles/header.css";
 
 export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = lastScrollY.current;
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+    lastScrollY.current = latest;
+  });
 
   const navItems = [
     { name: "home", path: "#home", isSection: true },
@@ -40,7 +54,15 @@ export default function Header() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full flex justify-center font-bilmond pt-4 md:pt-8 z-50 px-4">
+    <motion.nav
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className="fixed top-0 left-0 w-full flex justify-center font-bilmond pt-4 md:pt-8 z-50 px-4"
+    >
       <div className="flex items-center justify-between w-full  gap-4 md:gap-8 px-4 md:px-20 py-3 rounded-full transition-all duration-300">
   
         {/* Desktop Nav Links - Hidden on mobile */}
@@ -159,6 +181,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }
