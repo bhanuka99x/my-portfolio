@@ -1,111 +1,85 @@
 "use client";
-import React, { useState } from "react";
-import {
-  Code2,
-  Palette,
-  Server,
-  Database,
-  Cloud,
-  TestTube,
-  Wrench,
-  Users,
-  Boxes,
-} from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
 import { skillsData } from "@/constants/skills";
 
 export default function SkillsSection() {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
-  // Icon mapping
-  const iconMap: { [key: string]: React.ReactNode } = {
-    Code2: <Code2 className="w-6 h-6" />,
-    Palette: <Palette className="w-6 h-6" />,
-    Server: <Server className="w-6 h-6" />,
-    Database: <Database className="w-6 h-6" />,
-    Cloud: <Cloud className="w-6 h-6" />,
-    TestTube: <TestTube className="w-6 h-6" />,
-    Boxes: <Boxes className="w-6 h-6" />,
-    Wrench: <Wrench className="w-6 h-6" />,
-    Users: <Users className="w-6 h-6" />,
-  };
-
   return (
-    <section id="skills" className="min-h-screen  py-20 font-bilmond overflow-hidden">
-      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="text-white tracking-wide">Skills</span>
-          </h2>
-         
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto font-NeueHaas">
-            A comprehensive toolkit for building robust, scalable, and modern web applications
-          </p>
+    <section id="skills" className="py-24 px-6 md:px-12 bg-black text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-24 lg:mb-32">
+          <motion.h2 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[15vw] lg:text-[12rem] font-bilmond leading-[0.85] tracking-tighter uppercase text-white"
+          >
+            Technical // <br />
+            <span className="text-white/20">Toolkit</span>
+          </motion.h2>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4">
+        {/* Categories Grid */}
+        <div className="flex flex-col border-t border-white/10">
           {skillsData.map((category, index) => (
-            <div
+            <motion.div
               key={category.id}
-              onMouseEnter={() => setActiveCategory(category.category)}
-              onMouseLeave={() => setActiveCategory(null)}
-              className="group relative  border-2 h-130 border-white/10 rounded-3xl   transition-all duration-500 cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="group py-12 md:py-20 border-b border-white/10 hover:bg-white/[0.01] transition-all duration-500 px-4 md:px-8 -mx-4 md:-mx-8"
             >
-              {/* Gradient Glow Effect */}
-          
-
-              {/* Content */}
-              <div className="relative rounded-3xl ">
-                {/* Icon & Title */}
-                <div className="flex p-6 items-center h-40 rounded-t-3xl bg-white mb-6">
-                  <h3 className="text-4xl   text-black font-semibold  transition-colors duration-300">
-                    {category.category}
+              <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 items-start">
+                {/* Category Title */}
+                <div className="flex flex-col gap-4">
+                  <span className="text-white/20 font-mono text-sm tracking-widest">
+                    0{index + 1} //
+                  </span>
+                  <h3 className="text-4xl md:text-5xl font-bold uppercase tracking-tight group-hover:text-white transition-colors">
+                    {category.category.split(" // ")[0]} <br />
+                    <span className="text-white/30">{category.category.split(" // ")[1]}</span>
                   </h3>
                 </div>
 
-                {/* Skills List */}
-                <div className="flex flex-wrap gap-2  px-6 pb-6">
+                {/* Skills Cloud */}
+                <div className="flex flex-wrap gap-x-12 gap-y-6">
                   {category.skills.map((skill, skillIndex) => (
-                    <span
+                    <motion.div
                       key={skillIndex}
-                      className="px-3 py-1.5 bg-white/10 backdrop-blur-sm  rounded-md text-sm tracking-wider text-gray-300  group-hover:text-white transition-all duration-300"
+                      whileHover={{ scale: 1.05, x: 5 }}
+                      className="group/skill relative"
                     >
-                      {skill}
-                    </span>
+                      <span className="text-xl md:text-3xl font-NeueHaas font-light tracking-tight text-white/50 group-hover/skill:text-white transition-colors duration-300">
+                        {skill}
+                      </span>
+                      <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/skill:w-full opacity-50" />
+                    </motion.div>
                   ))}
                 </div>
-
-               
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Bottom Stats */}
-        <div className="mt-16   border-2 border-white/10 rounded-3xl p-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-white mb-2">50+</div>
-              <div className="text-gray-400 text-sm">Total Technologies</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white mb-2">9</div>
-              <div className="text-gray-400 text-sm">Skill Categories</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white mb-2">1+</div>
-              <div className="text-gray-400 text-sm">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-white mb-2">∞</div>
-              <div className="text-gray-400 text-sm">Learning Mindset</div>
-            </div>
+        {/* Footer Note */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+          <p className="text-white/20 text-[10px] uppercase tracking-[0.5em] font-bold">
+            © 2026 // BHANUKA GIHAN
+          </p>
+          <div className="flex gap-8">
+            <span className="text-white/30 text-[10px] uppercase tracking-[0.2em] font-bold">Scalable</span>
+            <span className="text-white/30 text-[10px] uppercase tracking-[0.2em] font-bold">Efficient</span>
+            <span className="text-white/30 text-[10px] uppercase tracking-[0.2em] font-bold">Modern</span>
           </div>
-        </div>
-
-    
+        </motion.div>
       </div>
     </section>
   );
 }
+

@@ -33,11 +33,12 @@ const Heropage = () => {
   />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-20 flex flex-col items-center text-center">
-        <div className="text-[#e8f5fd] font-bilmond space-y-5 flex flex-col items-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold transition-all duration-500 flex items-center justify-center">
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 sm:px-6 lg:px-20 flex flex-col items-center text-center">
+        <div className="text-[#e8f5fd] font-bilmond space-y-5  flex flex-col items-center">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold transition-all duration-500 flex items-center mx-auto justify-center">
             Beyond
-            <span className="inline-block relative h-12 w-12 mx-4 align-middle">
+        
+            <span className="inline-block relative h-12 w-48 ml-5  align-middle text-left">
               {dynamicWords.map((item) => (
                 <motion.span
                   key={item.id}
@@ -50,26 +51,7 @@ const Heropage = () => {
                     delay: (item.id - 1) * 3,
                     repeatDelay: (dynamicWords.length - 1) * 3,
                   }}
-                  className="absolute inset-0 flex items-center justify-center rounded-full bg-[#d0e6ff] text-black backdrop-blur-sm"
-                >
-                  {item.icon}
-                </motion.span>
-              ))}
-            </span>
-            <span className="inline-block relative h-12 w-48 align-middle text-left">
-              {dynamicWords.map((item) => (
-                <motion.span
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: [0, 1, 1, 0], y: [30, 0, 0, -30] }}
-                  transition={{
-                    duration: 3,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    delay: (item.id - 1) * 3,
-                    repeatDelay: (dynamicWords.length - 1) * 3,
-                  }}
-                  className="tex-blue-50 absolute left-0 -mt-2"
+                  className=" absolute left-0  text-5xl md:text-6xl lg:text-7xl font-bold flex items-center md:-mt-1 lg:-mt-3 space-x-2"
                 >
                   {item.word}
                 </motion.span>

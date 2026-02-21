@@ -39,7 +39,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="min-h-screen text-white  py-20  font-bilmond  "
+      className="min-h-screen text-white  py-10 lg:py-20  font-bilmond  "
     >
       <motion.div 
       initial={{ opacity: 0, zoom: 300 }}
@@ -51,7 +51,7 @@ export default function AboutSection() {
         <div className="flex flex-col items-center justify-center">
           {/* Picture and Name - Aligned Horizontally */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-10 w-full">
-            <div className="relative  backdrop-blur-sm border border-white/20 rounded-full p-10 overflow-hidden aspect-square w-32 md:w-48 lg:w-56 flex-shrink-0 group">
+            <div className="relative  backdrop-blur-sm border border-white/20 rounded-full p-4  lg:p-10 overflow-hidden aspect-square w-32 md:w-48 lg:w-56 flex-shrink-0 group">
               <img
                 src="/images/about.jpg"
                 alt="Bhanuka Gihan"
@@ -95,10 +95,10 @@ export default function AboutSection() {
           {!showCV && (
             <div className="mt-6 flex flex-col md:flex-row items-center gap-6 ">
               {/* Left Side: Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-5 w-full md:w-auto">
+              <div className="flex flex-col  px-10 lg:px-0 sm:flex-row items-center gap-5 w-full md:w-auto">
                 <a
                   href="#contact"
-                  className="w-full sm:w-auto px-8 py-3 bg-transparent border-2 border-white/30 text-white font-bold rounded-full transition-all duration-300 text-center"
+                  className="w-full   py-3 bg-transparent border-2 border-white/30 text-white font-bold rounded-full transition-all duration-300 text-center"
                 >
                   Contact Me
                 </a>

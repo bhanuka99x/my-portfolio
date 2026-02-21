@@ -16,7 +16,7 @@ export default function Header() {
 
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  useMotionValueEvent(scrollY, "change", (latest: number) => {
     const previous = lastScrollY.current;
     if (latest > previous && latest > 150) {
       setHidden(true);
@@ -29,9 +29,9 @@ export default function Header() {
   const navItems = [
     { name: "home", path: "#home", isSection: true },
     { name: "about", path: "#about", isSection: true },
-    { name: "skills", path: "/skills", isSection: false },
-    { name: "experience", path: "/experience", isSection: false },
-    { name: "projects", path: "/projects", isSection: false },
+    { name: "skills", path: "#skills", isSection: true },
+    { name: "experience", path: "#experience", isSection: true },
+    { name: "projects", path: "#projects", isSection: true },
     { name: "contact me", path: "#contact", isSection: true, isContactButton: true },
   ];
 
@@ -40,7 +40,6 @@ export default function Header() {
       e.preventDefault();
       setActiveSection(item.path);
       
-      // If we're not on the home page, navigate there first
       if (pathname !== '/') {
         window.location.href = '/' + item.path;
         return;
@@ -56,128 +55,88 @@ export default function Header() {
   return (
     <motion.nav
       variants={{
-        visible: { y: 0 },
-        hidden: { y: "-100%" },
+        visible: { y: 0, opacity: 1 },
+        hidden: { y: -100, opacity: 0 },
       }}
       animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="fixed top-0 left-0 w-full flex justify-center font-bilmond pt-4 md:pt-8 z-50 px-4"
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 w-full z-50 flex justify-center pt-6 px-6"
     >
-      <div className="flex items-center justify-between w-full  gap-4 md:gap-8 px-4 md:px-20 py-3 rounded-full transition-all duration-300">
-  
-        {/* Desktop Nav Links - Hidden on mobile */}
-        <motion.ul
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          className="hidden bg-[#94949477]  lg:flex gap-1 md:gap-2 backdrop-blur-2xl px-[8px] py-4 mx-auto font-bilmond tracking-wide border-2 border-white/20  rounded-full"
-        >
+      <div className="flex items-center justify-between w-full max-w-7xl">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center gap-2 mx-auto px-2 py-2 bg-white/[0.08] backdrop-blur-2xl border border-white/20 rounded-full">
           {navItems.map((item) => (
-            <li key={item.path}>
-              <Link
-                href={item.path}
-                onClick={(e) => handleNavClick(e, item)}
-                className={`
-                  relative px-5 py-3 text-md font-medium capitalize rounded-full
-                  transition-all duration-300 ease-out
-                  ${
-                    item.isContactButton
-                      ? "text-white bg-gray-800  "
-                      : (item.isSection ? activeSection === item.path : pathname === item.path)
-                      ? "text-black bg-white hover:text-black hover:bg-white"
-                      : "text-white/90 hover:text-black hover:bg-white"
-                  }
-                `}
-              >
-                {item.name}
-              </Link>
-            </li>
+            <Link
+              key={item.path}
+              href={item.path}
+              onClick={(e) => handleNavClick(e, item)}
+              className={`
+                px-6 py-2.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-500
+                ${
+                  item.isContactButton
+                    ? "bg-white text-black hover:bg-white/90 ml-2"
+                    : (item.isSection ? activeSection === item.path : pathname === item.path)
+                    ? "text-white bg-white/20"
+                    : "text-white/60 hover:text-white"
+                }
+              `}
+            >
+              {item.name}
+            </Link>
           ))}
-        </motion.ul>
+        </div>
 
-        {/* Desktop Contact - Hidden on mobile */}
-        {/* <motion.div
-          whileHover="hover"
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.4 }}
-          className="hidden lg:block"
-        >
-          <Link
-            href="/contact"
-            className="flex items-center justify-center gap-2
-                    bg-amber-400/20 border border-amber-100 backdrop-blur-md px-1.5 py-1.5 rounded-full
-                   font-medium text-md"
-          >
-            <motion.div
-              variants={{
-                hover: {
-                  rotate: -60,
-                  x: 108,
-                },
-              }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="bg-white/40 text-amber-400 p-2.5 rounded-full"
-            >
-              <ArrowRight className="h-5 w-5" />
-            </motion.div>
-
-            <motion.span
-              className="mr-2 tracking-wide text-amber-400 "
-              variants={{ hover: { x: -40, opacity: [1, 0, 1] } }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              Contact Me
-            </motion.span>
-          </Link>
-        </motion.div> */}
-
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - Minimalist Style */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden z-50 p-2 text-white bg-white/10 border border-white/80 backdrop-blur-md rounded-xl focus:outline-none focus:ring-1 focus:ring-white  "
+          className="lg:hidden ml-auto p-4 text-white bg-white/10 backdrop-blur-xl border border-white/10 rounded-full hover:bg-white/20 transition-all"
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - High-end Minimal Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden fixed top-20 left-4 right-4 bg-black/90 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/98 backdrop-blur-3xl z-40 flex flex-col items-center justify-center"
           >
-            <ul className="flex flex-col gap-2">
-              {navItems.map((item) => (
-                <li key={item.path}>
+            <button 
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-10 right-10 p-6 text-white/50 hover:text-white transition-colors"
+            >
+              <X className="w-8 h-8 font-light" />
+            </button>
+            
+            <ul className="flex flex-col gap-6 text-center">
+              {navItems.map((item, index) => (
+                <motion.li 
+                  key={item.path}
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                >
                   <Link
                     href={item.path}
                     onClick={(e) => {
                       handleNavClick(e, item);
                       setIsMenuOpen(false);
                     }}
-                    className={`
-                      block px-6 py-4 text-lg font-medium capitalize rounded-2xl
-                      transition-all duration-300
-                      ${
-                        item.isContactButton
-                          ? "text-amber-400 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-400/40 hover:from-amber-500/30 hover:to-orange-500/30"
-                          : (item.isSection ? activeSection === item.path : pathname === item.path)
-                          ? "text-black bg-white"
-                          : "text-white/90 hover:text-white hover:bg-white/50"
-                      }
-                    `}
+                    className="text-4xl md:text-7xl font-bold uppercase tracking-tighter hover:text-white transition-colors block text-white/30"
                   >
                     {item.name}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
+
+            <div className="absolute bottom-16 text-[10px] uppercase tracking-[0.5em] text-white/10 font-bold">
+              © 2026 // BHANUKA GIHAN
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
