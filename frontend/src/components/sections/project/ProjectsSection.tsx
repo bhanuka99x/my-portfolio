@@ -117,7 +117,7 @@ export default function ProjectsSection() {
           <h2 className="text-3xl sm:text-6xl lg:text-7xl text-left font-bold mb-2 sm:mb-4">
             Featured 
             <div></div>
-            <span className="text-white text-7xl lg:text-8xl">Projects</span>
+            <span className="text-white text-7xl lg:text-8xl opacity-20">Projects</span>
           </h2>
         </div>
 
