@@ -113,21 +113,21 @@ export default function ProjectsSection() {
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl text-left font-bold mb-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-6xl lg:text-7xl text-left font-bold mb-2 sm:mb-4">
             Featured 
             <div></div>
-            <span className="text-white text-8xl">Projects</span>
+            <span className="text-white text-7xl lg:text-8xl">Projects</span>
           </h2>
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 overflow-x-auto pb-2 sm:pb-0 px-2 sm:px-0 scrollbar-hide">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-base font-semibold whitespace-nowrap transition-all duration-300 ${
                 activeFilter === category
                   ? "bg-white text-black "
                   : " border-2 border-white/10 text-gray-300"
