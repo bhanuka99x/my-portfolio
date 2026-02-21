@@ -25,7 +25,7 @@ function ExperienceDetailContent() {
 
   if (!experience) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen  text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Experience Not Found</h1>
           <button
@@ -40,7 +40,19 @@ function ExperienceDetailContent() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white py-20 font-bilmond">
+    <div className="min-h-screen  text-white py-20 font-bilmond relative">
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          background: "#000000",
+          backgroundImage: `
+            radial-gradient(circle, rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px)
+          `,
+          backgroundSize: "30px 30px",
+          backgroundPosition: "0 0",
+        }}
+      />
+      
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <button
@@ -202,8 +214,19 @@ export default function ExperienceDetailPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="min-h-screen relative text-white flex items-center justify-center overflow-hidden">
           <div className="text-2xl">Loading...</div>
+          <div
+            className="fixed inset-0 -z-10"
+            style={{
+              background: "#000000",
+              backgroundImage: `
+                radial-gradient(circle, rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px)
+              `,
+              backgroundSize: "30px 30px",
+              backgroundPosition: "0 0",
+            }}
+          />
         </div>
       }
     >
