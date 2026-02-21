@@ -51,7 +51,7 @@ const Heropage = () => {
                     delay: (item.id - 1) * 3,
                     repeatDelay: (dynamicWords.length - 1) * 3,
                   }}
-                  className="tex-blue-50 absolute left-0  text-5xl"
+                  className=" absolute left-0  text-5xl md:text-6xl lg:text-7xl font-bold flex items-center md:-mt-1 lg:-mt-3 space-x-2"
                 >
                   {item.word}
                 </motion.span>
