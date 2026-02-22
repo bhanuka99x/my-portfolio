@@ -12,34 +12,34 @@ export default function CertificateSection() {
   const educationData = [
     {
       id: 1,
-      year: "2018 - 2022",
-      title: "High School Degree",
-      institution: "Metropolitan High School",
-      location: "Colombo, Sri Lanka",
+      year: "2018 - 2020",
+      title: "GCE Advanced Level",
+      institution: "KG/Bandaranayake M.V",
+      location: "Kegalle, Sri Lanka",
       description:
         "Completed undergraduate studies with a focus on computer science fundamentals, mathematics, and software engineering principles.",
       icon: <BookOpen className="w-5 h-5" />,
     },
     {
       id: 2,
-      year: "2018 - 2022",
-      title: "Bachelor's Degree",
-      institution: "University of Colombo",
-      location: "Colombo, Sri Lanka",
+      year: "2023 - 2025",
+      title: "Higher National Diploma in Information Technology",
+      institution: "SLIATE",
+      location: "Kegalle, Sri Lanka",
       description:
         "Specialized in Software Engineering, focusing on advanced data structures, algorithms, and full-stack development technologies.",
       icon: <GraduationCap className="w-5 h-5" />,
     },
-    {
-      id: 3,
-      year: "2018 - 2022",
-      title: "Master Degree",
-      institution: "University of Moratuwa",
-      location: "Moratuwa, Sri Lanka",
-      description:
-        "Advanced research in Artificial Intelligence and Machine Learning, exploring modern architectures and scalable systems.",
-      icon: <Award className="w-5 h-5" />,
-    },
+    // {
+    //   id: 3,
+    //   year: "2018 - 2022",
+    //   title: "Master Degree",
+    //   institution: "University of Moratuwa",
+    //   location: "Moratuwa, Sri Lanka",
+    //   description:
+    //     "Advanced research in Artificial Intelligence and Machine Learning, exploring modern architectures and scalable systems.",
+    //   icon: <Award className="w-5 h-5" />,
+    // },
   ];
 
   return (
@@ -66,7 +66,7 @@ export default function CertificateSection() {
               <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-8 items-start">
                 {/* Year */}
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2 text-white/50 group-hover:text-blue-400 transition-colors">
+                  <div className="flex items-center gap-2 text-white/50  transition-colors">
                     <Calendar className="w-4 h-4" />
                     <span className="text-lg font-bold tracking-widest">{edu.year}</span>
                   </div>
@@ -82,7 +82,7 @@ export default function CertificateSection() {
                     <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-2 group-hover:translate-x-2 transition-transform duration-500">
                       {edu.title}
                     </h3>
-                    <p className="text-xl md:text-2xl text-blue-400/70 font-medium">
+                    <p className="text-xl md:text-2xl text-white/50 font-medium">
                       {edu.institution}
                     </p>
                   </div>

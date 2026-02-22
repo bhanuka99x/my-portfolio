@@ -5,7 +5,7 @@ import { skillsData } from "@/constants/skills";
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 px-6 md:px-12 bg-black text-white overflow-hidden">
+    <section id="skills" className="py-24 px-6 md:px-12  bg-black text-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-24 lg:mb-32">

@@ -1,222 +1,185 @@
 "use client";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  Code2,
-  Palette,
-  Rocket,
-  Users,
-  Award,
-  Coffee,
-  Github,
-  Linkedin,
-  Mail,
-  Download,
-  ArrowLeft,
-} from "lucide-react";
-import { Document, Page, pdfjs } from "react-pdf";
-import "../../../styles/about.css";
 
-import { skill } from "@/constants/about";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Github, Linkedin, Mail, X, Download } from 'lucide-react';
+import Image from 'next/image';
 
-// Set up PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs`;
-
-export default function AboutSection() {
+const AboutSection = () => {
   const [showCV, setShowCV] = useState(false);
-  const [numPages, setNumPages] = useState<number>();
-
-  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
-    setNumPages(numPages);
-  }
-
-  // Icon mapping
-  const iconMap: { [key: string]: React.ReactNode } = {
-    Code2: <Code2 className="w-5 h-5" />,
-    Palette: <Palette className="w-5 h-5" />,
-  };
 
   return (
-    <section
-      id="about"
-      className="min-h-screen text-white  py-10 lg:py-20  font-bilmond  "
-    >
-      <motion.div 
-      initial={{ opacity: 0, zoom: 300 }}
-      animate={{ opacity: 1, zoom: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+    <section id="about" className="relative min-h-screen py-32 px-6 lg:px-20 overflow-hidden bg-black  selection:bg-white selection:text-black">
+      {/* Dynamic Background */}
+      <div className="absolute top-0 right-0 w-[80vw] h-[80vw] bg-linear-to-bl from-white/5 to-transparent rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2" />
       
-      className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 border-2 border-dashed border-white/30 rounded-4xl p-15 ">
-        {/* Main Content */}
-        <div className="flex flex-col items-center justify-center">
-          {/* Picture and Name - Aligned Horizontally */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-10 w-full">
-            <div className="relative  backdrop-blur-sm border border-white/20 rounded-full p-4  lg:p-10 overflow-hidden aspect-square w-32 md:w-48 lg:w-56 flex-shrink-0 group">
-              <img
-                src="/images/about.jpg"
-                alt="Bhanuka Gihan"
-                className="w-full h-full object-cover rounded-full transform scale-125 group-hover:scale-110 transition duration-500"
-              />
-            </div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="pb-15 lg:mb-32">
+          <motion.h2 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[15vw] lg:text-[12rem] font-bilmond leading-[0.85] tracking-tighter uppercase text-white"
+          >
+            About {"{}"}  <br />
+            <span className="text-white/20">The Mind  </span>
+          </motion.h2>
+        </div>
 
-            <div className=" rounded-3xl transition-all duration-300">
-              <h3 className="text-4xl md:text-6xl lg:text-5xl font-bold text-[#e8f5fd] text-center md:text-left leading-tight">
-                Hi, I'm{" "}
-                <span className=" ">
-                  {" "}
-                  Bhanuka Gihan <br className="hidden md:block" />
-                </span>
-                <span className="text-white text-6xl">A Software Engineer</span>
-              </h3>
-            </div>
+        <div className="flex lg:hidden justify-center   mb-15">
+          <div className="relative w-40 h-40 rounded-full overflow-hidden border border-white/10">
+            <Image
+              src="/images/about.jpg"
+              alt="Profile"
+              fill
+              className="object-cover "
+            />
           </div>
         </div>
 
-        {/* Text content below Image and Name */}
-        <div className="mt-2 space-y-6 max-w-4xl mx-auto">
-          <p className="text-gray-300 text-lg md:text-xl leading-relaxed tracking-wide font-NeueHaas text-center md:text-left">
-            A passionate{" "}
-            <span className="bg-gradient-to-t from-blue-300 to-blue-50 text-transparent bg-clip-text font-semibold">
-              Software Engineer
-            </span>{" "}
-            specializing in creating seamless digital experiences. I transform
-            complex problems into elegant, scalable solutions that users love.
-          </p>
-          <p className="text-gray-300 text-lg md:text-xl leading-relaxed tracking-wide font-NeueHaas text-center md:text-left">
-            With a strong foundation in{" "}
-            <span className="bg-gradient-to-t from-blue-400 to-blue-50 text-transparent bg-clip-text font-semibold">
-              full-stack development
-            </span>{" "}
-            and a keen eye for design, I bridge the gap between functionality
-            and aesthetics. My goal is to build products that not only work
-            flawlessly but also deliver exceptional user experiences.
-          </p>
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-20 items-start">
+          {/* Text Content */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col gap-10"
+          >
+            <div className="space-y-8">
+              <h3 className="text-4xl md:text-6xl font-bold uppercase  leading-[0.9]">
+                <span className='text-white/70'>Software Engineer</span> <br />
+                
+              </h3>
+              
+              <p className="text-white/70 font-NeueHaas leading-relaxed text-xl md:text-2xl max-w-3xl font-light tracking-tight italic">
+                "I transform complex technical problems into elegant, scalable digital experiences that bridge the gap between functionality and high-end aesthetics."
+              </p>
+            </div>
 
-          {!showCV && (
-            <div className="mt-6 flex flex-col md:flex-row items-center gap-6 ">
-              {/* Left Side: Buttons */}
-              <div className="flex flex-col  px-10 lg:px-0 sm:flex-row items-center gap-5 w-full md:w-auto">
-                <a
-                  href="#contact"
-                  className="w-full   py-3 bg-transparent border-2 border-white/30 text-white font-bold rounded-full transition-all duration-300 text-center"
-                >
-                  Contact Me
-                </a>
-
-                <button
-                  onClick={() => setShowCV(true)}
-                  className="animated-button backdrop-blur-sm bg-gray-700/50 border border-white/10"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="arr-2"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                  </svg>
-                  <span className="text">View My Resume</span>
-                  <span className="circle"></span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="arr-1"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                  </svg>
-                </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
+              <div className="space-y-4">
+                <span className="text-white/20 font-mono text-[10px] tracking-[0.5em] uppercase">The Vision // 01</span>
+                <p className="text-white/60 font-NeueHaas leading-relaxed text-lg">
+                  Specializing in full-stack architecture, I focus on building robust systems that don't just work - they perform. Every line of code is written with scalability and security in mind.
+                </p>
               </div>
-
-              {/* Separator */}
-              <div className="hidden md:block w-px h-10 bg-white/20" />
-
-              {/* Mobile Separator */}
-              <div className="block md:hidden w-20 h-px bg-white/10" />
-
-              {/* Right Side: Social Icons */}
-              <div className="flex items-center gap-6">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/5  rounded-full text-white hover:text-amber-400 hover:border-amber-400/50 hover:bg-white/10 transition-all duration-300"
-                >
-                  <Github className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/5   rounded-full text-white hover:text-amber-400 hover:border-amber-400/50 hover:bg-white/10 transition-all duration-300"
-                >
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a
-                  href="mailto:contact@example.com"
-                  className="p-3 bg-white/5  rounded-full text-white hover:text-amber-400 hover:border-amber-400/50 hover:bg-white/10 transition-all duration-300"
-                >
-                  <Mail className="w-6 h-6" />
-                </a>
+              <div className="space-y-4">
+                <span className="text-white/20 font-mono text-[10px] tracking-[0.5em] uppercase">The Craft // 02</span>
+                <p className="text-white/60 font-NeueHaas leading-relaxed text-lg">
+                  My design-driven approach ensures that technical robustness is always paired with exceptional user experience. I believe software should be as beautiful as it is functional.
+                </p>
               </div>
             </div>
-          )}
-        </div>
 
-        {showCV && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 overflow-hidden w-full max-w-4xl h-[90vh] flex flex-col">
-              {/* CV Viewer */}
-              <div className="bg-gray-900 rounded-2xl overflow-auto relative flex-1">
-                <div className="flex flex-col items-center p-4">
-                  <Document
-                    file="/cv/se-intern.pdf"
-                    onLoadSuccess={onDocumentLoadSuccess}
-                    loading={
-                      <div className="flex items-center justify-center h-96 text-white">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-400"></div>
-                      </div>
-                    }
-                    error={
-                      <div className="flex items-center justify-center h-96 text-white">
-                        <p>Failed to load PDF file.</p>
-                      </div>
-                    }
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-6 pt-6">
+              <button 
+                onClick={() => setShowCV(true)}
+                className="group  mx-auto lg:mx-0 rounded-full border p-1 border-white/20  flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
+              >
+                <span className='ml-5'>
+                View Resume
+                </span>
+                <div className="w-12 h-12 rounded-full  flex items-center justify-center group-hover:border-white transition-colors">
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </button>
+
+              <div className="flex items-center  mx-auto lg:mx-0 gap-4">
+                {[
+                  { icon: <Github />, url: "https://github.com/bhanuka99x" },
+                  { icon: <Linkedin />, url: "https://linkedin.com/in/bhanuka99x" },
+                  { icon: <Mail />, url: "mailto:hello@bhanuka.com" }
+                ].map((social, i) => (
+                  <a 
+                    key={i}
+                    href={social.url}
+                    className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center text-white/30 hover:text-white hover:border-white/20 transition-all"
                   >
-                    {Array.from(new Array(numPages), (el, index) => (
-                      <Page
-                        key={`page_${index + 1}`}
-                        pageNumber={index + 1}
-                        width={Math.min(window.innerWidth * 0.8, 800)}
-                        className="mb-4"
-                      />
-                    ))}
-                  </Document>
+                    {React.cloneElement(social.icon as React.ReactElement<{size:number}>, { size: 18 })}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Image Sidebar */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative hidden lg:block"
+          >
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl  transition-all duration-700 ease-out group">
+              <Image
+                src="/images/about.jpg"
+                alt="Profile"
+                fill
+                className="object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-60" />
+            </div>
+            
+            {/* Design elements */}
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 border-l border-b border-white/20 rounded-bl-3xl -z-10" />
+            <div className="absolute -top-6 -right-6 w-32 h-32 border-r border-t border-white/20 rounded-tr-3xl -z-10" />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* CV Modal */}
+      <AnimatePresence>
+        {showCV && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6"
+          >
+            <motion.div 
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              className="w-full max-w-5xl h-[85vh] bg-neutral-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col relative"
+            >
+              {/* Modal Header */}
+              <div className="p-6 border-b border-white/5 flex justify-between items-center bg-neutral-900/50">
+                <div className="flex flex-col">
+                  <span className="text-white font-bold tracking-[0.2em] uppercase text-xs">Full Resume</span>
+                  <span className="text-white/40 text-[10px] uppercase tracking-widest mt-1">Bhanuka.CV.2024.pdf</span>
+                </div>
+                <div className="flex gap-4">
+                  <a 
+                    href="/cv/resume.pdf" 
+                    download 
+                    className="flex items-center gap-2 px-6 h-12 rounded-full bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-white/90 transition-colors"
+                  >
+                    Download <Download size={14} />
+                  </a>
+                  <button 
+                    onClick={() => setShowCV(false)}
+                    className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
+                  >
+                    <X className="text-white" size={20} />
+                  </button>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex gap-3 mt-4">
-                <button
-                  onClick={() => setShowCV(false)}
-                  className="flex-1 flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold px-6 py-3 rounded-xl hover:bg-white/20 hover:border-amber-400/50 transition-all duration-300"
-                >
-                  <ArrowLeft className="w-5 h-5" />
-                  Back
-                </button>
-                <a
-                  href="/cv/se-intern.pdf"
-                  download="Bhanuka_Gihan_CV.pdf"
-                  className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-amber-400/50 hover:scale-105 transition-all duration-300"
-                >
-                  <Download className="w-5 h-5" />
-                  Download CV
-                </a>
+              {/* CV Preview */}
+              <div className="flex-1 w-full bg-[#1e1e1e]">
+                <iframe 
+                  src="/cv/resume.pdf" 
+                  className="w-full h-full border-none"
+                  title="Resume"
+                />
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
-
-        {/* Stats Grid - Full Width Bottom (if needed later) */}
-      </motion.div>
+      </AnimatePresence>
     </section>
   );
-}
+};
+
+export default AboutSection;

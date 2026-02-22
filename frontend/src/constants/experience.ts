@@ -25,7 +25,7 @@ export const experiences: Experience[] = [
     id: 2,
     title: "Software Engineer",
     company: "Oxymai(PVT) Ltd",
-    location: "Colombo, Sri Lanka",
+    location: "Kegalle, Sri Lanka",
     period: "2025 - 2026",
     type: "Full-time",
     icon: "Code",
@@ -36,7 +36,7 @@ export const experiences: Experience[] = [
       "Integrated payment gateways (Stripe, PayPal, PayHere)",
       "Built RESTful APIs serving 10K+ daily requests",
     ],
-    technologies: ["React", "Node.js", "Express", "MySQL", "Redis"],
+    technologies: ["React", "Node.js", "Express", "PostgreSQL", "Redis"],
     color: "from-purple-400 to-pink-400",
     detailedDescription: `As a Software Engineer at Oxymai, I played a pivotal role in developing and maintaining enterprise-level web applications. My responsibilities included full-stack development, code reviews, and mentoring junior developers.
 
@@ -85,7 +85,7 @@ I worked closely with cross-functional teams including designers, product manage
     title: "Freelance Developer",
     company: "Self-Employed",
     location: "Remote",
-    period: "2020 - 2021",
+    period: "2023 - 2024",
     type: "Freelance",
     icon: "Award",
     description:
@@ -95,7 +95,7 @@ I worked closely with cross-functional teams including designers, product manage
       "Built strong client relationships and repeat business",
       "Mastered full-stack development fundamentals",
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "PHP", "WordPress"],
+    technologies: ["HTML", "CSS", "JavaScript", "PHP", ""],
     color: "from-amber-400 to-orange-400",
     detailedDescription: `Launched my freelancing career by offering web development services to small and medium-sized businesses. This experience taught me not only technical skills but also client management, project estimation, and business communication.
 

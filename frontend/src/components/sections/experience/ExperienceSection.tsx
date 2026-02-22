@@ -35,34 +35,34 @@ export default function ExperienceSection() {
         </div>
 
         {/* Experience List - Minimalist Row based layout */}
-        <div className="space-y-0">
+        <div className="space-y-0 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
           {experiences.map((exp) => (
             <Link 
               key={exp.id} 
               href={`/view_experience?id=${exp.id}`}
-              className="group block relative border-t border-white/10 py-12 md:py-16 transition-all duration-700 hover:bg-white/[0.02]"
+              className="group block relative  border-b border-white/10 py-12 md:py-16 transition-all duration-700 hover:bg-white/[0.02]"
             >
-              <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-8 items-start">
+              <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto]  gap-8 items-start">
                 
                 {/* Period & Type */}
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-white/50 group-hover:text-blue-400 transition-colors">
+                  <div className="flex items-center gap-2 text-white/50  transition-colors">
                     <Calendar className="w-4 h-4" />
                     <span className="text-lg font-bold tracking-widest">{exp.period}</span>
                   </div>
-                  <div className="inline-flex px-2 py-0.5 border border-white/10 rounded text-[10px] uppercase tracking-widest text-white/40 group-hover:border-blue-500/30 group-hover:text-blue-400 transition-all">
+                  <div className="inline-flex px-2 py-0.5 border border-white/10 rounded text-[10px] uppercase tracking-widest text-white/40  transition-all">
                     {exp.type}
                   </div>
                 </div>
 
                 {/* Main Content */}
                 <div className="space-y-4">
-                  <div className="space-y-1">
+                  <div className="space-y-1 ">
                     <h3 className="text-3xl md:text-5xl font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-500">
                       {exp.title}
                     </h3>
                     <div className="flex items-center gap-3">
-                      <span className="text-xl md:text-2xl text-blue-400/70 font-medium">
+                      <span className="text-xl md:text-2xl text-white/50 font-medium">
                         {exp.company}
                       </span>
                       <span className="flex items-center gap-1 text-white/30 text-sm italic">
@@ -85,19 +85,26 @@ export default function ExperienceSection() {
                       >
                         {tech}
                       </span>
+                      
                     ))}
+                  </div>
+                  <div className="w-full  mx-auto justify-center items-center flex">
+                    <span className="text-white/20 text-center ">click here to view full details </span>
                   </div>
                 </div>
 
+
                 {/* Action Icon */}
                 <div className="hidden md:flex items-center justify-center p-4 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 group-hover:rotate-45 transition-all duration-700">
-                  <ArrowUpRight className="w-6 h-6 text-blue-400" />
+                  <ArrowUpRight className="w-6 h-6 " />
                 </div>
               </div>
             </Link>
+            
           ))}
-          {/* Bottom Border */}
-          <div className="border-t border-white/10 w-full"></div>
+          
+          
+          
         </div>
       </div>
     </section>

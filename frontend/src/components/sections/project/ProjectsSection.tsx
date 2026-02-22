@@ -4,10 +4,7 @@ import Image from "next/image";
 import {
   ExternalLink,
   Github,
-  Code,
-  Layers,
   Sparkles,
-  Filter,
   ArrowUpRight,
   Building2,
 } from "lucide-react";
@@ -109,28 +106,25 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-screen text-white py-20 font-bilmond overflow-hidden"
+      className="min-h-screen text-white py-16 font-NeueHaas"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
-        {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-16">
-          <h2 className="text-3xl sm:text-6xl lg:text-7xl text-left font-bold mb-2 sm:mb-4">
-            Featured 
-            <div></div>
-            <span className="text-white text-7xl lg:text-8xl opacity-20">Projects</span>
+        <div className="mb-10 sm:mb-14">
+          <p className="text-[11px] tracking-[0.28em] uppercase text-white/40 mb-3">Selected Work</p>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+            Featured <span className="text-white/35">Projects</span>
           </h2>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 overflow-x-auto pb-2 sm:pb-0 px-2 sm:px-0 scrollbar-hide">
+        <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10 overflow-x-auto pb-2">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-base font-semibold whitespace-nowrap transition-all duration-300 ${
+              className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap border transition-colors ${
                 activeFilter === category
-                  ? "bg-white text-black "
-                  : " border-2 border-white/10 text-gray-300"
+                  ? "bg-white text-black border-white"
+                  : "border-white/15 text-white/65 hover:text-white hover:border-white/30"
               }`}
             >
               {category}
@@ -138,26 +132,19 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group relative bg-black border border-white/10 rounded-3xl overflow-hidden hover:bg-white/[0.07] transition-all duration-300 h-[500px] flex flex-col will-change-transform ${
-                index % 3 === 1 ? "" : ""
-              }`}
+              className="group relative bg-black border border-white/10 rounded-3xl overflow-hidden hover:bg-white/[0.07] transition-all duration-300 h-125 flex flex-col will-change-transform"
             >
-              {/* Featured Badge */}
               {project.featured && (
                 <div className="absolute top-4 left-4 z-20 bg-white px-3 py-1 rounded-full flex items-center gap-2 border border-white/20">
                   <Sparkles className="w-3 h-3 text-black" />
-                  <span className="text-black text-xs font-bold">
-                    Featured
-                  </span>
+                  <span className="text-black text-xs font-bold">Featured</span>
                 </div>
               )}
 
-                {/* Project Image */}
                 <div className="relative h-48 bg-gray-800 overflow-hidden transform-gpu">
                   <Image
                     src={project.image}
@@ -167,7 +154,6 @@ export default function ProjectsSection() {
                     priority={index < 3}
                     className="object-cover group-hover:scale-105 transition-transform duration-500 will-change-transform"
                   />
-                  {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10 transform-gpu">
                     <a
                       href={project.liveUrl}
@@ -188,9 +174,7 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6 relative flex flex-col flex-grow overflow-hidden">
-                  {/* Category Badge */}
+                <div className="p-6 relative flex flex-col grow overflow-hidden">
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-3 py-1 bg-blue-400/20 backdrop-blur-sm border border-blue-400/30 text-blue-400 text-xs font-bold rounded-full">
                       {project.category}
@@ -205,17 +189,14 @@ export default function ProjectsSection() {
                     )}
                   </div>
 
-                  {/* Title */}
                   <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors duration-300 mb-3 line-clamp-1">
                     {project.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="text-gray-400 text-sm leading-relaxed mb-4 font-NeueHaas line-clamp-3">
                     {project.description}
                   </p>
 
-                  {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4 overflow-hidden">
                     {project.technologies.slice(0, 4).map((tech, i) => (
                       <span
@@ -230,7 +211,6 @@ export default function ProjectsSection() {
                     )}
                   </div>
 
-                  {/* View Project Link */}
                   <div className="mt-auto">
                     <a
                       href={project.liveUrl}

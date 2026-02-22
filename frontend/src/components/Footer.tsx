@@ -46,10 +46,10 @@ export default function Footer() {
             </h2>
             
             <a 
-              href="mailto:hello@bhanuka.com" 
+              href="mailto:bhanuka99xdev@gmail.com" 
               className="text-2xl md:text-4xl font-NeueHaas font-light tracking-tight hover:text-white/50 transition-colors duration-500"
             >
-              hello@bhanuka.com
+              bhanuka99xdev@gmail.com
             </a>
           </motion.div>
 
@@ -96,7 +96,7 @@ export default function Footer() {
           <div className="flex items-center gap-8">
             <div className="flex flex-col items-center md:items-end gap-1">
               <span className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">Local Time</span>
-              <span className="text-xs font-mono text-white/40 uppercase">Colombo, LK</span>
+              <span className="text-xs font-mono text-white/40 uppercase">Kegalle, LK</span>
             </div>
             
             <motion.div 
