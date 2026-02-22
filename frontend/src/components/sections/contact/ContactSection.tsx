@@ -82,7 +82,7 @@ const ContactSection = () => {
                 <div className="space-y-2">
                   <span className="text-white/20 font-mono text-[10px] tracking-[0.3em] uppercase">Email</span>
                   <a href="mailto:hello@bhanuka.com" className="block text-white hover:text-white/50 transition-colors text-lg">
-                    hello@bhanuka.com
+                   bhanuka99xdev@gmail.com
                   </a>
                 </div>
                 <div className="space-y-2">
