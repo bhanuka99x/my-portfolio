@@ -66,7 +66,7 @@ export default function Heropage() {
                         delay: i * 3,
                         repeatDelay: (dynamicWords.length - 1) * 3
                       }}
-                      className="absolute left-0 text-[12vw] lg:text-[6.5rem] pt-2 text-white font-bilmond"
+                      className="absolute left-0 text-[12vw] lg:text-[9.5rem] pt-2 lg:pt-10  text-white font-bilmond"
                     >
                       {word}
                     </motion.span>
@@ -105,17 +105,17 @@ export default function Heropage() {
         {/* Bottom Detail */}
         <div className="mt-20 lg:mt-0 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2">
-            <span className="text-white/20 text-[9px] uppercase tracking-[0.4em] font-bold">Concept // Deployment</span>
+            <span className="text-white/20 text-[9px] uppercase tracking-[0.4em] ">Concept // Deployment</span>
             <div className="flex gap-4 items-center">
-              <span className="text-white font-bold tracking-[0.2em] uppercase text-[10px]">Software Engineer</span>
+              <span className="text-white  tracking-[0.2em] uppercase text-[10px]">Software Engineer</span>
               <div className="w-1 h-1 rounded-full bg-white/20" />
-              <span className="text-white/40 tracking-[0.2em] font-bold uppercase text-[10px]">2026</span>
+              <span className="text-white/40 tracking-[0.2em]  uppercase text-[10px]">2026</span>
             </div>
           </div>
           <div className="flex items-center gap-12">
             <div className="flex flex-col gap-1 items-end">
-              <span className="text-white/20 text-[9px] uppercase tracking-[0.2em] font-bold">Email Reach</span>
-              <span className="text-white hover:text-white/60 transition-colors cursor-pointer text-xs font-bold  tracking-[0.2em]">bhanuka99xdev@gmail.com</span>
+              <span className="text-white/20 text-[9px] uppercase tracking-[0.2em] ">Email Reach</span>
+              <span className="text-white/60 hover:text-white/30 transition-colors cursor-pointer text-xs   tracking-[0.2em]">bhanuka99xdev@gmail.com</span>
             </div>
           </div>
         </div>
