@@ -48,7 +48,7 @@ const imageLogos = [
 
 export default function TechStackLoop() {
   return (
-    <div className=" py-14 lg:py-16 text-white ">
+    <div className=" py-32  text-white ">
       {/* Basic horizontal loop */}
       <LogoLoop
         logos={techLogos}
