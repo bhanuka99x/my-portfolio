@@ -9,30 +9,30 @@ const AboutSection = () => {
   const [showCV, setShowCV] = useState(false);
 
   return (
-    <section id="about" className="relative min-h-screen py-32 px-6 lg:px-20 overflow-hidden  selection:bg-white selection:text-black">
+    <section id="about" className="relative min-h-screen py-32 px-6 lg:px-20 overflow-hidden bg-black  selection:bg-white selection:text-black">
       {/* Dynamic Background */}
       <div className="absolute top-0 right-0 w-[80vw] h-[80vw] bg-linear-to-bl from-white/5 to-transparent rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2" />
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-32">
+        <div className="pb-15 lg:mb-32">
           <motion.h2 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-[15vw] lg:text-[12rem] font-bilmond leading-[0.85] tracking-tighter uppercase text-white"
           >
-            About // <br />
-            <span className="text-white/20">The Mind</span>
+            About {"{}"}  <br />
+            <span className="text-white/20">The Mind  </span>
           </motion.h2>
         </div>
 
-        <div className="flex lg:hidden justify-center mb-6">
+        <div className="flex lg:hidden justify-center   mb-15">
           <div className="relative w-40 h-40 rounded-full overflow-hidden border border-white/10">
             <Image
               src="/images/about.jpg"
               alt="Profile"
               fill
-              className="object-cover grayscale"
+              className="object-cover "
             />
           </div>
         </div>
@@ -47,9 +47,9 @@ const AboutSection = () => {
             className="flex flex-col gap-10"
           >
             <div className="space-y-8">
-              <h3 className="text-4xl md:text-6xl font-bold uppercase tracking-tight leading-[0.9]">
-                Software Engineer <br />
-                <span className="text-white/40">& System Architect</span>
+              <h3 className="text-4xl md:text-6xl font-bold uppercase  leading-[0.9]">
+                <span className='text-white/70'>Software Engineer</span> <br />
+                
               </h3>
               
               <p className="text-white/70 font-NeueHaas leading-relaxed text-xl md:text-2xl max-w-3xl font-light tracking-tight italic">
@@ -61,7 +61,7 @@ const AboutSection = () => {
               <div className="space-y-4">
                 <span className="text-white/20 font-mono text-[10px] tracking-[0.5em] uppercase">The Vision // 01</span>
                 <p className="text-white/60 font-NeueHaas leading-relaxed text-lg">
-                  Specializing in full-stack architecture, I focus on building robust systems that don't just work—they perform. Every line of code is written with scalability and security in mind.
+                  Specializing in full-stack architecture, I focus on building robust systems that don't just work - they perform. Every line of code is written with scalability and security in mind.
                 </p>
               </div>
               <div className="space-y-4">
@@ -76,15 +76,17 @@ const AboutSection = () => {
             <div className="flex flex-wrap gap-6 pt-6">
               <button 
                 onClick={() => setShowCV(true)}
-                className="group flex items-center gap-4 text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
+                className="group  mx-auto lg:mx-0 rounded-full border p-1 border-white/20  flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
               >
+                <span className='ml-5'>
                 View Resume
-                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white transition-colors">
+                </span>
+                <div className="w-12 h-12 rounded-full  flex items-center justify-center group-hover:border-white transition-colors">
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </button>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center  mx-auto lg:mx-0 gap-4">
                 {[
                   { icon: <Github />, url: "https://github.com/bhanuka99x" },
                   { icon: <Linkedin />, url: "https://linkedin.com/in/bhanuka99x" },
