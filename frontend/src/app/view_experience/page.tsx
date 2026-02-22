@@ -60,8 +60,8 @@ function ExperienceDetailContent() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 mb-32 items-end">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <span className="w-12 h-px bg-blue-500/50" />
-              <span className="text-blue-400 text-[10px] uppercase tracking-[0.4em] font-bold">
+              
+              <span className=" text-[10px] uppercase tracking-[0.4em] ">
                 {experience.type}
               </span>
             </div>
