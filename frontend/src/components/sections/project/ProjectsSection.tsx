@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   ExternalLink,
   Github,
@@ -11,6 +12,11 @@ import {
 
 export default function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const router = useRouter();
+
+  const handleProjectClick = (projectId: number) => {
+    router.push(`/ProjectView?id=${projectId}`);
+  };
 
   const categories = useMemo(() => ["All", "Web App", "E-Commerce", "Portfolio", "SaaS"], []);
 
@@ -136,7 +142,8 @@ export default function ProjectsSection() {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative bg-black border border-white/10 rounded-3xl overflow-hidden hover:bg-white/[0.07] transition-all duration-300 h-125 flex flex-col will-change-transform"
+              onClick={() => handleProjectClick(project.id)}
+              className="group relative bg-black border border-white/10 rounded-3xl overflow-hidden hover:bg-white/[0.07] transition-all duration-300 h-125 flex flex-col will-change-transform cursor-pointer"
             >
               {project.featured && (
                 <div className="absolute top-4 left-4 z-20 bg-white px-3 py-1 rounded-full flex items-center gap-2 border border-white/20">
@@ -159,6 +166,7 @@ export default function ProjectsSection() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="bg-white/20 backdrop-blur-sm border border-white/30 p-3 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
                     >
                       <ExternalLink className="w-5 h-5 text-white" />
@@ -167,6 +175,7 @@ export default function ProjectsSection() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="bg-white/20 backdrop-blur-sm border border-white/30 p-3 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
                     >
                       <Github className="w-5 h-5 text-white" />
@@ -211,16 +220,17 @@ export default function ProjectsSection() {
                     )}
                   </div>
 
-                  <div className="mt-auto">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                   <div className="mt-auto">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleProjectClick(project.id);
+                      }}
                       className="inline-flex items-center gap-2 text-blue-200 text-sm hover:gap-3 transition-all duration-300"
                     >
                       View Project
                       <ArrowUpRight className="w-4 h-4" />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
