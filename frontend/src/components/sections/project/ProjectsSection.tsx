@@ -21,20 +21,34 @@ export default function ProjectsSection() {
   const categories = useMemo(() => ["All", "Web App", "E-Commerce", "Portfolio", "SaaS"], []);
 
   const projects = useMemo(() => [
-    {
-      id: 1,
-      title: "Task Management Platform",
-      category: "SaaS",
-      company: "Oxymai (PVT) LTD",
-      description:
-        "A modern task management platform with AI-powered suggestions, real-time collaboration, and advanced analytics dashboard.",
-      image: "/project/Screenshot_104.png",
-      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "tRPC"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-      featured: true,
-      color: "from-blue-400 to-cyan-400",
-    },
+   {
+  id: 1,
+  title: "TabTask - Team Task Management Platform",
+  category: "SaaS",
+  company: "Oxymai (PVT) LTD",
+  description:
+    "A collaborative team task management platform with organization-based workspaces, real-time sync via Socket.IO, Kanban boards with drag-and-drop, advanced analytics, and a granular role-based permissions system.",
+  image: "/project/Screenshot_104.png",
+  technologies: [
+    "React",
+    "Vite",
+    "Tailwind CSS",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "Sequelize",
+    "Socket.IO",
+    "Redis",
+    "Supabase",
+    "AWS S3",
+    "JWT",
+  ],
+  liveUrl: "https://example.com",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-blue-400 to-cyan-400",
+},
+
     {
       id: 2,
       title: "E-Commerce Marketplace",
@@ -143,7 +157,7 @@ export default function ProjectsSection() {
             <div
               key={project.id}
               onClick={() => handleProjectClick(project.id)}
-              className="group relative bg-black border border-white/10 rounded-3xl overflow-hidden hover:bg-white/[0.07] transition-all duration-300 h-125 flex flex-col will-change-transform cursor-pointer"
+              className="group relative bg-black border border-white/10 rounded-3xl overflow-hidden transition-all duration-300 h-125 flex flex-col will-change-transform cursor-pointer"
             >
               {project.featured && (
                 <div className="absolute top-4 left-4 z-20 bg-white px-3 py-1 rounded-full flex items-center gap-2 border border-white/20">
@@ -161,26 +175,6 @@ export default function ProjectsSection() {
                     priority={index < 3}
                     className="object-cover group-hover:scale-105 transition-transform duration-500 will-change-transform"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-10 transform-gpu">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="bg-white/20 backdrop-blur-sm border border-white/30 p-3 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
-                    >
-                      <ExternalLink className="w-5 h-5 text-white" />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="bg-white/20 backdrop-blur-sm border border-white/30 p-3 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
-                    >
-                      <Github className="w-5 h-5 text-white" />
-                    </a>
-                  </div>
                 </div>
 
                 <div className="p-6 relative flex flex-col grow overflow-hidden">
@@ -198,7 +192,7 @@ export default function ProjectsSection() {
                     )}
                   </div>
 
-                  <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors duration-300 mb-3 line-clamp-1">
+                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 mb-3 line-clamp-1">
                     {project.title}
                   </h3>
 
@@ -210,7 +204,7 @@ export default function ProjectsSection() {
                     {project.technologies.slice(0, 4).map((tech, i) => (
                       <span
                         key={i}
-                        className="px-2 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg text-xs text-gray-400 group-hover:bg-white/10 group-hover:border-amber-400/30 transition-all duration-300"
+                        className="px-2 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg text-xs text-gray-400 group-hover:bg-white/10 group-hover:border-blue-400/30 transition-all duration-300"
                       >
                         {tech}
                       </span>
