@@ -6,127 +6,179 @@ import Beams from "@/components/Beams";
 import { ArrowDown } from "lucide-react";
 
 export default function Heropage() {
-  const dynamicWords = ["Planning", "Designing", "Coding", "Testing", "Deploying"];
+  const dynamicWords = [
+    "Planning",
+    "Designing",
+    "Coding",
+    "Testing",
+    "Deploying",
+  ];
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex flex-col bg-black overflow-hidden font-NeueHaas select-none">
-      {/* Texture Overlay */}
-      <div className="absolute inset-0 z-1 opacity-[0.02] pointer-events-none bg-[url('/images/noise.png')] mix-blend-overlay" />
-      
-      {/* Subtle Background */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <Beams 
-          beamWidth={2} 
-          beamHeight={50} 
-          beamNumber={8} 
-          lightColor="#ffffff" 
-          speed={1.2} 
-          noiseIntensity={1} 
-          scale={0.2} 
-          rotation={15} 
+    <section
+      id="home"
+      className="relative min-h-[100dvh] w-full flex flex-col bg-[#080808] overflow-hidden font-NeueHaas select-none"
+    >
+      {/* Visual Identity Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] bg-white/[0.02] rounded-full blur-[150px]" />
+        <Beams
+          beamWidth={3}
+          beamHeight={30}
+          beamNumber={20}
+          lightColor="#ffffff"
+          speed={2}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={30}
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-450 mx-auto px-6 lg:px-12 flex flex-col flex-1">
-        {/* Header Area */}
-        <div className="flex justify-between items-start py-10 border-b border-white/5">
-          <div className="flex flex-col gap-1">
-            <span className="text-white text-[11px] font-bold uppercase tracking-[0.3em]">Bhanuka Gihan</span>
-            <span className="text-white/30 text-[9px] uppercase tracking-[0.4em]">Integrated Software Engineer</span>
-          </div>
-          <div className="hidden md:flex items-center gap-12">
-            <div className="flex flex-col items-end gap-1">
-              <span className="text-white/20 text-[8px] uppercase tracking-[0.4em]">Status</span>
-              <span className="text-white/60 text-[9px] uppercase font-medium tracking-[0.2em]">Open to work</span>
-            </div>
-            <div className="flex flex-col items-end gap-1">
-              <span className="text-white/20 text-[8px] uppercase tracking-[0.4em]">Location</span>
-              <span className="text-white/60 text-[9px] uppercase font-medium tracking-[0.2em]">Kegalle, Sri Lanaka</span>
-            </div>
-          </div>
-        </div>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col flex-1 pt-24 sm:pt-32">
+        {/* Centerpiece Layout */}
+        <div className="flex-1 flex flex-col justify-center items-center text-center">
+          <div className="relative w-full max-w-6xl">
+            {/* Background Big Text Overlay with extra blur */}
+            <h2 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[22vw] lg:text-[24rem] font-bilmond text-white/[0.035] leading-none select-none pointer-events-none whitespace-nowrap blur-[2px]">
+              ENGINEERING
+            </h2>
 
-        {/* Hero Content Grid */}
-        <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center py-20 lg:py-0">
-          <div className="lg:col-span-8">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10"
             >
-              <h1 className="text-[14vw] lg:text-[11rem] font-bilmond text-white leading-[0.85] tracking-tight uppercase flex flex-col">
-                <span className="opacity-40">Creative</span>
-                <span className="relative h-[1em] overflow-hidden">
+              <h1 className="text-[14vw] lg:text-[11rem] font-bilmond leading-[1.1] tracking-tighter uppercase flex flex-col items-center">
+                <span className="block italic opacity-40 mb-2 sm:mb-4 text-white tracking-[0.1em] text-[4vw] lg:text-[3rem]">
+                  Creative
+                </span>
+                <div className="relative h-[1.2em] w-full flex justify-center items-center overflow-hidden">
                   {dynamicWords.map((word, i) => (
                     <motion.span
                       key={word}
-                      initial={{ y: "100%" }}
-                      animate={{ 
-                        y: ["100%", "0%", "0%", "-100%"] 
+                      initial={{ y: "100%", opacity: 0 }}
+                      animate={{
+                        y: ["100%", "0%", "0%", "-100%"],
+                        opacity: [0, 1, 1, 0],
                       }}
                       transition={{
-                        duration: 3.5,
-                        ease: [0.76, 0, 0.24, 1],
+                        duration: 4,
+                        times: [0, 0.1, 0.9, 1],
+                        ease: [0.23, 1, 0.32, 1],
                         repeat: Infinity,
-                        delay: i * 3.5,
-                        repeatDelay: (dynamicWords.length - 1) * 3.5
+                        delay: i * 4,
+                        repeatDelay: (dynamicWords.length - 1) * 4,
                       }}
-                      className="absolute left-0 text-white italic"
+                      className="absolute text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
                     >
                       {word}
                     </motion.span>
                   ))}
-                </span>
+                </div>
               </h1>
+
+              {/* Decorative line under main text */}
+              <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: "120px", opacity: 1 }}
+                transition={{ delay: 1.5, duration: 1.2 }}
+                className="h-px bg-gradient-to-r from-transparent via-white/50 to-transparent mx-auto mt-4"
+              />
             </motion.div>
           </div>
 
-          <div className="lg:col-span-4 lg:pt-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="flex flex-col gap-10 max-w-sm"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 1 }}
+            className="mt-20 sm:mt-28 flex flex-col items-center gap-12 max-w-2xl"
+          >
+            <p className="text-white/40 text-sm sm:text-lg leading-relaxed font-light tracking-wide italic max-w-lg">
+              "Turning complex structural requirements into seamless digital
+              experiences through modern engineering paradigms."
+            </p>
+
+            <a
+              href="#projects"
+              className="group relative flex flex-col items-center gap-6"
             >
-              <div className="flex items-center gap-4">
-                
-                <p className="text-white/40 text-sm md:text-xl text-center lg:text-left font-light leading-relaxed tracking-wider">
-                  Architecting high-performance digital solutions with a focus on structural integrity and minimal elegance.
-                </p>
+              {/* Main Button Circle */}
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center transition-all duration-700">
+                {/* Outer Rotating Ring */}
+                <div className="absolute inset-0 rounded-full border border-white/10 group-hover:border-white/50 group-hover:scale-110 transition-all duration-700" />
+
+                {/* Spinning Dash Ring (Optional visual flair) */}
+                <svg className="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite] opacity-20 group-hover:opacity-100 transition-opacity">
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="48%"
+                    stroke="white"
+                    strokeWidth="1"
+                    fill="none"
+                    strokeDasharray="4 8"
+                  />
+                </svg>
+
+                {/* Inner Solid Core */}
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-500 z-10">
+                  <ArrowDown className="w-5 h-5 text-white/60 group-hover:text-black group-hover:scale-110 transition-all duration-500" />
+                </div>
+
+                {/* Glow Effect */}
+                <div className="absolute inset-0 rounded-full bg-white/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
 
-              <div className="flex flex-col gap-6">
-                <a 
-                  href="#projects" 
-                  className="group flex items-center gap-6"
-                >
-                  <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-500">
-                    <ArrowDown className="w-5 h-5 text-white/40 group-hover:text-black -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
-                  </div>
-                  <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-white/60 group-hover:text-white transition-colors">See Projects</span>
-                </a>
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-[10px] uppercase font-bold tracking-[0.6em] text-white/80 group-hover:text-white transition-colors">
+                  Start Journey
+                </span>
+                <span className="text-[8px] uppercase tracking-[0.4em] text-white/20 group-hover:text-white/40 transition-colors italic">
+                  Scroll to Discover
+                </span>
               </div>
-            </motion.div>
-          </div>
+            </a>
+          </motion.div>
         </div>
 
-        {/* Minimal Footer */}
-        <div className="py-12 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/5 mt-auto">
-          <div className="flex gap-12 order-2 md:order-1">
-            <div className="flex flex-col gap-1 text-center md:text-left">
-              <span className="text-white/15 text-[8px] uppercase tracking-[0.4em]">Expertise</span>
-              <span className="text-white/40 text-[9px] uppercase font-bold tracking-widest">Full-Stack Development</span>
+        {/* Global Footer Stats */}
+        <div className="py-12 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
+          {/* Top Info Bar Moved Here */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center md:items-start gap-1.5"
+          >
+            <span className="text-white text-[11px] font-bold uppercase tracking-[0.4em]">
+              Bhanuka Gihan
+            </span>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+              <span className="text-white/30 text-[9px] uppercase tracking-[0.3em]">
+                Integrated Software Engineer
+              </span>
             </div>
-            <div className="flex flex-col gap-1 text-center md:text-left">
-              <span className="text-white/15 text-[8px] uppercase tracking-[0.4em]">Availability</span>
-              <span className="text-white/40 text-[9px] uppercase font-bold tracking-widest">Remote / Global</span>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4 order-1 md:order-2">
-            <span className="text-white/15 text-[8px] uppercase tracking-[0.4em]">© 2026</span>
-            <div className="w-1 h-1 rounded-full bg-white/10" />
-            <span className="text-white/30 text-[9px] uppercase font-bold tracking-widest">Bhanuka Gihan</span>
+          </motion.div>
+
+          {/* Availability Block */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center gap-1.5"
+          >
+            <span className="text-white/20 text-[8px] uppercase tracking-[0.4em]">
+              Availability
+            </span>
+            <span className="text-white/60 text-[9px] uppercase font-bold tracking-[0.2em] px-3 py-1 bg-white/[0.03] border border-white/5 rounded-full backdrop-blur-sm w-fit">
+              Remote • Global
+            </span>
+          </motion.div>
+
+          <div className="flex justify-center md:justify-end items-center">
+            <span className="text-white/10 text-[9px] tracking-[0.3em]">
+              ©26/BHANUKA
+            </span>
           </div>
         </div>
       </div>
