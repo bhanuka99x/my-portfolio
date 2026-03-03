@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import {
   ExternalLink,
   Github,
@@ -12,6 +13,8 @@ import {
 
 export default function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
   const router = useRouter();
 
   const handleProjectClick = (projectId: number) => {
@@ -82,18 +85,20 @@ export default function ProjectsSection() {
 
 
     {
-      id: 4,
-      title: "Creative Agency Portfolio",
-      category: "Portfolio",
-      description:
-        "Stunning portfolio website for a creative agency with smooth animations and interactive elements.",
-      image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-      technologies: ["Next.js", "GSAP", "Three.js", "Tailwind CSS"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-      featured: false,
-      color: "from-orange-400 to-red-400",
-    },
+  id: 4,
+  title: "VocabVerse - Smart Vocabulary Chrome Extension",
+  category: "Chrome Extension / EdTech",
+  company: "Oxymai (PVT) LTD",
+  description:
+    "A full-stack Chrome Extension that lets users save any word from any webpage into organized folders, with real-time DOM word highlighting, auto-translation, calendar learning history, and a global leaderboard — powered by Firebase and React 19.",
+  image: "/images/vocabverse/p1.png",
+  technologies: ["React 19", "Vite", "Firebase", "Chrome MV3", "Google Translate API", "Tailwind CSS"],
+  liveUrl: "https://example.com",
+  githubUrl: "https://github.com/example",
+  featured: false,
+  color: "from-cyan-400 to-blue-500",
+},
+
     {
       id: 5,
       title: "Fitness Tracking App",
@@ -107,19 +112,69 @@ export default function ProjectsSection() {
       featured: false,
       color: "from-yellow-400 to-amber-400",
     },
-    {
-      id: 6,
-      title: "Restaurant Booking System",
-      category: "Web App",
-      description:
-        "Online reservation system for restaurants with menu management, booking calendar, and customer reviews.",
-      image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-      technologies: ["Next.js", "PostgreSQL", "Prisma", "WebSocket"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-      featured: false,
-      color: "from-indigo-400 to-purple-400",
-    },
+   {
+  id: 6,
+  title: "Envio - Envato Bulk Video Generator",
+  category: "Chrome Extension / Content Automation",
+  description:
+    "A production-ready Chrome Extension that automates Envato VideoGen to generate hundreds of AI videos in bulk, auto-download them, and scale content production — no manual clicking required. Trusted by 500+ Envato stock contributors.",
+  image: "/images/envio/p1.png",
+  technologies: [
+    "React 19",
+    "Vite",
+    "Tailwind CSS 4",
+    "Framer Motion",
+    "AOS",
+    "Chrome Extension MV3",
+    "React Router DOM",
+    "react-icons",
+    "Lucide React",
+    "Firebase Hosting",
+  ],
+  liveUrl: "https://chromewebstore.google.com/detail/envio-bulk-video-generato/gfiokclkcjplfodojgegbnfdoicpphip",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-lime-400 to-green-500",
+},
+{
+  id: 7,
+  title: "Autopik - Bulk AI Image Generator",
+  category: "Chrome Extension / Automation",
+  description:
+    "A production-grade Chrome Extension (MV3) that automates Freepik Pikaso's AI image generation — bulk-generate hundreds of images from CSV or manual prompts, auto-download them instantly, and scale creative workflows 10x faster. Launched on Product Hunt with 5,000+ active users.",
+  image: "/images/autopik/p1.png",
+  technologies: ["React 19", "Vite", "TailwindCSS 4", "Framer Motion", "Chrome Extension MV3", "AOS", "React Router DOM"],
+  liveUrl: "https://chromewebstore.google.com/detail/autopik-bulk-ai-image-gen/begmceaedadildimpkndmbadgebigpmi",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-blue-500 to-cyan-400",
+},
+
+{
+  id: 8,
+  title: "ImageFX Automator - Product Landing Page",
+  category: "Landing Page",
+  description:
+    "Full-featured SaaS landing page for a live Chrome Extension product. Built with React 19 + Vite, featuring scroll-triggered AOS animations, a before/after workflow comparison panel, auto-scrolling AI image gallery, testimonials carousel, FAQ accordion, and end-to-end SEO implementation. Deployed at imagefxautomator.com.",
+  image: "/images/imagefx/p1.png",
+  technologies: [
+    "React 19",
+    "Vite",
+    "Tailwind CSS v4",
+    "AOS Animations",
+    "Lucide React",
+    "Feather Icons",
+    "React Scroll",
+    "React Router DOM",
+    "Firebase Hosting",
+    "Flowbite",
+  ],
+  liveUrl: "https://imagefxautomator.com",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-indigo-400 to-purple-500",
+},
+
   ], []);
 
   const filteredProjects = useMemo(() => 
@@ -128,6 +183,17 @@ export default function ProjectsSection() {
       : projects.filter((project) => project.category === activeFilter),
     [activeFilter, projects]
   );
+
+  // Pagination Logic
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+
+  // Reset to page 1 when filter changes
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter]);
 
   return (
     <section
@@ -159,7 +225,7 @@ export default function ProjectsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-          {filteredProjects.map((project, index) => (
+          {currentProjects.map((project, index) => (
             <div
               key={project.id}
               onClick={() => handleProjectClick(project.id)}
@@ -245,6 +311,56 @@ export default function ProjectsSection() {
               </div>
             ))}
         </div>
+
+        {/* Minimalistic Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-16 flex items-center justify-center gap-8">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                currentPage === 1 ? "text-white/20 cursor-not-allowed" : "text-white/60 hover:text-white"
+              }`}
+            >
+              <ArrowUpRight className="w-4 h-4 rotate-[225deg]" />
+              Prev
+            </button>
+            
+            <div className="flex items-center gap-4">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`relative w-8 h-8 flex items-center justify-center text-xs font-bold transition-all ${
+                    currentPage === page 
+                      ? "text-blue-400" 
+                      : "text-white/30 hover:text-white"
+                  }`}
+                >
+                  {currentPage === page && (
+                    <motion.div 
+                      layoutId="activePage"
+                      className="absolute inset-0 border border-blue-400/30 rounded-full"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  {page}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                currentPage === totalPages ? "text-white/20 cursor-not-allowed" : "text-white/60 hover:text-white"
+              }`}
+            >
+              Next
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

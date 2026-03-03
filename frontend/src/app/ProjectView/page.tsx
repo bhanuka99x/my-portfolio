@@ -169,7 +169,7 @@ const projects = [
   // Adding placeholders for others to match ProjectsSection IDs
  {
   id: 3,
-  title: "Reframer — AI Video Resizer",
+  title: "Reframer - AI Video Resizer",
   category: "SaaS / AI Tool",
   status: "Live",
   description:
@@ -227,19 +227,91 @@ const projects = [
   ],
 },
 
-  {
-    id: 4,
-    title: "Creative Agency Portfolio",
-    category: "Portfolio",
-    description: "Stunning portfolio website for a creative agency with smooth animations and interactive elements.",
-    image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-    technologies: ["Next.js", "GSAP", "Three.js", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
-    color: "from-orange-400 to-red-400",
-    longDescription: "An award-worthy portfolio project showcasing high-end animations and interactive WebGL components. Designed to leave a lasting impression on visitors.",
-    features: ["Smooth GSAP animations", "Interactive Three.js elements", "Responsive design", "Dynamic case studies"]
-  },
+{
+  id: 4,
+  title: "VocabVerse - Smart Vocabulary Chrome Extension",
+  category: "Chrome Extension / EdTech",
+  // status: "Live",
+  description:
+    "A full-stack Chrome Extension that lets users save any word from any webpage into organized folders, with real-time DOM highlighting, auto-translation, calendar-based learning history, offline caching, and a competitive leaderboard — built with React 19, Firebase, and Chrome MV3.",
+  images: [
+    "/images/vocabverse/p1.png",
+    "/images/vocabverse/p2.png",
+    "/images/vocabverse/p3.png",
+    "/images/vocabverse/p4.png",
+    "/images/vocabverse/p5.png",
+  ],
+  technologies: [
+    "React 19",
+    "Vite",
+    "Firebase Auth",
+    "Firestore",
+    "Firebase Storage",
+    "Chrome Extension MV3",
+    "Google Translate API",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Lucide React",
+  ],
+  liveUrl: "https://example.com",
+  githubUrl: "https://github.com/example",
+  featured: false,
+  color: "from-cyan-400 to-blue-500",
+  longDescription:
+    "VocabVerse is a production-grade Chrome Extension and web app that transforms how users build vocabulary. Highlight any word on any website, right-click, and save it into named Firestore folders in one click — no copy-pasting, no tab switching. A background service worker (Manifest V3) captures the selected word along with its full sentence context by walking the DOM, then writes to both chrome.storage.local and Firestore simultaneously. The content script highlights every saved word across all visited pages in real time, showing a hover popup with the translated meaning. Built with React 19 + Vite, the extension and web app share the same Firebase Auth session. Features include calendar-based learning history, a global leaderboard, offline-first caching, auto logout, and a full user profile with Firebase Storage avatar uploads.",
+  features: [
+    {
+      title: "One-Click Word Capture via Chrome Context Menu",
+      description:
+        "Select any word on any webpage, right-click, pick a folder, and VocabVerse saves the word along with its sentence context and source URL — all in under a second. Folders in the context menu update in real time as users create or delete them.",
+      implementation:
+        "The background.js MV3 service worker registers chrome.contextMenus entries dynamically using onSnapshot on the user's Firestore folders collection — new folders appear in the right-click menu instantly without a browser restart. On click, chrome.scripting.executeScript injects getSentenceContext() into the active tab, which uses the Selection API and a regex sentence splitter to extract the surrounding sentence. The word, sentence, source URL, and folderId are written to chrome.storage.local first (offline resilience), then pushed to Firestore via addDoc with a serverTimestamp.",
+    },
+    {
+      title: "Real-Time Word Highlighting Across All Websites",
+      description:
+        "Every word ever saved is highlighted across all websites the user visits — turning passive browsing into active vocabulary reinforcement with zero manual effort. Hovering a highlighted word shows a live translation popup.",
+      implementation:
+        "content.js runs on every page via <all_urls> permission. On load it reads active_user_uid and user_words from chrome.storage.local and walks the DOM using recursive TreeWalker logic to find all text nodes matching saved words via a combined RegExp. Matches are wrapped in <mark class='vv-highlight'> elements. A chrome.storage.onChanged listener re-runs the highlight pass whenever words or settings change. Each mark has a mouseenter listener that calls the Google Translate proxy API (translate.googleapis.com) for a translation tooltip, with a debounced mouseleave to dismiss it.",
+    },
+    {
+      title: "Organized Folder System with Offline-First Caching",
+      description:
+        "Users create, rename, and delete vocabulary folders. Each card shows total words, learned count, and a progress bar. The extension stays fully functional offline — all Firestore reads are backed by a 1-hour chrome.storage cache.",
+      implementation:
+        "Foldersection.jsx uses chromeStorageGet/chromeStorageSet helper functions that transparently fall back to localStorage in dev environments. On mount, it checks a folders_cache_{uid} entry — if the cache timestamp is within 1 hour, data renders instantly from cache. An onSnapshot listener keeps Firestore data live. Add/rename/delete operations update both Firestore and the cache atomically. saveAllUserWords() flattens all folder words into user_words[uid] in chrome.storage — keeping the content script highlight list always in sync with folder state.",
+    },
+    {
+      title: "Auto-Translation with Google Translate API & Firestore Caching",
+      description:
+        "Words inside folders are automatically translated to the user's chosen language (Sinhala, Tamil, Spanish, German, and more). Translations are persisted in Firestore — no repeated API calls on subsequent views.",
+      implementation:
+        "FolderWordsView.jsx fires a Google Translate API v2 POST for each word that lacks a stored translation for the current target language. The language is read from chrome.storage.local (with localStorage fallback) and kept live via a chrome.storage.onChanged listener — changing the language in Settings instantly re-translates the current word list. Translated text and a translationLang code are written back to each word document in Firestore via updateDoc, so future loads use cached translations without any extra API calls.",
+    },
+    {
+      title: "Calendar Learning History with Month & Week Views",
+      description:
+        "A visual calendar shows exactly which words were saved on each day, with switchable month and week views. Clicking any day opens a popup showing all words saved that day, with translation and deletion support.",
+      implementation:
+        "Calendarsection.jsx fetches all folders and words from Firestore on first load, normalising both Firestore Timestamp and ISO string createdAt formats into a wordsByDate map keyed by YYYY-MM-DD. The map is cached in chrome.storage under calendarWords_{uid} with a 1-hour TTL. The month grid is computed purely client-side from a Date object — padding leading/trailing cells for proper day alignment. Popup.jsx supports inline translation via LibreTranslate and soft-deletes words from the calendar by updating both local state and the chrome.storage cache without a full re-fetch.",
+    },
+    {
+      title: "Global Leaderboard with All / Monthly / Yearly Filters",
+      description:
+        "A competitive leaderboard ranks all platform users by total saved words, with All-Time, Monthly, and Yearly time filters to keep motivation high at every stage of learning.",
+      implementation:
+        "LeaderBoard.jsx fetches the full users collection, then iterates each user's nested folders and words sub-collections, applying an isInFilter() date check on createdAt Firestore Timestamps per the selected time window. Results are sorted descending by totalWords and cached under leaderboard_cache_v1 in chrome.storage with a 60-minute TTL, preventing expensive multi-collection Firestore reads on every navigation. Rank 1/2/3 receive Crown and Medal icons (lucide-react); lower ranks show a numbered pill badge.",
+    },
+    {
+      title: "Firebase Auth, Auto-Logout Guard & Full Profile Management",
+      description:
+        "Users sign in via email/password or Google OAuth. A 15-minute inactivity auto-logout protects accounts. Users can update their display name, avatar (stored in Firebase Storage), and password from a dedicated profile page.",
+      implementation:
+        "Firebase Auth handles both email/password and Google sign-in (signInWithPopup). On login, the UID is written to chrome.storage as active_user_uid so the content script scopes word highlighting per user. AutoLogout.jsx attaches mousemove, keydown, and click listeners to reset a setTimeout — after 15 minutes of inactivity, auth.signOut() fires and the user is redirected to /login. UserProfile.jsx uploads avatars to Firebase Storage under users/{uid}/profile.jpg via uploadBytes/getDownloadURL, updating both Auth (updateProfile) and Firestore atomically. All dashboard routes are guarded by a ProtectedRoute HOC using onAuthStateChanged.",
+    },
+  ],
+},
+
   {
     id: 5,
     title: "Fitness Tracking App",
@@ -253,19 +325,246 @@ const projects = [
     longDescription: "A complete health and fitness companion that helps users track their physical activities and diet, providing visual feedback through interactive charts.",
     features: ["Workout logging", "Calorie counter", "Progress visualization", "Social sharing"]
   },
-  {
-    id: 6,
-    title: "Restaurant Booking System",
-    category: "Web App",
-    description: "Online reservation system for restaurants with menu management, booking calendar, and customer reviews.",
-    image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-    technologies: ["Next.js", "PostgreSQL", "Prisma", "WebSocket"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
-    color: "from-indigo-400 to-purple-400",
-    longDescription: "A sophisticated booking solution and management system for restaurants, allowing customers to book tables and browse menus in real-time.",
-    features: ["Real-time table tracking", "Automated email confirmations", "Staff management dashboard", "Online menu editing"]
-  }
+{
+  id: 6,
+  title: "Envio - Envato Bulk Video Generator",
+  category: "Chrome Extension / Content Automation",
+  description:
+    "A production-ready Chrome Extension that automates Envato VideoGen — generate hundreds of AI videos in bulk from text prompts, auto-download them locally, and scale stock content production effortlessly. Comes with a high-conversion marketing landing page built in React 19 + Vite, deployed on Firebase Hosting.",
+  images: [
+    "/images/envio/p1.png",
+    "/images/envio/p2.png",
+    "/images/envio/p3.png",
+    "/images/envio/p4.png",
+  ],
+  technologies: [
+    "React 19",
+    "Vite",
+    "Tailwind CSS 4",
+    "Framer Motion",
+    "AOS",
+    "Chrome Extension MV3",
+    "React Router DOM v7",
+    "react-icons",
+    "Lucide React",
+    "Firebase Hosting",
+    "Flowbite React",
+  ],
+  liveUrl: "https://chromewebstore.google.com/detail/envio-bulk-video-generato/gfiokclkcjplfodojgegbnfdoicpphip",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-lime-400 to-green-500",
+  longDescription:
+    "Envio is a production-grade Chrome Extension that eliminates the bottleneck of manual Envato VideoGen usage. Instead of generating one AI video at a time — which requires clicking through the same steps repeatedly — Envio injects automation directly into the Envato VideoGen interface through a Chrome Manifest V3 extension. Users paste a bulk list of prompts, configure generation settings (style, dimensions, output format), and hit 'Start'. The extension then automatically cycles through each prompt on the Envato VideoGen platform, triggers generation, waits for completion, and initiates the download — all without any user interaction. The extension is paired with a fully responsive marketing landing page built in React 19 + Vite (Tailwind CSS 4), featuring scroll-triggered animations via Framer Motion and AOS, a before/after comparison table, use-case video showcases, an accordion FAQ, and a live YouTube demo embed. The landing page is deployed on Firebase Hosting and ranks on Google via structured SEO with sitemap, robots.txt, and keyword-optimised copy. Listed on the Chrome Web Store and featured on Product Hunt.",
+  features: [
+    {
+      title: "Bulk Prompt Processing via Chrome Extension (MV3)",
+      description:
+        "Users submit a list of prompts through the extension popup. Envio processes them sequentially on the Envato VideoGen page — generating and downloading each video fully automatically. No repetitive clicking, no tab management.",
+      implementation:
+        "The MV3 service worker injects a content script into the Envato VideoGen tab using chrome.scripting.executeScript. The content script reads the queued prompt list from chrome.storage.local, fills the VideoGen prompt input programmatically via the DOM, triggers the generate action, then uses a MutationObserver to detect when the generated video element appears. On detection, it programmatically clicks the download button and fires chrome.storage.local.set to advance to the next prompt. A configurable delay between iterations prevents rate-limiting. The extension popup (React + Vite) provides the prompt list editor with add/remove/import-CSV controls and a progress indicator showing current prompt index.",
+    },
+    {
+      title: "Auto-Download on Generation Completion",
+      description:
+        "Every generated video is automatically saved to the user's local downloads folder the moment Envato VideoGen finishes rendering it — no manual download button clicks required. Supports sessions of hundreds of videos without supervision.",
+      implementation:
+        "The content script uses a MutationObserver targeting the VideoGen results container. When a video element with a valid src URL is detected, it creates a hidden <a> element with the download attribute and programmatically clicks it — triggering the browser's native download manager. The downloaded filename is prefixed with the prompt index and sanitised prompt text for easy organisation. If a download fails or the video src is missing after a timeout, the extension logs the failure to chrome.storage.local and proceeds to the next prompt, ensuring batch jobs don't silently stall.",
+    },
+    {
+      title: "High-Conversion Landing Page with Animated UI",
+      description:
+        "A fully-designed marketing site built in React 19 + Vite that showcases the extension with animated sections, a live demo video, use-case cards with looping video backgrounds, a before/after comparison table, and multiple CTAs that deep-link directly to the Chrome Web Store install page.",
+      implementation:
+        "The landing page uses Framer Motion for entrance animations (initial/animate with spring physics) and AOS for scroll-triggered fade-ins across all sections. The HeroSection renders a GIF demo of the extension in action with a stat grid (10K+ videos, 500+ creators). The Whychoose section displays AI-generated feature images with staggered fade-in via motion.div viewport detection. The BeforeAfter section renders a styled HTML table comparing Envio vs manual workflow across 10 dimensions (speed, automation, scalability, cost, etc). UseCases renders four looping background videos (seo.mp4, game.mp4, local.mp4, nft.mp4) inside 4:5 aspect-ratio cards. The FAQ uses AnimatePresence for smooth accordion expand/collapse with height transitions.",
+    },
+    {
+      title: "Product Hunt Launch & Chrome Web Store Listing",
+      description:
+        "Envio was publicly launched on Product Hunt and listed on the Chrome Web Store, making it discoverable by thousands of Envato creators and content automation enthusiasts globally.",
+      implementation:
+        "The HeroSection embeds the official Product Hunt featured badge via the api.producthunt.com embed image endpoint, linking to the product page. The landing page includes a direct Chrome Web Store CTA deep-linking to the extension install page (gfiokclkcjplfodojgegbnfdoicpphip). Firebase Hosting serves the landing page from a custom domain with fast global CDN delivery. The public/ directory includes a hand-crafted sitemap.xml with page, section, and article URLs, a robots.txt with Googlebot directives, and a verified google01bee0396ba526a8.html for Google Search Console ownership.",
+    },
+    {
+      title: "SEO-Optimised Landing Page with Keyword Architecture",
+      description:
+        "The landing page is built to rank for high-intent keywords like 'Envato bulk video generator', 'Chrome extension for Envato automation', and 'mass AI video generation'. All on-page SEO signals are manually crafted — not auto-generated.",
+      implementation:
+        "The index.html includes a fully structured <head> with a descriptive <title>, meta description targeting key intent phrases, Open Graph tags for social sharing, and Twitter card meta. The KEYWORD_RESEARCH.md and SEO_CHECKLIST.md files (tracked in the repo) document the keyword strategy, target queries, and implementation status. Section IDs (herosection, features, Howitworks, benefits, difference, usecase, faq) match the sitemap URL fragment identifiers for internal deep-linking. The Footer renders keyword-rich anchor text links (e.g. 'Bulk AI video Generator', 'Mass Envato Automation', 'Envato Automate Guide') to boost topical relevance signals.",
+    },
+    {
+      title: "Responsive Design with Mobile-First Architecture",
+      description:
+        "Every section of the landing page — from the hero to the footer — is fully responsive and tested across mobile, tablet, and desktop viewports. The mobile nav collapses into a smooth slide-down drawer with a dark overlay.",
+      implementation:
+        "All layouts use Tailwind CSS 4 responsive breakpoint utilities (sm:, md:, lg:) with Flexbox and CSS Grid. The Navbar renders a hamburger button on small screens that toggles a max-h-0 → max-h-screen transition on the mobile drawer div, driven by a React useState hook. The HeroSection stat grid switches from 1-column on mobile to 4-column on md+. The Benefits section renders a 2-column xl: grid on large screens and a stacked layout on mobile. All images use responsive max-w-[] constraints with mx-auto and object-contain to prevent layout shifts.",
+    },
+  ],
+},
+{
+  id: 7,
+  title: "Autopik - Bulk AI Image Generator Chrome Extension",
+  category: "Chrome Extension / AI Automation",
+  description:
+    "A production-grade Chrome Extension that automates Freepik Pikaso's AI image generation pipeline — bulk-generate hundreds of images from CSV, manual prompts, or AI-generated prompts, then auto-download them instantly. Launched on Product Hunt, with 10,000+ images generated, 5,000+ active users, and a 4.9 Chrome Web Store rating.",
+  images: [
+    "/images/autopik/p1.png",
+    "/images/autopik/p2.png",
+    "/images/autopik/p3.png",
+    "/images/autopik/p4.png",
+    "/images/autopik/p5.png",
+  ],
+  technologies: [
+    "React 19",
+    "Vite",
+    "TailwindCSS 4",
+    "Framer Motion",
+    "AOS",
+    "Chrome Extension MV3",
+    "React Router DOM",
+    "Lucide React",
+    "React Icons",
+    "SEO Structured Data",
+    "Firebase Hosting",
+  ],
+  liveUrl: "https://chromewebstore.google.com/detail/autopik-bulk-ai-image-gen/begmceaedadildimpkndmbadgebigpmi",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-blue-500 to-cyan-400",
+  longDescription:
+    "Autopik is a Chrome Extension (Manifest V3) and production-deployed landing page that fully automates the Freepik Pikaso AI image generation workflow. Instead of manually entering prompts one-by-one, Autopik lets users upload a CSV file with hundreds of prompts, type them manually, or let built-in AI generate them — then auto-feeds each prompt into Freepik Pikaso, triggers generation, and auto-downloads every output to the user's device. The landing page itself is engineered for SEO and conversion — built with React 19 + Vite + TailwindCSS 4, featuring JSON-LD structured data, AOS scroll animations, Framer Motion hero animations, animated stat counters, a YouTube demo embed, a live comparison table, FAQ accordion, and a fully responsive Navbar with hash-based scroll navigation. The product launched on Product Hunt and is live on the Chrome Web Store with 5,000+ active users and a 4.9 star rating.",
+  features: [
+    {
+      title: "Three Prompt Input Modes — CSV, Manual & AI-Generated",
+      description:
+        "Users choose how to feed prompts: upload a CSV file (bulk rows processed automatically), type prompts manually into the extension's input field, or let Autopik's built-in AI generate high-converting prompts. All three modes feed the Freepik Pikaso image engine without manual clicks.",
+      implementation:
+        "The extension's content script injects into the Freepik Pikaso tab and programmatically populates the prompt input, triggers the generate button via DOM events, and waits for image generation to complete before proceeding to the next prompt. CSV parsing is handled client-side using the FileReader API — each row becomes a queued prompt. The AI prompt generator calls an external LLM endpoint and populates the queue automatically. A queue controller manages sequential processing with configurable delays to avoid rate-limiting, writing state to chrome.storage.local for persistence across popup open/close cycles.",
+    },
+    {
+      title: "Fully Automated Bulk Image Generation & Auto-Download",
+      description:
+        "Once started, Autopik runs fully hands-free — it generates images from every prompt in the queue and auto-downloads each result to the user's local device immediately after generation completes. No clicking, no waiting, no manual saves.",
+      implementation:
+        "A MV3 background service worker coordinates the automation pipeline: it injects the content script into the active Freepik Pikaso tab via chrome.scripting.executeScript, which uses MutationObserver to detect when an image generation finishes by watching for the download button to appear in the DOM. On detection, it programmatically clicks the download button, triggers the browser's native download via the chrome.downloads API, then signals the service worker to advance to the next prompt. Progress state (current index, total, status) is written to chrome.storage.local and reflected live in the extension popup.",
+    },
+    {
+      title: "SEO-Optimized, High-Conversion Marketing Landing Page",
+      description:
+        "The Autopik landing page is engineered for organic discovery and maximum conversion — structured data, animated counters, comparison table, YouTube demo, FAQ accordion, and a sticky navbar — all built to rank for 'bulk AI image generator' and 'Freepik automation' keywords.",
+      implementation:
+        "The landing page uses a dedicated SEOStructuredData.jsx component that injects JSON-LD SoftwareApplication schema directly into the document head at render time, including name, description, category, and Chrome Web Store URL — giving Google rich snippet eligibility. An AOS (Animate On Scroll) library handles scroll-triggered reveals for all section elements, initialized globally in component useEffects. Framer Motion powers hero entrance animations (x-axis slide-ins per headline line, opacity transitions) and the animated stat counters in the hero use setInterval-driven state updates converging to final values (10,000+ images, 5,000+ users, 4.9 rating). The sticky Navbar with hash-based scroll navigation uses react-router-dom's useLocation + getElementById scrollIntoView for smooth section jumping from any page.",
+    },
+    {
+      title: "Live Comparison Table — Manual vs Autopik",
+      description:
+        "A data-driven side-by-side comparison table shows exactly how Autopik outperforms manual Freepik usage across 6 key metrics — image generation speed (10x), bulk processing, download method, time for 100 images (30 min vs 5+ hrs), workflow type, and user interaction — culminating in a 'Save 90% of your time' result callout.",
+      implementation:
+        "AutopikComparison.jsx renders a 3-column grid for each comparison row from a comparisonData array. Each row is animated with Framer Motion's whileInView + IntersectionObserver for staggered scroll reveals (delay: idx * 0.1). The result footer uses a CSS @keyframes shimmer animation defined inline. AOS data attributes supplement with custom durations on header elements.",
+    },
+    {
+      title: "Who Can Benefit — Audience Segmentation with Use Cases",
+      description:
+        "The landing page segments Autopik's target audiences into 5 groups — Stock Media Contributors, Designers, Social Media Creators, Marketing Teams, and E-commerce Owners — each with tailored benefits, plus a 4-panel 'Unlimited Possibilities' use case section for Bloggers, Agencies, Artists, and Educators.",
+      implementation:
+        "BenefitCard.jsx maps over a benefits array and animates each card in with Framer Motion's whileInView. Each card renders its benefit bullets with staggered x-axis Framer Motion reveals. UseCaseCard.jsx uses alternating left/right x-offset entrance animations (index % 2 === 0 ? -50 : 50) for a dynamic scroll experience. Both sections use TailwindCSS 4 responsive grid layouts (md:grid-cols-2 lg:grid-cols-5) for fluid multi-column presentation.",
+    },
+    {
+      title: "Product Hunt Launch & Chrome Web Store Integration",
+      description:
+        "Autopik was commercially launched on Product Hunt with an official badge embed in the hero section. The Chrome Web Store listing drives real installs, and the hero stat counters (10,000+ images, 5,000+ users, 4.9 rating) reflect live traction — demonstrating real-world adoption and product-market fit.",
+      implementation:
+        "The Product Hunt badge is rendered as a standard <img> tag with the official Product Hunt embed URL, wrapped in an <a> linking to the product listing — immediately establishing social proof in the first viewport. The Chrome Web Store 'Install Now' CTA button appears in the Navbar, Hero, WhyChoose section, How It Works section, and Use Cases section — creating a persistent high-density CTA presence throughout the scroll journey. The extension's Chrome Web Store URL with UTM tracking parameters is consistently used across all CTA links for attribution tracking.",
+    },
+  ],
+},
+
+{
+  id: 8,
+  title: "ImageFX Automator - SaaS Product Landing Page",
+  category: "Landing Page / SaaS",
+  description:
+    "A conversion-focused SaaS landing page for a live Chrome Extension product — built with React 19 + Vite. Features scroll-triggered animations, an interactive before/after workflow comparison, auto-scrolling AI image gallery, testimonials slider, FAQ accordion, and production-grade SEO. Deployed on Firebase at imagefxautomator.com and listed on Product Hunt.",
+  images: [
+    "/images/imagefx/p1.png",
+    "/images/imagefx/p2.png",
+    "/images/imagefx/p3.png",
+    "/images/imagefx/p4.png",
+    "/images/imagefx/p5.png",
+  ],
+  technologies: [
+    "React 19",
+    "Vite",
+    "Tailwind CSS v4",
+    "AOS Animations",
+    "Lucide React",
+    "Feather Icons",
+    "React Scroll",
+    "React Router DOM",
+    "Firebase Hosting",
+    "Flowbite",
+    "React Icons",
+  ],
+  liveUrl: "https://imagefxautomator.com",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-indigo-400 to-purple-500",
+  longDescription:
+    "ImageFX Automator Landing Page is a production-deployed SaaS marketing site for a real, monetized Chrome Extension. The site is structured as a React 19 + Vite SPA with a dark glassmorphism aesthetic, Tailwind CSS v4 utility styling, and scroll-triggered AOS animations throughout. The hero section features a parallax mouse-tracking gradient background with animated entry transitions and live Chrome Web Store stats (10K+ images generated, 50+ users, 5-star rating). A 5-step 'How It Works' flow embeds a YouTube demo video with a custom glowing border effect. The before/after comparison panel uses an IntersectionObserver to animate side-by-side workflow cards showing manual vs. automated productivity. A continuous auto-scrolling image gallery showcases AI-generated outputs. The testimonials section is a manual slider supporting 3-up card display with dot navigation. The FAQ accordion uses animated max-height transitions for smooth open/close. Every page section is reachable via smooth-scroll navigation links. SEO is implemented end-to-end: HTML meta tags, Open Graph, Twitter Card, Schema.org JSON-LD SoftwareApplication markup, sitemap.xml, robots.txt, and a canonical URL. The site is deployed on Firebase Hosting with a custom domain and Google Search Console verified.",
+  features: [
+    {
+      title: "Animated Hero Section with Live Product Stats",
+      description:
+        "Full-screen hero with a mouse-tracking parallax gradient, animated headline entrance, dual CTA buttons (Chrome Web Store install + smooth-scroll demo), a Product Hunt follow badge, and live stat counters (10K+ images, 50+ users, 5★ Chrome rating).",
+      implementation:
+        "BodyContent.jsx uses useState for visibility and mousePosition. A useEffect adds a mousemove listener that updates mousePosition on every frame, which drives a CSS gradient overlay via inline style. Entry animations are CSS transition classes toggled by an isVisible flag set on mount. Stats are static values from the Chrome Web Store review count and Google Analytics data, rendered as a flex row below the CTA buttons.",
+    },
+    {
+      title: "Before/After Workflow Comparison Panel",
+      description:
+        "Side-by-side cards compare the old manual ImageFX workflow (1 hour → 100 images, rated SLOW) against the automated workflow (2 hours → 1000 images, rated ULTRA FAST). On mobile, a toggle switch lets users flip between the two views.",
+      implementation:
+        "BeforeAfterSection.jsx uses an IntersectionObserver (threshold: 0.1) to trigger entry animations via a CSS scale + opacity transition. The ComparisonCard sub-component is reused for both panels, receiving type ('before'/'after') and data as props. Desktop layout uses CSS Grid 2-col with an absolutely-positioned animated arrow between the cards. Mobile layout conditionally renders the active card based on an activeTab state driven by two toggle buttons.",
+    },
+    {
+      title: "Auto-Scrolling AI Image Gallery",
+      description:
+        "A full-width, seamless looping image strip showcasing AI-generated stock images produced by the extension. The scroll pauses on hover to let users inspect individual images.",
+      implementation:
+        "Slider.jsx renders a deduplicated array of 12 images (originals + duplicates) inside a flex container. The infinite scroll is driven by a @keyframes streamScroll CSS animation defined in slider.css, applied to the flex wrapper via a Tailwind custom class. The hover:pause-animation class sets animation-play-state: paused on the wrapper element.",
+    },
+    {
+      title: "YouTube Demo Embed with Glowing Border Effect",
+      description:
+        "The 'How It Works' section centres a YouTube tutorial video inside a glassmorphism card with a pulsing purple-to-blue gradient glow border that intensifies on hover.",
+      implementation:
+        "Howitworks.jsx renders a 16:9 responsive iframe (padding-bottom: 56.25% trick) inside a relative container. The glow is an absolutely-positioned sibling div with a blur filter and a gradient background, opacity 75 at rest and opacity 100 on group-hover via Tailwind group class. AOS data attributes handle the zoom-in scroll entrance animation.",
+    },
+    {
+      title: "Testimonials Carousel with Dot Navigation",
+      description:
+        "A 3-up sliding testimonial carousel with 5 real-world user reviews, left/right chevron controls, and dynamic dot indicators. Each card features a star rating, blockquote, user avatar, role, and a category icon.",
+      implementation:
+        "WhatUsersSaySection.jsx tracks currentSlide state and maxSlide (testimonials.length - slidesToShow). The slider track uses a CSS transform: translateX() driven by currentSlide, calculated as -(currentSlide * (100 / slidesToShow))%. Width of the track is set to (testimonials.length / slidesToShow * 100)%. Dot indicators map over maxSlide + 1 entries, applying gradient-width expansion to the active dot. An IntersectionObserver on the slider wrapper triggers the fade-in entry animation.",
+    },
+    {
+      title: "Full-Stack SEO Implementation",
+      description:
+        "End-to-end SEO covering HTML meta tags, Open Graph and Twitter Card sharing metadata, Schema.org JSON-LD SoftwareApplication structured data, a sitemap.xml, robots.txt, canonical URL, Google Search Console HTML file verification, and a visually-hidden SEO content component for keyword density.",
+      implementation:
+        "index.html carries all static meta, OG, Twitter, and JSON-LD tags. SEOContent.jsx renders a sr-only div with h2/h3/p/ul content targeting long-tail keywords (bulk AI image generation, Google Labs ImageFX automation, stock contributor software). sitemap.xml and robots.txt are in /public. The Google Search Console verification file (google01bee0396ba526a8.html) is also in /public. Firebase Hosting serves all static assets with the custom domain imagefxautomator.com.",
+    },
+    {
+      title: "Smooth-Scroll Navigation & Accessible FAQ Accordion",
+      description:
+        "A sticky navbar with react-scroll smooth-scroll links to all sections (Features, How It Works, Who Can Use, FAQ), plus a fully animated FAQ accordion using max-height CSS transitions for smooth open/close without layout shift.",
+      implementation:
+        "Navigation.jsx uses the Link component from react-scroll with smooth={true} and duration={800}. FAQSection.jsx manages two Sets in state — activeItems for open panels and visibleItems for scroll-entrance animations. Toggling an FAQ item calls toggleItem() which adds/removes the index from activeItems. The answer panel uses max-h-0/max-h-96 + opacity Tailwind classes with a 500ms CSS transition, avoiding JavaScript-driven height calculations entirely.",
+    },
+  ],
+},
+
+
 ];
 
 function ProjectContent() {
