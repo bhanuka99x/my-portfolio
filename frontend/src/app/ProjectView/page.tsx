@@ -114,6 +114,7 @@ const projects = [
   id: 2,
   title: "AI Background Remover",
   category: "SaaS / AI Tool",
+  status: "Ongoing Development",
   description:
     "Full-stack AI-powered background removal platform with real-time WebSocket processing, credit-based usage system, bulk folder management, and secure Firebase authentication.",
   images: [
@@ -166,20 +167,66 @@ const projects = [
 },
 
   // Adding placeholders for others to match ProjectsSection IDs
-  {
-    id: 3,
-    title: "Real Estate Portal",
-    category: "Web App",
-    description: "Property listing platform with advanced search, virtual tours, and real-time chat for buyers and sellers.",
-    image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-    technologies: ["Next.js", "Supabase", "Tailwind", "Framer Motion"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
-    featured: false,
-    color: "from-green-400 to-emerald-400",
-    longDescription: "A specialized real estate platform focusing on user experience. It provides high-quality virtual tours and seamless communication between agents and potential buyers.",
-    features: ["3D Virtual Tours", "Map-based search", "Real-time chat", "Document sharing"]
-  },
+ {
+  id: 3,
+  title: "Reframer — AI Video Resizer",
+  category: "SaaS / AI Tool",
+  status: "Live",
+  description:
+    "AI-powered video reframing SaaS with token-based monetization, multi-aspect-ratio output, Chrome extension support, Firebase Auth, and a real-time conversion dashboard.",
+  images: [
+    "/images/reframer/p1.png",
+    "/images/reframer/p2.png",
+    "/images/reframer/p3.png",
+    "/images/reframer/p4.png",
+    "/images/reframer/p5.png",
+  ],
+  technologies: ["React 19", "Vite", "Node.js", "Express", "Firebase", "Replicate AI", "Framer Motion", "Tailwind CSS"],
+  liveUrl: "https://example.com",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-violet-500 to-indigo-500",
+  longDescription:
+    "Reframer is a full-stack AI SaaS platform that intelligently reframes videos for any social media format — TikTok (9:16), YouTube (16:9), Instagram (1:1), Cinematic (21:9), and 3 more — using Luma AI's 'reframe-video' model via the Replicate API. The platform ships as both a web app and a Chrome Extension (Manifest V3) with side-panel support, sharing the same backend. The backend is a RESTful Express API secured with Firebase Admin JWT verification, per-route rate limiting, and Multer file validation (500MB cap, MIME-type checked). Users manage their account through a full profile dashboard with avatar upload to Firebase Storage, email change with verification flow, password reset, and plan management. Files are stored securely and auto-deleted after 7 days via signed URL expiry.",
+  features: [
+    {
+      title: "AI-Powered Video Reframing via Luma AI + Replicate",
+      description:
+        "Users upload a video, pick an aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9, 9:21, 21:9), and optionally write an AI prompt — the platform intelligently reframes the shot with subject tracking, zero manual cropping.",
+      implementation:
+        "The video is uploaded to Firebase Storage first, generating a signed URL. That URL is sent to the Luma 'reframe-video' model through the Replicate SDK. The controller handles the full pipeline: upload original → deduct tokens → call Replicate → download processed output → re-upload processed video to Firebase Storage → update Firestore metadata with both URLs and a 'processed' status flag. Tokens are automatically refunded server-side in the catch block if Replicate fails, preventing silent credit losses.",
+    },
+    {
+      title: "Token-Based Usage System with Failure Refunds",
+      description:
+        "Each video conversion costs 5 tokens. The system blocks conversions on insufficient balance and automatically restores tokens if AI processing fails — no silent credit losses.",
+      implementation:
+        "Token balance is pre-checked client-side from Firestore before hitting the API. On the server, tokens are deducted via deductTokens() only after a successful Firebase Storage upload. If the Replicate processing step throws, an addTokens() call in the catch block restores the exact deducted amount. The client also redirects to the pricing section if the user runs out — prompting an upsell without breaking the flow.",
+    },
+    {
+      title: "Chrome Extension with Manifest V3 & Side Panel",
+      description:
+        "The full platform is also available as a Chrome Extension that opens in Chrome's native side panel — users can reframe videos directly from their browser without switching tabs.",
+      implementation:
+        "Built with Vite + React as a separate app in the /extention directory, sharing the same Firebase Auth and backend API. Uses Chrome Manifest V3 with a background.js service worker to handle extension lifecycle. CORS on the Express backend explicitly whitelists chrome-extension:// origins via a regex pattern. A custom build script copies manifest.json and background.js into the Vite dist output for direct Chrome loading.",
+    },
+    {
+      title: "Secure REST API with JWT Auth, Rate Limiting & File Validation",
+      description:
+        "Every endpoint is protected by Firebase Admin JWT verification. Rate limiting shields against abuse, and every uploaded file is validated for format, MIME type, and size before processing begins.",
+      implementation:
+        "A custom authMiddleware extracts Bearer tokens and calls admin.auth().verifyIdToken() — the decoded UID scopes all Firestore and Storage operations per user. Two rate limiters are applied: GeneralRequestLimiter (100 req / 5s) and historyGetLimiter (5 req / min). Multer validates uploads with an allowedMimetypes whitelist (MP4/AVI/MOV/MKV/WEBM) and enforces a strict 500MB size cap before any data is written.",
+    },
+    {
+      title: "Full User Profile System with Secure Email Change Flow",
+      description:
+        "Users can update their display name, profile photo, and email address. Email changes are protected by a verification flow — the new address must be confirmed before it takes effect.",
+      implementation:
+        "Profile photos are uploaded directly to Firebase Storage under reframer-profile-images/{uid} using uploadBytes, with getDownloadURL providing the accessible URL. Name and image changes update both Firebase Auth (updateProfile) and Firestore simultaneously. Email changes use verifyBeforeUpdateEmail() from Firebase Auth — the new email is stored as pendingEmail in Firestore until the link is clicked. Error cases (requires-recent-login, email-already-in-use) are caught and surfaced to the user via a custom alert context.",
+    },
+  ],
+},
+
   {
     id: 4,
     title: "Creative Agency Portfolio",
@@ -294,15 +341,24 @@ function ProjectContent() {
           {/* Header Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-end">
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="px-3 py-1 bg-blue-400/10 border border-blue-400/20 text-blue-400 text-xs font-bold rounded-full uppercase tracking-widest">
-                  {project.category}
-                </span>
-                {project.company && (
-                   <span className="flex items-center gap-1.5 text-white/40 text-xs font-medium uppercase tracking-widest">
-                    <Building2 className="w-3.5 h-3.5" />
-                    {project.company}
-                   </span>
+              <div className="flex flex-col gap-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <span className="px-3 py-1 bg-blue-400/10 border border-blue-400/20 text-blue-400 text-xs font-bold rounded-full uppercase tracking-widest">
+                    {project.category}
+                  </span>
+                  {project.company && (
+                    <span className="flex items-center gap-1.5 text-white/40 text-xs font-medium uppercase tracking-widest">
+                      <Building2 className="w-3.5 h-3.5" />
+                      {project.company}
+                    </span>
+                  )}
+                </div>
+                {(project as any).status && (
+                  <div>
+                    <span className="px-3 py-1  border-red-500/20 text-red-500 text-xs font-bold rounded-full uppercase tracking-widest animate-pulse">
+                      {(project as any).status}
+                    </span>
+                  </div>
                 )}
               </div>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">

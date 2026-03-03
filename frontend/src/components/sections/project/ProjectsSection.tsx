@@ -53,9 +53,11 @@ export default function ProjectsSection() {
   id: 2,
   title: "AI Background Remover",
   category: "SaaS / AI Tool",
+  company: "Oxymai (PVT) LTD",
+  status: "Ongoing Development",
   description:
     "Full-stack AI-powered background removal platform with real-time WebSocket processing, credit-based usage system, bulk folder management, and secure Firebase authentication.",
-  image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
+  image: "/images/bgRemove/p2.png",
   technologies: ["React", "Node.js", "Firebase", "Socket.io", "Replicate AI"],
   liveUrl: "https://example.com",
   githubUrl: "https://github.com/example",
@@ -63,19 +65,22 @@ export default function ProjectsSection() {
   color: "from-blue-400 to-indigo-500",
 },
 
-    {
-      id: 3,
-      title: "Real Estate Portal",
-      category: "Web App",
-      description:
-        "Property listing platform with advanced search, virtual tours, and real-time chat for buyers and sellers.",
-      image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-      technologies: ["Next.js", "Supabase", "Tailwind", "Framer Motion"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-      featured: false,
-      color: "from-green-400 to-emerald-400",
-    },
+ {
+  id: 3,
+  title: "Reframer - AI Video Resizer",
+  category: "SaaS / AI Tool",
+  company: "Oxymai (PVT) LTD",
+  description:
+    "AI-powered video reframing SaaS with token-based monetization, multi-aspect-ratio output, Chrome extension support, Firebase Auth, and a real-time conversion dashboard.",
+  image: "/images/reframer/p1.png",
+  technologies: ["React 19", "Vite", "Node.js", "Express", "Firebase", "Replicate AI", "Framer Motion", "Tailwind CSS"],
+  liveUrl: "https://example.com",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-violet-500 to-indigo-500",
+},
+
+
     {
       id: 4,
       title: "Creative Agency Portfolio",
@@ -179,21 +184,30 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className="p-6 relative flex flex-col grow overflow-hidden">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-3 py-1 bg-blue-400/20 backdrop-blur-sm border border-blue-400/30 text-blue-400 text-xs font-bold rounded-full">
-                      {project.category}
-                    </span>
-                    {(project as any).company && (
-                      <div className="flex items-center gap-1.5 text-gray-400">
-                        <Building2 className="w-3.5 h-3.5" />
-                        <span className="text-[10px] uppercase tracking-wider font-bold">
-                          {(project as any).company}
+                  <div className="flex flex-col gap-3 mb-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 bg-blue-400/20 backdrop-blur-sm  border-blue-400/30 text-blue-400 text-xs  rounded-full">
+                        {project.category}
+                      </span>
+                      {(project as any).company && (
+                        <div className="flex items-center gap-1.5 text-gray-400">
+                          <Building2 className="w-3.5 h-3.5" />
+                          <span className="text-[10px] uppercase tracking-wider font-bold">
+                            {(project as any).company}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    {(project as any).status && (
+                      <div>
+                        <span className="px-2 py-0.5  border-red-500/30 text-red-500 text-[10px] font-bold rounded-full animate-pulse">
+                          {(project as any).status}
                         </span>
                       </div>
                     )}
                   </div>
 
-                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 mb-3 line-clamp-1">
+                  <h3 className="text-xl  text-white group-hover:text-blue-400 transition-colors duration-300 mb-3 line-clamp-1">
                     {project.title}
                   </h3>
 
