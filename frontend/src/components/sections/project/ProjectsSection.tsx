@@ -49,19 +49,20 @@ export default function ProjectsSection() {
   color: "from-blue-400 to-cyan-400",
 },
 
-    {
-      id: 2,
-      title: "E-Commerce Marketplace",
-      category: "E-Commerce",
-      description:
-        "Full-featured e-commerce platform with payment integration, inventory management, and admin dashboard.",
-      image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redis"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-      featured: true,
-      color: "from-purple-400 to-pink-400",
-    },
+   {
+  id: 2,
+  title: "AI Background Remover",
+  category: "SaaS / AI Tool",
+  description:
+    "Full-stack AI-powered background removal platform with real-time WebSocket processing, credit-based usage system, bulk folder management, and secure Firebase authentication.",
+  image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
+  technologies: ["React", "Node.js", "Firebase", "Socket.io", "Replicate AI"],
+  liveUrl: "https://example.com",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-blue-400 to-indigo-500",
+},
+
     {
       id: 3,
       title: "Real Estate Portal",

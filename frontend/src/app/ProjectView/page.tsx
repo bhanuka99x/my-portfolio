@@ -111,31 +111,60 @@ const projects = [
 },
 
   {
-    id: 2,
-    title: "E-Commerce Marketplace",
-    category: "E-Commerce",
-    description:
-      "Full-featured e-commerce platform with payment integration, inventory management, and admin dashboard.",
-    image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redis"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
-    featured: true,
-    color: "from-purple-400 to-pink-400",
-    longDescription: "A scalable e-commerce solution designed for high-traffic marketplaces. It includes a custom-built inventory management system, multi-vendor support, and integrated payment processing via Stripe. The frontend is optimized for conversion with a clean, responsive design.",
-    features: [
-      {
-        title: "Secure payment processing",
-        description: "A robust checkout system that handles multiple currencies and payment methods securely.",
-        implementation: "Integrated Stripe Elements with webhooks to handle asynchronous payment events and inventory updates."
-      },
-      {
-        title: "Advanced search & filtering",
-        description: "Allows customers to find products instantly across thousands of listings with multiple criteria.",
-        implementation: "Utilized MongoDB Atlas Search with custom indexing to provide fast, fuzzy search capabilities."
-      }
-    ]
-  },
+  id: 2,
+  title: "AI Background Remover",
+  category: "SaaS / AI Tool",
+  description:
+    "Full-stack AI-powered background removal platform with real-time WebSocket processing, credit-based usage system, bulk folder management, and secure Firebase authentication.",
+  images: [
+    "/images/bgRemove/p1.png",
+    "/images/bgRemove/p2.png",
+    "/images/bgRemove/p3.png",
+    "/images/bgRemove/p4.png",
+    "/images/bgRemove/p5.png",
+    "/images/bgRemove/p6.png",
+    "/images/bgRemove/p7.png",
+    "/images/bgRemove/p8.png"
+  ],
+  technologies: ["React 19", "Node.js", "Firebase", "Socket.io", "Replicate AI", "Tailwind CSS", "Vite"],
+  liveUrl: "https://example.com",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-blue-400 to-indigo-500",
+  longDescription:
+    "A production-ready SaaS platform that leverages the Replicate AI API to remove image backgrounds automatically. The system supports both single-image and bulk processing through a smart folder management system. A real-time WebSocket layer (Socket.io) delivers live progress updates to clients during AI processing. The entire platform is secured with Firebase Authentication using JWT verification, per-user rate limiting, AES-256-GCM encrypted local storage, and Firestore atomic credit transactions to prevent double-spending. The frontend is built with React 19 + Vite with a clean, responsive Tailwind design.",
+  features: [
+    {
+      title: "Real-Time AI Processing with WebSocket",
+      description:
+        "Users see live, second-by-second progress updates as the AI removes image backgrounds — no polling, no page refresh.",
+      implementation:
+        "Backend uses Socket.io rooms (per user and per folder) to emit granular events (bgRemove:start, bgRemove:progress, bgRemove:complete, bgRemove:error). The React frontend subscribes to these events via a singleton WebSocket service, automatically reconnecting up to 5 times on failure."
+    },
+    {
+      title: "Bulk Folder Processing with ZIP Export",
+      description:
+        "Users can upload up to 50 images at once into named folders, trigger AI processing in bulk, and download all results as a single ZIP file.",
+      implementation:
+        "Folder lifecycle is managed across Firestore documents with atomic status tracking (uploaded → queued → processing → completed). The Node.js backend uses the 'archiver' library to stream-compress processed images into a ZIP on demand, served directly without temporary disk storage."
+    },
+    {
+      title: "Credit-Based Usage System with Atomic Transactions",
+      description:
+        "Each processed image costs 2 credits. The system prevents race conditions, double-deductions, and negative balances even under concurrent requests.",
+      implementation:
+        "Implemented using Firestore transactions (db.runTransaction) that read and write credits atomically. If processing fails, credits are restored server-side. All credit operations are protected by Firebase Auth middleware that verifies JWT tokens and matches userId from route params to prevent impersonation."
+    },
+    {
+      title: "Multi-Layer Security Architecture",
+      description:
+        "The platform implements enterprise-grade security across transport, application, and data layers — protecting against XSS, CSRF, file injection, and API abuse.",
+      implementation:
+        "Security stack includes: Helmet.js with custom CSP headers, CORS whitelist via environment config, multi-tier rate limiting (express-rate-limit per endpoint type), MIME-type + extension + null-byte file validation via Multer, and AES-256-GCM encrypted localStorage for client-side data using the Web Crypto API with PBKDF2 key derivation."
+    }
+  ]
+},
+
   // Adding placeholders for others to match ProjectsSection IDs
   {
     id: 3,
