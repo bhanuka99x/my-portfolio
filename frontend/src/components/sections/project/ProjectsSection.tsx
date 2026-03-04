@@ -98,20 +98,33 @@ export default function ProjectsSection() {
   featured: false,
   color: "from-cyan-400 to-blue-500",
 },
-
-    {
-      id: 5,
-      title: "Fitness Tracking App",
-      category: "Web App",
-      description:
-        "Comprehensive fitness tracking application with workout plans, nutrition tracking, and progress analytics.",
-      image: "/images/beautiful-shot-snowy-mountain-sunset.jpg",
-      technologies: ["React", "Express", "MySQL", "Chart.js", "JWT"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-      featured: false,
-      color: "from-yellow-400 to-amber-400",
-    },
+{
+  id: 5,
+  title: "TabTask V2 - Personal Productivity Browser Extension",
+  category: "Chrome Extension / SaaS",
+  description:
+    "A full-stack personal productivity browser extension for Chrome and Firefox. Combines task management, Pomodoro timer, smart reminders, notes with folder organization, bookmark manager, and a productivity analytics dashboard — all synced in real time via Socket.io. Built with React 19 + Vite and a Node.js + Express + PostgreSQL backend, featuring Supabase Auth and a 4-tier freemium subscription model.",
+  image: "/images/taskbee/p1.png",
+  technologies: [
+    "React 19",
+    "Vite",
+    "Tailwind CSS v4",
+    "Framer Motion",
+    "Socket.io",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "Sequelize ORM",
+    "Supabase Auth",
+    "Radix UI",
+    "JWT",
+  ],
+  liveUrl: "https://chromewebstore.google.com/",
+  githubUrl: "https://github.com/example",
+  featured: true,
+  color: "from-violet-400 to-indigo-500",
+},
+ 
    {
   id: 6,
   title: "Envio - Envato Bulk Video Generator",
@@ -174,7 +187,6 @@ export default function ProjectsSection() {
   featured: true,
   color: "from-indigo-400 to-purple-500",
 },
-
   ], []);
 
   const filteredProjects = useMemo(() => 
