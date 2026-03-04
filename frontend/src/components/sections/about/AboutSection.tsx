@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Mail, X, Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, X, Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Icon, Gamepad2 } from 'lucide-react';
 import Image from 'next/image';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -102,7 +102,8 @@ const AboutSection = () => {
                 {[
                   { icon: <Github />, url: "https://github.com/bhanuka99x" },
                   { icon: <Linkedin />, url: "https://linkedin.com/in/bhanuka99x" },
-                  { icon: <Mail />, url: "mailto:hello@bhanuka.com" }
+                  { icon: <Mail />, url: "mailto:hello@bhanuka.com" },
+                  { icon: <Gamepad2 />, url: "https://guns.lol/bhanuka99x" }
                 ].map((social, i) => (
                   <a 
                     key={i}
