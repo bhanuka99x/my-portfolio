@@ -585,11 +585,11 @@ const projects = [
     description:
       "A conversion-focused SaaS landing page for a live Chrome Extension product — built with React 19 + Vite. Features scroll-triggered animations, an interactive before/after workflow comparison, auto-scrolling AI image gallery, testimonials slider, FAQ accordion, and production-grade SEO. Deployed on Firebase at imagefxautomator.com and listed on Product Hunt.",
     images: [
-      "/images/ImageFX/p1.png",
-      "/images/ImageFX/p2.png",
-      "/images/ImageFX/p3.png",
-      "/images/ImageFX/p4.png",
-      "/images/ImageFX/p5.png",
+      "/images/ImageFx/p1.png",
+      "/images/ImageFx/p2.png",
+      "/images/ImageFx/p3.png",
+      "/images/ImageFx/p4.png",
+      "/images/ImageFx/p5.png",
     ],
     technologies: [
       "React 19",
