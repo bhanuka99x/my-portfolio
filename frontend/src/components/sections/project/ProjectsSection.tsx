@@ -170,7 +170,7 @@ export default function ProjectsSection() {
   category: "Landing Page",
   description:
     "Full-featured SaaS landing page for a live Chrome Extension product. Built with React 19 + Vite, featuring scroll-triggered AOS animations, a before/after workflow comparison panel, auto-scrolling AI image gallery, testimonials carousel, FAQ accordion, and end-to-end SEO implementation. Deployed at imagefxautomator.com.",
-  image: "/images/ImageFX/p1.png",
+  image: "/images/ImageFx/p1.png",
   technologies: [
     "React 19",
     "Vite",
