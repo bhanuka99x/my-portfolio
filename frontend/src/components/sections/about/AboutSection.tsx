@@ -2,11 +2,23 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Mail, X, Download } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, X, Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
 import Image from 'next/image';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+
+// Configure PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`;
 
 const AboutSection = () => {
   const [showCV, setShowCV] = useState(false);
+  const [numPages, setNumPages] = useState<number | null>(null);
+  const [scale, setScale] = useState(1.0);
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
+    setNumPages(numPages);
+  }
 
   return (
     <section id="about" className="relative min-h-screen py-32 px-6 lg:px-20 overflow-hidden bg-black  selection:bg-white selection:text-black">
@@ -151,7 +163,7 @@ const AboutSection = () => {
                 </div>
                 <div className="flex gap-4">
                   <a 
-                    href="/cv/resume.pdf" 
+                    href="/cv/se-intern.pdf" 
                     download 
                     className="flex items-center gap-2 px-6 h-12 rounded-full bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-white/90 transition-colors"
                   >
@@ -167,12 +179,61 @@ const AboutSection = () => {
               </div>
 
               {/* CV Preview */}
-              <div className="flex-1 w-full bg-[#1e1e1e]">
-                <iframe 
-                  src="/cv/resume.pdf" 
-                  className="w-full h-full border-none"
-                  title="Resume"
-                />
+              <div className="flex-1 w-full bg-[#1e1e1e] overflow-y-auto flex flex-col items-center py-8 relative custom-scrollbar">
+                {/* PDF Controls */}
+                <div className="sticky top-4 z-50 flex items-center gap-4 bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 mb-8 shadow-2xl">
+                  <div className="flex items-center gap-4 border-r border-white/10 pr-4">
+                    <span className="text-white font-mono text-sm">
+                      {numPages || '--'} Pages
+                    </span>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => setScale(prev => Math.max(prev - 0.1, 0.3))}
+                      className="p-2 text-white/60 hover:text-white transition-colors"
+                    >
+                      <ZoomOut size={18} />
+                    </button>
+                    <span className="text-white font-mono text-sm min-w-12 text-center">
+                      {Math.round(scale * 100)}%
+                    </span>
+                    <button 
+                      onClick={() => setScale(prev => Math.min(prev + 0.2, 2.5))}
+                      className="p-2 text-white/60 hover:text-white transition-colors"
+                    >
+                      <ZoomIn size={18} />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-6 pb-20">
+                  <Document
+                    file="/cv/se-intern.pdf"
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    className="flex flex-col items-center gap-6"
+                    loading={
+                      <div className="w-[600px] h-[800px] flex items-center justify-center text-white/40">
+                         <div className="animate-pulse flex flex-col items-center gap-4">
+                            <div className="w-12 h-12 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
+                            Loading Document...
+                         </div>
+                      </div>
+                    }
+                  >
+                    {Array.from(new Array(numPages), (el, index) => (
+                      <div key={`page_${index + 1}`} className="shadow-2xl rounded-sm overflow-hidden bg-white">
+                        <Page 
+                          pageNumber={index + 1} 
+                          scale={scale}
+                          renderAnnotationLayer={true}
+                          renderTextLayer={true}
+                          width={typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth - 64 : undefined}
+                        />
+                      </div>
+                    ))}
+                  </Document>
+                </div>
               </div>
             </motion.div>
           </motion.div>

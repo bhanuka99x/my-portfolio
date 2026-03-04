@@ -32,43 +32,58 @@ export const experiences: Experience[] = [
     description:
       "Developed and maintained multiple client projects, focusing on React.js frontend and Node.js backend development with modern best practices.",
     achievements: [
-      "Delivered 15+ client projects on time and within budget",
-      "Integrated payment gateways (Stripe, PayPal, PayHere)",
-      "Built RESTful APIs serving 10K+ daily requests",
+      "Delivered 12+ full-stack client projects on time and under budget.",
+      "Built a SaaS task management platform with complex Role-Based Access Control (RBAC).",
+      "Integrated Replicate AI API for automated image background removal and video reframing.",
+      "Boosted backend performance and reduced data retrieval times using Redis caching.",
+      "Hardened APIs and implemented secure authentication via Firebase and Supabase Auth.",
     ],
-    technologies: ["React", "Node.js", "Express", "PostgreSQL", "Redis"],
+    technologies: [
+      "React.js", 
+      "Next.js", 
+      "TypeScript", 
+      "Tailwind CSS", 
+      "Node.js", 
+      "Express.js", 
+      "PostgreSQL", 
+      "Sequelize (ORM)", 
+      "Redis", 
+      "Supabase", 
+      "Firebase", 
+      "Microsoft Azure", 
+      "Jest"
+    ],
     color: "from-purple-400 to-pink-400",
-    detailedDescription: `As a Software Engineer at Oxymai, I played a pivotal role in developing and maintaining enterprise-level web applications. My responsibilities included full-stack development, code reviews, and mentoring junior developers.
+    detailedDescription: `As a Software Engineer at Oxymai, I specialized in full-stack development, building secure and scalable SaaS applications using React, Node.js, Express, and Tailwind CSS. A significant part of my role involved architecting a complex task management system with intricate role-based permission levels. 
 
-I worked closely with cross-functional teams including designers, product managers, and QA engineers to deliver high-quality solutions that met client requirements and exceeded expectations.`,
+I focused heavily on backend performance and security, implementing API hardening, Redis caching, and robust authentication flows utilizing both Firebase and Supabase Auth. Additionally, I integrated third-party AI services like the Replicate API for advanced media processing - including automated image background removal and video reframing - delivering high-quality, enterprise-level solutions that met exact business requirements.`,
     responsibilities: [
-      "Designed and implemented scalable RESTful APIs using Node.js and Express",
-      "Developed responsive and intuitive user interfaces using React.js and modern CSS frameworks",
-      "Integrated third-party payment gateways including Stripe, PayPal, and PayHere",
-      "Optimized database queries and implemented caching strategies using Redis",
-      "Conducted code reviews and mentored junior developers",
-      "Collaborated with DevOps team for CI/CD pipeline implementation",
-      "Participated in agile ceremonies and sprint planning",
+      "Designed and maintained scalable RESTful APIs using Node.js, Express, and modern ORMs",
+      "Developed responsive and intuitive user interfaces utilizing React.js and Tailwind CSS",
+      "Integrated critical third-party services, including payment gateways like Stripe",
+      "Managed database structures and implemented data caching strategies to ensure smooth data flow",
+      "Conducted thorough code reviews and maintained code quality",
+      "Participated actively in agile ceremonies, sprint planning, and collaborative problem-solving",
     ],
     projects: [
       {
-        name: "E-Commerce Platform",
+        name: "Enterprise Task Management SaaS",
         description:
-          "Built a full-featured e-commerce platform with payment integration, inventory management, and order tracking",
-        technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+          "Engineered a comprehensive task management platform featuring complex Role-Based Access Control (RBAC), real-time updates, secure authentication, and automated deployment pipelines.",
+        technologies: ["React", "Node.js", "Express", "PostgreSQL", "Supabase Auth", "Redis", "Playwright", "JWT", "Stripe", "WebSocket", "CI/CD"],
       },
       {
-        name: "Customer Relationship Management System",
+        name: "AI Image Background Remover",
         description:
-          "Developed a CRM system for managing customer data, sales pipeline, and marketing campaigns",
-        technologies: ["Next.js", "Express", "MySQL", "Redis"],
+          "Built an AI-powered SaaS application for automated image background removal, utilizing the Replicate API for processing and WebSockets for real-time status updates.",
+        technologies: ["React", "Node.js", "Express", "Firebase", "Firebase Auth", "Replicate API", "WebSocket"],
       },
       {
-        name: "Real-time Chat Application",
+        name: "AI Video Reframer Tool",
         description:
-          "Created a real-time messaging platform with WebSocket integration and file sharing capabilities",
-        technologies: ["React", "Socket.io", "Node.js", "MongoDB"],
-      },
+          "Developed a video processing application that automates video reframing using the Replicate AI API, ensuring secure access via Firebase Auth and real-time progress tracking.",
+        technologies: ["React", "Node.js", "Express", "Firebase Auth", "Replicate API", "WebSocket"],
+      }
     ],
     skills: [
       "Full-Stack Development",
