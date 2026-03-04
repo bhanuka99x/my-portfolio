@@ -184,11 +184,11 @@ const projects = [
     description:
       "AI-powered video reframing SaaS with token-based monetization, multi-aspect-ratio output, Chrome extension support, Firebase Auth, and a real-time conversion dashboard.",
     images: [
-      "/images/reframer/p1.png",
-      "/images/reframer/p2.png",
-      "/images/reframer/p3.png",
-      "/images/reframer/p4.png",
-      "/images/reframer/p5.png",
+      "/images/reFramer/p1.png",
+      "/images/reFramer/p2.png",
+      "/images/reFramer/p3.png",
+      "/images/reFramer/p4.png",
+      "/images/reFramer/p5.png",
     ],
     technologies: [
       "React 19",
@@ -253,11 +253,11 @@ const projects = [
     description:
       "A full-stack Chrome Extension that lets users save any word from any webpage into organized folders, with real-time DOM highlighting, auto-translation, calendar-based learning history, offline caching, and a competitive leaderboard — built with React 19, Firebase, and Chrome MV3.",
     images: [
-      "/images/vocabverse/p1.png",
-      "/images/vocabverse/p2.png",
-      "/images/vocabverse/p3.png",
-      "/images/vocabverse/p4.png",
-      "/images/vocabverse/p5.png",
+      "/images/VocabVerse/p1.png",
+      "/images/VocabVerse/p2.png",
+      "/images/VocabVerse/p3.png",
+      "/images/VocabVerse/p4.png",
+      "/images/VocabVerse/p5.png",
     ],
     technologies: [
       "React 19",
@@ -336,15 +336,15 @@ const projects = [
     description:
       "A full-stack personal productivity browser extension for Chrome and Firefox — built with React 19 + Vite and a Node.js + Socket.io backend. Centralises task management, Pomodoro timer, smart reminders, rich notes, bookmarks, and an analytics dashboard into a single new-tab experience. Powered by Supabase Auth, PostgreSQL via Sequelize ORM, real-time Socket.io sync, and a 4-tier freemium subscription system with an integrated admin panel.",
     images: [
-      "/images/taskbee/p1.png",
-      "/images/taskbee/p2.png",
-      "/images/taskbee/p3.png",
-      "/images/taskbee/p4.png",
-      "/images/taskbee/p5.png",
-      "/images/taskbee/p6.png",
-      "/images/taskbee/p7.png",
-      "/images/taskbee/p8.png",
-      "/images/taskbee/p9.png",
+      "/images/Taskbee/p1.png",
+      "/images/Taskbee/p2.png",
+      "/images/Taskbee/p3.png",
+      "/images/Taskbee/p4.png",
+      "/images/Taskbee/p5.png",
+      "/images/Taskbee/p6.png",
+      "/images/Taskbee/p7.png",
+      "/images/Taskbee/p8.png",
+      "/images/Taskbee/p9.png",
     ],
     technologies: [
       "React 19",
@@ -429,10 +429,10 @@ const projects = [
     description:
       "A production-ready Chrome Extension that automates Envato VideoGen — generate hundreds of AI videos in bulk from text prompts, auto-download them locally, and scale stock content production effortlessly. Comes with a high-conversion marketing landing page built in React 19 + Vite, deployed on Firebase Hosting.",
     images: [
-      "/images/envio/p1.png",
-      "/images/envio/p2.png",
-      "/images/envio/p3.png",
-      "/images/envio/p4.png",
+      "/images/Envio/p1.png",
+      "/images/Envio/p2.png",
+      "/images/Envio/p3.png",
+      "/images/Envio/p4.png",
     ],
     technologies: [
       "React 19",
@@ -506,11 +506,11 @@ const projects = [
     description:
       "A production-grade Chrome Extension that automates Freepik Pikaso's AI image generation pipeline — bulk-generate hundreds of images from CSV, manual prompts, or AI-generated prompts, then auto-download them instantly. Launched on Product Hunt, with 10,000+ images generated, 5,000+ active users, and a 4.9 Chrome Web Store rating.",
     images: [
-      "/images/autopik/p1.png",
-      "/images/autopik/p2.png",
-      "/images/autopik/p3.png",
-      "/images/autopik/p4.png",
-      "/images/autopik/p5.png",
+      "/images/Autopik/p1.png",
+      "/images/Autopik/p2.png",
+      "/images/Autopik/p3.png",
+      "/images/Autopik/p4.png",
+      "/images/Autopik/p5.png",
     ],
     technologies: [
       "React 19",
@@ -585,11 +585,11 @@ const projects = [
     description:
       "A conversion-focused SaaS landing page for a live Chrome Extension product — built with React 19 + Vite. Features scroll-triggered animations, an interactive before/after workflow comparison, auto-scrolling AI image gallery, testimonials slider, FAQ accordion, and production-grade SEO. Deployed on Firebase at imagefxautomator.com and listed on Product Hunt.",
     images: [
-      "/images/imagefx/p1.png",
-      "/images/imagefx/p2.png",
-      "/images/imagefx/p3.png",
-      "/images/imagefx/p4.png",
-      "/images/imagefx/p5.png",
+      "/images/ImageFX/p1.png",
+      "/images/ImageFX/p2.png",
+      "/images/ImageFX/p3.png",
+      "/images/ImageFX/p4.png",
+      "/images/ImageFX/p5.png",
     ],
     technologies: [
       "React 19",

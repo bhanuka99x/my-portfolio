@@ -32,7 +32,7 @@ export default function ProjectsSection() {
   status: "Ongoing Development",
   description:
     "A collaborative team task management platform with organization-based workspaces, real-time sync via Socket.IO, Kanban boards with drag-and-drop, advanced analytics, and a granular role-based permissions system.",
-  image: "/project/Screenshot_104.png",
+  image: "/images/taskManagment/p1.png",
   technologies: [
     "React",
     "Vite",
@@ -76,7 +76,7 @@ export default function ProjectsSection() {
   company: "Oxymai (PVT) LTD",
   description:
     "AI-powered video reframing SaaS with token-based monetization, multi-aspect-ratio output, Chrome extension support, Firebase Auth, and a real-time conversion dashboard.",
-  image: "/images/reframer/p1.png",
+  image: "/images/reFramer/p1.png",
   technologies: ["React 19", "Vite", "Node.js", "Express", "Firebase", "Replicate AI", "Framer Motion", "Tailwind CSS"],
   liveUrl: "https://example.com",
   githubUrl: "https://github.com/example",
@@ -92,7 +92,7 @@ export default function ProjectsSection() {
   company: "Oxymai (PVT) LTD",
   description:
     "A full-stack Chrome Extension that lets users save any word from any webpage into organized folders, with real-time DOM word highlighting, auto-translation, calendar learning history, and a global leaderboard — powered by Firebase and React 19.",
-  image: "/images/vocabverse/p1.png",
+  image: "/images/VocabVerse/p1.png",
   technologies: ["React 19", "Vite", "Firebase", "Chrome MV3", "Google Translate API", "Tailwind CSS"],
   liveUrl: "https://example.com",
   githubUrl: "https://github.com/example",
@@ -105,7 +105,7 @@ export default function ProjectsSection() {
   category: "Chrome Extension / SaaS",
   description:
     "A full-stack personal productivity browser extension for Chrome and Firefox. Combines task management, Pomodoro timer, smart reminders, notes with folder organization, bookmark manager, and a productivity analytics dashboard — all synced in real time via Socket.io. Built with React 19 + Vite and a Node.js + Express + PostgreSQL backend, featuring Supabase Auth and a 4-tier freemium subscription model.",
-  image: "/images/taskbee/p1.png",
+  image: "/images/Taskbee/p1.png",
   technologies: [
     "React 19",
     "Vite",
@@ -132,7 +132,7 @@ export default function ProjectsSection() {
   category: "Chrome Extension / Content Automation",
   description:
     "A production-ready Chrome Extension that automates Envato VideoGen to generate hundreds of AI videos in bulk, auto-download them, and scale content production — no manual clicking required. Trusted by 500+ Envato stock contributors.",
-  image: "/images/envio/p1.png",
+  image: "/images/Envio/p1.png",
   technologies: [
     "React 19",
     "Vite",
@@ -156,7 +156,7 @@ export default function ProjectsSection() {
   category: "Chrome Extension / Automation",
   description:
     "A production-grade Chrome Extension (MV3) that automates Freepik Pikaso's AI image generation — bulk-generate hundreds of images from CSV or manual prompts, auto-download them instantly, and scale creative workflows 10x faster. Launched on Product Hunt with 5,000+ active users.",
-  image: "/images/autopik/p1.png",
+  image: "/images/Autopik/p1.png",
   technologies: ["React 19", "Vite", "TailwindCSS 4", "Framer Motion", "Chrome Extension MV3", "AOS", "React Router DOM"],
   liveUrl: "https://chromewebstore.google.com/detail/autopik-bulk-ai-image-gen/begmceaedadildimpkndmbadgebigpmi",
   githubUrl: "https://github.com/example",
@@ -170,7 +170,7 @@ export default function ProjectsSection() {
   category: "Landing Page",
   description:
     "Full-featured SaaS landing page for a live Chrome Extension product. Built with React 19 + Vite, featuring scroll-triggered AOS animations, a before/after workflow comparison panel, auto-scrolling AI image gallery, testimonials carousel, FAQ accordion, and end-to-end SEO implementation. Deployed at imagefxautomator.com.",
-  image: "/images/imagefx/p1.png",
+  image: "/images/ImageFX/p1.png",
   technologies: [
     "React 19",
     "Vite",
