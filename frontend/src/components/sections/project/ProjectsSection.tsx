@@ -29,6 +29,7 @@ export default function ProjectsSection() {
   title: "TabTask - Team Task Management Platform",
   category: "SaaS",
   company: "Oxymai (PVT) LTD",
+  status: "Ongoing Development",
   description:
     "A collaborative team task management platform with organization-based workspaces, real-time sync via Socket.IO, Kanban boards with drag-and-drop, advanced analytics, and a granular role-based permissions system.",
   image: "/project/Screenshot_104.png",

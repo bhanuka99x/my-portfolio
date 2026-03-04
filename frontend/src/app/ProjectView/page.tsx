@@ -25,6 +25,7 @@ const projects = [
     title: "TabTask - Team Task Management Platform",
     category: "SaaS",
     company: "Oxymai (PVT) LTD",
+    status: "Ongoing Development",
     description:
       "A collaborative team task management platform with organization-based workspaces, real-time sync via WebSockets, Kanban boards, analytics dashboard, notes, bookmarks, and a granular role-based permissions system.",
     images: [
