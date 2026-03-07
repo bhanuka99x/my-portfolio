@@ -1,24 +1,15 @@
-'use client';
-
 import type { Metadata } from "next";
-
 import "../styles/index.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { LoadingProvider, useLoading } from "../context/LoadingContext";
+import { LoadingProvider } from "../context/LoadingContext";
+import ClientLayout from "../components/ClientLayout";
 
-
-function LayoutContent({ children }: { children: React.ReactNode }) {
-  const { loading } = useLoading();
-  
-  return (
-    <>
-      {!loading && <Header />}
-      {children}
-      {!loading && <Footer />}
-    </>
-  );
-}
+export const metadata: Metadata = {
+  title: "bhanuka99x | Portfolio",
+  description: "Web Developer and UI Designer",
+  icons: {
+    icon: "/favicon.png",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -29,7 +20,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body className="">
         <LoadingProvider>
-          <LayoutContent>{children}</LayoutContent>
+          <ClientLayout>{children}</ClientLayout>
         </LoadingProvider>
       </body>
     </html>
