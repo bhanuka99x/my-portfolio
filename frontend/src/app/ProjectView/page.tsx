@@ -52,7 +52,7 @@ const projects = [
       "Framer Motion",
       "Recharts",
     ],
-    liveUrl: "https://example.com",
+    liveUrl: "http://tabtaskorg-tabtask-web-1tqw4h-fb49fa-139-59-233-104.traefik.me",
     githubUrl: "https://github.com/example",
     featured: true,
     color: "from-blue-400 to-cyan-400",
@@ -137,7 +137,7 @@ const projects = [
       "Tailwind CSS",
       "Vite",
     ],
-    liveUrl: "https://example.com",
+    liveUrl: "https://removebg-fr-nib6uo-bd6825-139-59-233-104.traefik.me",
     githubUrl: "https://github.com/example",
     featured: true,
     color: "from-blue-400 to-indigo-500",
@@ -200,7 +200,7 @@ const projects = [
       "Framer Motion",
       "Tailwind CSS",
     ],
-    liveUrl: "https://example.com",
+    liveUrl: "https://reframmer-fr-jzhlpl-956995-139-59-233-104.traefik.me/",
     githubUrl: "https://github.com/example",
     featured: true,
     color: "from-violet-500 to-indigo-500",
@@ -448,7 +448,7 @@ const projects = [
       "Flowbite React",
     ],
     liveUrl:
-      "https://chromewebstore.google.com/detail/envio-bulk-video-generato/gfiokclkcjplfodojgegbnfdoicpphip",
+      "https://enviogen.web.app/",
     githubUrl: "https://github.com/example",
     featured: true,
     color: "from-lime-400 to-green-500",
@@ -526,7 +526,7 @@ const projects = [
       "Firebase Hosting",
     ],
     liveUrl:
-      "https://chromewebstore.google.com/detail/autopik-bulk-ai-image-gen/begmceaedadildimpkndmbadgebigpmi",
+      "https://autopik.web.app/",
     githubUrl: "https://github.com/example",
     featured: true,
     color: "from-blue-500 to-cyan-400",
@@ -604,7 +604,7 @@ const projects = [
       "Flowbite",
       "React Icons",
     ],
-    liveUrl: "https://imagefxautomator.com",
+    liveUrl: "https://imagefx.web.app/",
     githubUrl: "https://github.com/example",
     featured: true,
     color: "from-indigo-400 to-purple-500",
@@ -711,7 +711,7 @@ function ProjectContent() {
               Back to Projects
             </span>
           </button>
-
+{/* 
           <div className="flex items-center gap-4">
             <a
               href={project.githubUrl}
@@ -732,7 +732,7 @@ function ProjectContent() {
                 Live Demo <ExternalLink className="w-4 h-4" />
               </span>
             </a>
-          </div>
+          </div> */}
         </div>
       </nav>
 
@@ -953,7 +953,7 @@ function ProjectContent() {
                   >
                     <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                     <span className="relative z-10 flex items-center justify-between w-full group-hover:text-black transition-colors duration-300">
-                      Launch Project
+                      Live Project
                       <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </span>
                   </a>
