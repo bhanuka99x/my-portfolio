@@ -86,7 +86,7 @@ const ContactSection = () => {
                   </a>
                 </div>
                 <div className="space-y-2">
-                  <span className="text-white/20 font-mono text-[10px] tracking-[0.3em] uppercase">Phone</span>
+                  <span className="text-white/20 font-mono text-[10px] tracking-[0.3em] uppercase">Phone {"(WhatsApp)"}</span>
                   <a href="tel:+94752960845" className="block text-white hover:text-white/50 transition-colors text-lg">
                     +94 75 2960845
                   </a>
@@ -103,6 +103,8 @@ const ContactSection = () => {
                 <a 
                   key={link.name}
                   href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex flex-col gap-2 text-white/40 hover:text-white transition-all transition-duration-500"
                 >
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase">{link.name}</span>
