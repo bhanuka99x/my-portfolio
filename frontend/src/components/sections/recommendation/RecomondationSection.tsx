@@ -83,21 +83,13 @@ export default function RecommendationSection() {
       </div>
 
       {/* Infinite Horizontal Marquee */}
-      <div className="relative flex overflow-hidden py-10 garden-mask">
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            duration: 40,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="flex gap-8 whitespace-nowrap"
-        >
+      <div className="relative overflow-hidden py-10 garden-mask">
+        <div className="flex gap-8 whitespace-nowrap marquee-scroll w-max">
           {/* Duplicate for infinite effect */}
           {[...recommendations, ...recommendations].map((rec, index) => (
             <div
               key={`${rec.id}-${index}`}
-              className="w-[450px] md:w-[600px] flex-shrink-0 flex flex-col gap-6 p-10 md:p-12 border border-white/10 bg-white/[0.02] backdrop-blur-sm rounded-[2rem] hover:bg-white/[0.05] transition-all duration-500"
+              className="w-[450px] md:w-[600px] flex-shrink-0 flex flex-col gap-6 p-10 md:p-12 border border-white/10 bg-white/[0.02] backdrop-blur-sm rounded-[2rem] hover:bg-white/[0.05] transition-[background-color,border-color] duration-500 transform-gpu"
             >
               <div className="flex justify-between items-start">
                 <div>
@@ -127,11 +119,11 @@ export default function RecommendationSection() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Gradient Overlays for smooth edges */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointers-none" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointers-none" />
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 mt-20">
