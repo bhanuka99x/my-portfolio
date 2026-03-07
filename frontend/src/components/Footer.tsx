@@ -47,6 +47,8 @@ export default function Footer() {
             
             <a 
               href="mailto:bhanuka99xdev@gmail.com" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-2xl md:text-4xl font-NeueHaas font-light tracking-tight hover:text-white/50 transition-colors duration-500"
             >
               bhanuka99xdev@gmail.com
@@ -89,7 +91,7 @@ export default function Footer() {
               © {currentYear} // BHANUKA GIHAN
             </span>
             <span className="text-[10px] uppercase tracking-[0.2em] text-white/10 font-bold">
-              Designed & Developed with Precision
+              Designed & Developed by Bhanuka Gihan
             </span>
           </div>
 
