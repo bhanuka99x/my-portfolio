@@ -108,6 +108,8 @@ const AboutSection = () => {
                   <a 
                     key={i}
                     href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center text-white/30 hover:text-white hover:border-white/20 transition-all"
                   >
                     {React.cloneElement(social.icon as React.ReactElement<{size:number}>, { size: 18 })}
