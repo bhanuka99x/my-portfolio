@@ -205,26 +205,26 @@ const projects = [
     featured: true,
     color: "from-violet-500 to-indigo-500",
     longDescription:
-      "Reframer is a full-stack AI SaaS platform that intelligently reframes videos for any social media format — TikTok (9:16), YouTube (16:9), Instagram (1:1), Cinematic (21:9), and 3 more — using Luma AI's 'reframe-video' model via the Replicate API. The platform ships as both a web app and a Chrome Extension (Manifest V3) with side-panel support, sharing the same backend. The backend is a RESTful Express API secured with Firebase Admin JWT verification, per-route rate limiting, and Multer file validation (500MB cap, MIME-type checked). Users manage their account through a full profile dashboard with avatar upload to Firebase Storage, email change with verification flow, password reset, and plan management. Files are stored securely and auto-deleted after 7 days via signed URL expiry.",
+      "Reframer is a full-stack AI SaaS platform that intelligently reframes videos for any social media format - TikTok (9:16), YouTube (16:9), Instagram (1:1), Cinematic (21:9), and 3 more - using Luma AI's 'reframe-video' model via the Replicate API. The platform ships as both a web app and a Chrome Extension (Manifest V3) with side-panel support, sharing the same backend. The backend is a RESTful Express API secured with Firebase Admin JWT verification, per-route rate limiting, and Multer file validation (500MB cap, MIME-type checked). Users manage their account through a full profile dashboard with avatar upload to Firebase Storage, email change with verification flow, password reset, and plan management. Files are stored securely and auto-deleted after 7 days via signed URL expiry.",
     features: [
       {
         title: "AI-Powered Video Reframing via Luma AI + Replicate",
         description:
-          "Users upload a video, pick an aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9, 9:21, 21:9), and optionally write an AI prompt — the platform intelligently reframes the shot with subject tracking, zero manual cropping.",
+          "Users upload a video, pick an aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9, 9:21, 21:9), and optionally write an AI prompt - the platform intelligently reframes the shot with subject tracking, zero manual cropping.",
         implementation:
           "The video is uploaded to Firebase Storage first, generating a signed URL. That URL is sent to the Luma 'reframe-video' model through the Replicate SDK. The controller handles the full pipeline: upload original → deduct tokens → call Replicate → download processed output → re-upload processed video to Firebase Storage → update Firestore metadata with both URLs and a 'processed' status flag. Tokens are automatically refunded server-side in the catch block if Replicate fails, preventing silent credit losses.",
       },
       {
         title: "Token-Based Usage System with Failure Refunds",
         description:
-          "Each video conversion costs 5 tokens. The system blocks conversions on insufficient balance and automatically restores tokens if AI processing fails — no silent credit losses.",
+          "Each video conversion costs 5 tokens. The system blocks conversions on insufficient balance and automatically restores tokens if AI processing fails - no silent credit losses.",
         implementation:
-          "Token balance is pre-checked client-side from Firestore before hitting the API. On the server, tokens are deducted via deductTokens() only after a successful Firebase Storage upload. If the Replicate processing step throws, an addTokens() call in the catch block restores the exact deducted amount. The client also redirects to the pricing section if the user runs out — prompting an upsell without breaking the flow.",
+          "Token balance is pre-checked client-side from Firestore before hitting the API. On the server, tokens are deducted via deductTokens() only after a successful Firebase Storage upload. If the Replicate processing step throws, an addTokens() call in the catch block restores the exact deducted amount. The client also redirects to the pricing section if the user runs out - prompting an upsell without breaking the flow.",
       },
       {
         title: "Chrome Extension with Manifest V3 & Side Panel",
         description:
-          "The full platform is also available as a Chrome Extension that opens in Chrome's native side panel — users can reframe videos directly from their browser without switching tabs.",
+          "The full platform is also available as a Chrome Extension that opens in Chrome's native side panel - users can reframe videos directly from their browser without switching tabs.",
         implementation:
           "Built with Vite + React as a separate app in the /extention directory, sharing the same Firebase Auth and backend API. Uses Chrome Manifest V3 with a background.js service worker to handle extension lifecycle. CORS on the Express backend explicitly whitelists chrome-extension:// origins via a regex pattern. A custom build script copies manifest.json and background.js into the Vite dist output for direct Chrome loading.",
       },
@@ -233,14 +233,14 @@ const projects = [
         description:
           "Every endpoint is protected by Firebase Admin JWT verification. Rate limiting shields against abuse, and every uploaded file is validated for format, MIME type, and size before processing begins.",
         implementation:
-          "A custom authMiddleware extracts Bearer tokens and calls admin.auth().verifyIdToken() — the decoded UID scopes all Firestore and Storage operations per user. Two rate limiters are applied: GeneralRequestLimiter (100 req / 5s) and historyGetLimiter (5 req / min). Multer validates uploads with an allowedMimetypes whitelist (MP4/AVI/MOV/MKV/WEBM) and enforces a strict 500MB size cap before any data is written.",
+          "A custom authMiddleware extracts Bearer tokens and calls admin.auth().verifyIdToken() - the decoded UID scopes all Firestore and Storage operations per user. Two rate limiters are applied: GeneralRequestLimiter (100 req / 5s) and historyGetLimiter (5 req / min). Multer validates uploads with an allowedMimetypes whitelist (MP4/AVI/MOV/MKV/WEBM) and enforces a strict 500MB size cap before any data is written.",
       },
       {
         title: "Full User Profile System with Secure Email Change Flow",
         description:
-          "Users can update their display name, profile photo, and email address. Email changes are protected by a verification flow — the new address must be confirmed before it takes effect.",
+          "Users can update their display name, profile photo, and email address. Email changes are protected by a verification flow - the new address must be confirmed before it takes effect.",
         implementation:
-          "Profile photos are uploaded directly to Firebase Storage under reframer-profile-images/{uid} using uploadBytes, with getDownloadURL providing the accessible URL. Name and image changes update both Firebase Auth (updateProfile) and Firestore simultaneously. Email changes use verifyBeforeUpdateEmail() from Firebase Auth — the new email is stored as pendingEmail in Firestore until the link is clicked. Error cases (requires-recent-login, email-already-in-use) are caught and surfaced to the user via a custom alert context.",
+          "Profile photos are uploaded directly to Firebase Storage under reframer-profile-images/{uid} using uploadBytes, with getDownloadURL providing the accessible URL. Name and image changes update both Firebase Auth (updateProfile) and Firestore simultaneously. Email changes use verifyBeforeUpdateEmail() from Firebase Auth - the new email is stored as pendingEmail in Firestore until the link is clicked. Error cases (requires-recent-login, email-already-in-use) are caught and surfaced to the user via a custom alert context.",
       },
     ],
   },
@@ -897,7 +897,7 @@ function ProjectContent() {
                             <span className="text-[10px] font-mono text-white/20 group-hover:text-blue-400/50 transition-colors">
                               {String(i + 1).padStart(2, "0")}
                             </span>
-                            <h3 className="text-lg font-bold text-white tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            <h3 className="text-lg  text-white tracking-tight group-hover:translate-x-1 transition-transform duration-300">
                               {feature.title}
                             </h3>
                           </div>
@@ -949,7 +949,7 @@ function ProjectContent() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold overflow-hidden transition-all duration-300"
+                    className="group relative flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 text-white  overflow-hidden transition-all duration-300"
                   >
                     <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                     <span className="relative z-10 flex items-center justify-between w-full group-hover:text-black transition-colors duration-300">
@@ -959,7 +959,7 @@ function ProjectContent() {
                   </a>
                   <button
                     disabled
-                    className="group relative flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 font-bold overflow-hidden cursor-not-allowed w-full text-left"
+                    className="group relative flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10  overflow-hidden cursor-not-allowed w-full text-left"
                   >
                     <span className="absolute inset-0 bg-red-500/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                     <span className="relative z-10 flex items-center justify-between w-full group-hover:text-red-400 transition-colors duration-300">

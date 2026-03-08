@@ -60,26 +60,26 @@ const AboutSection = () => {
           >
             <div className="space-y-8">
               <h3 className="text-4xl md:text-6xl font-bold uppercase  leading-[0.9]">
-                <span className='text-white/70'>Software Engineer</span> <br />
-                
+                <span className='text-white'>Bhanuka Gihan</span> <br />
+                <span className='text-white/40'>Software Engineer</span>
               </h3>
               
               <p className="text-white/70 font-NeueHaas leading-relaxed text-xl md:text-2xl max-w-3xl font-light tracking-tight italic">
-                "I transform complex technical problems into elegant, scalable digital experiences that bridge the gap between functionality and high-end aesthetics."
+                "Building on my successful tenure as a Software Engineer at Oxymai, I am a results-driven professional dedicated to architecting scalable digital solutions. I am now seeking new challenges to leverage my full-stack expertise and drive technical innovation in a fast-paced environment."
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
               <div className="space-y-4">
-                <span className="text-white/20 font-mono text-[10px] tracking-[0.5em] uppercase">The Vision // 01</span>
+                <span className="text-white/20 font-mono text-[10px] tracking-[0.5em] uppercase">The Experience // 01</span>
                 <p className="text-white/60 font-NeueHaas leading-relaxed text-lg">
-                  Specializing in full-stack architecture, I focus on building robust systems that don't just work - they perform. Every line of code is written with scalability and security in mind.
+                  With a track record of delivering over 12 full-stack projects, I specialize in architecting enterprise SaaS solutions. My experience at Oxymai involved building complex task management platforms and AI tools, focusing on performance-driven backends using Redis and secure authentication architectures.
                 </p>
               </div>
               <div className="space-y-4">
-                <span className="text-white/20 font-mono text-[10px] tracking-[0.5em] uppercase">The Craft // 02</span>
+                <span className="text-white/20 font-mono text-[10px] tracking-[0.5em] uppercase">The Expertise // 02</span>
                 <p className="text-white/60 font-NeueHaas leading-relaxed text-lg">
-                  My design-driven approach ensures that technical robustness is always paired with exceptional user experience. I believe software should be as beautiful as it is functional.
+                  While specializing in React and Node.js through enterprise-level projects at Oxymai, I also possess a solid backend foundation in Spring Boot developed during my academic career. I bridge the gap between technical logic and elegant interface design, ensuring every project delivers both exceptional reliability and a premium user journey.
                 </p>
               </div>
             </div>
