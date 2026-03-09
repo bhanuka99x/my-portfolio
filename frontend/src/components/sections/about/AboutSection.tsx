@@ -42,7 +42,7 @@ const AboutSection = () => {
           <div className="relative w-40 h-40 rounded-full overflow-hidden border border-white/10">
             <Image
               src="/images/about.jpg"
-              alt="Profile"
+              alt="Bhanuka Gihan - Software Engineer"
               fill
               className="object-cover "
             />
@@ -126,10 +126,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative hidden lg:block"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl  transition-all duration-700 ease-out group">
+            <div className="relative aspect-3/4 w-full overflow-hidden rounded-3xl  transition-all duration-700 ease-out group">
               <Image
                 src="/images/about.jpg"
-                alt="Profile"
+                alt="Bhanuka Gihan - Integrated Software Engineer Profile"
                 fill
                 className="object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
               />
@@ -150,7 +150,7 @@ const AboutSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/95 backdrop-blur-xl p-6"
           >
             <motion.div 
               initial={{ scale: 0.95, y: 20 }}

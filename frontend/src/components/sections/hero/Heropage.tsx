@@ -35,6 +35,9 @@ export default function Heropage() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col flex-1 pt-24 sm:pt-32">
+        {/* Semantic H1 for SEO */}
+        <h1 className="sr-only">Bhanuka Gihan | Integrated Software Engineer Portfolio</h1>
+
         {/* Centerpiece Layout */}
         <div className="flex-1 flex flex-col justify-center items-center text-center">
           <div className="relative w-full max-w-6xl">
@@ -49,7 +52,7 @@ export default function Heropage() {
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-10"
             >
-              <h1 className="text-[14vw] lg:text-[11rem] font-bilmond leading-[1.1] tracking-tighter uppercase flex flex-col items-center">
+              <h2 className="text-[14vw] lg:text-[11rem] font-bilmond leading-[1.1] tracking-tighter uppercase flex flex-col items-center">
                 <span className="block italic opacity-40 mb-2 sm:mb-4 text-white tracking-[0.1em] text-[4vw] lg:text-[3rem]">
                   Creative
                 </span>
@@ -76,7 +79,7 @@ export default function Heropage() {
                     </motion.span>
                   ))}
                 </div>
-              </h1>
+              </h2>
 
               {/* Decorative line under main text */}
               <motion.div
