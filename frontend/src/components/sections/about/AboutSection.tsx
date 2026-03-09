@@ -147,7 +147,7 @@ const AboutSection = () => {
           >
             <div className="relative aspect-3/4 w-full overflow-hidden rounded-3xl  transition-all duration-700 ease-out group">
               <Image
-                src="/images/about.jpg"
+                src="/images/my-profile.jpg"
                 alt="Bhanuka Gihan - Integrated Software Engineer Profile"
                 fill
                 className="object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
