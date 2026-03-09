@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail, X, Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Icon, Gamepad2 } from 'lucide-react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -88,15 +89,33 @@ const AboutSection = () => {
             <div className="flex flex-wrap gap-6 pt-6">
               <button 
                 onClick={() => setShowCV(true)}
-                className="group  mx-auto lg:mx-0 rounded-full border p-1 border-white/20  flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
+                className="group mx-auto lg:mx-0 rounded-full border p-1 border-white/20 flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
               >
                 <span className='ml-5'>
-                View Resume
+                View PDF Resume
                 </span>
-                <div className="w-12 h-12 rounded-full  flex items-center justify-center group-hover:border-white transition-colors">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:border-white transition-colors">
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </button>
+
+              <div 
+                className="group relative mx-auto lg:mx-0"
+              >
+                <div className="rounded-full border p-1 border-white/10 flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white/20 cursor-not-allowed transition-colors">
+                  <span className='ml-5'>
+                  Digital Bio-Data
+                  </span>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center transition-colors">
+                    <ArrowRight className="w-5 h-5 opacity-20" />
+                  </div>
+                </div>
+                
+                {/* Tooltip */}
+                <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-white text-black text-[10px] font-bold uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-8 after:border-transparent after:border-t-white">
+                  Currently Not Available
+                </div>
+              </div>
 
               <div className="flex items-center  mx-auto lg:mx-0 gap-4">
                 {[
