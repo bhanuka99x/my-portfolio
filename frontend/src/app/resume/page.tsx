@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Mail, Github, Linkedin, MapPin, Globe, Phone, Printer, GraduationCap, Calendar } from "lucide-react";
 import { experiences } from "@/constants/experience";
 import { skillsData } from "@/constants/skills";
@@ -80,32 +81,61 @@ export default function ResumePage() {
       <div className="resume-container max-w-4xl mx-auto bg-white border border-gray-200 p-10 md:p-16 shadow-2xl print:shadow-none print:border-none rounded-sm">
         
         {/* Header Section */}
-        <header className="border-b-4 border-black pb-10 mb-12">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-            <div>
-              <h1 className="text-5xl md:text-6xl font-extrabold uppercase tracking-tighter mb-3 leading-none">
-                Bhanuka Gihan
-              </h1>
-              <p className="text-2xl md:text-3xl text-gray-500 font-light tracking-tight">
-                Integrated Software Engineer
-              </p>
+        <header className="border-b-10 border-black pb-12 mb-16">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
+            <div className="flex-1 space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-7xl md:text-8xl font-black uppercase tracking-tighter leading-[0.8] text-black">
+                  Bhanuka<br />Gihan
+                </h1>
+                <p className="text-2xl md:text-3xl font-light text-gray-500 tracking-[0.2em] uppercase">
+                  Integrated Software Engineer
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
+                <div className="flex items-center gap-3 group">
+                   <div className="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-black group-hover:text-white transition-all duration-500"><Mail size={14} /></div>
+                   <a href="mailto:bhanuka99xdev@gmail.com" className="text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-black transition-colors">bhanuka99xdev@gmail.com</a>
+                </div>
+                <div className="flex items-center gap-3 group">
+                   <div className="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-black group-hover:text-white transition-all duration-500"><Phone size={14} /></div>
+                   <a href="tel:+94752960845" className="text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-black transition-colors">+94 75 2960845</a>
+                </div>
+                <div className="flex items-center gap-3 group">
+                   <div className="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-black group-hover:text-white transition-all duration-500"><MapPin size={14} /></div>
+                   <span className="text-sm font-bold uppercase tracking-widest text-gray-600">Kegalle, Sri Lanka</span>
+                </div>
+                <div className="flex items-center gap-3 group">
+                   <div className="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-black group-hover:text-white transition-all duration-500"><Globe size={14} /></div>
+                   <a href="https://bhanuka99x.com" target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-black transition-colors">bhanuka99x.com</a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 pt-4 border-t border-gray-100 max-w-xs">
+                 <a href="https://github.com/bhanuka99x" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors flex items-center gap-2 group">
+                    <Github size={20} className="group-hover:scale-110 transition-transform" />
+                    <span className="text-[10px] font-black uppercase tracking-widest">Github</span>
+                 </a>
+                 <div className="w-px h-4 bg-gray-200" />
+                 <a href="https://linkedin.com/in/bhanuka99x" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors flex items-center gap-2 group">
+                    <Linkedin size={20} className="group-hover:scale-110 transition-transform" />
+                    <span className="text-[10px] font-black uppercase tracking-widest">LinkedIn</span>
+                 </a>
+              </div>
             </div>
-            <div className="grid grid-cols-1 gap-y-3 text-sm text-gray-600 font-medium">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center"><Mail size={14} /></div>
-                <a href="mailto:bhanuka99xdev@gmail.com" className="hover:underline">bhanuka99xdev@gmail.com</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center"><MapPin size={14} /></div>
-                <span>Kegalle, Sri Lanka</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center"><Github size={14} /></div>
-                <a href="https://github.com/bhanuka99x" className="hover:underline text-black">github.com/bhanuka99x</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center"><Linkedin size={14} /></div>
-                <a href="https://linkedin.com/in/bhanuka99x" className="hover:underline text-black">linkedin.com/in/bhanuka99x</a>
+
+            {/* Profile Image - Minimalist High Contrast */}
+            <div className="relative group self-center lg:self-start">
+              <div className="absolute inset-0 bg-black translate-x-3 translate-y-3 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 -z-10" />
+              <div className="relative w-48 h-64 md:w-56 md:h-72 border-2 border-black overflow-hidden bg-gray-100">
+                <Image
+                  src="/images/about.jpg" 
+                  alt="Bhanuka Gihan"
+                  fill
+                  priority
+                  className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-1000"
+                />
               </div>
             </div>
           </div>
