@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail, X, Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Icon, Gamepad2 } from 'lucide-react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -42,7 +43,7 @@ const AboutSection = () => {
           <div className="relative w-40 h-40 rounded-full overflow-hidden border border-white/10">
             <Image
               src="/images/about.jpg"
-              alt="Profile"
+              alt="Bhanuka Gihan - Software Engineer"
               fill
               className="object-cover "
             />
@@ -88,15 +89,27 @@ const AboutSection = () => {
             <div className="flex flex-wrap gap-6 pt-6">
               <button 
                 onClick={() => setShowCV(true)}
-                className="group  mx-auto lg:mx-0 rounded-full border p-1 border-white/20  flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
+                className="group mx-auto lg:mx-0 rounded-full border p-1 border-white/20 flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
               >
                 <span className='ml-5'>
-                View Resume
+                View PDF Resume
                 </span>
-                <div className="w-12 h-12 rounded-full  flex items-center justify-center group-hover:border-white transition-colors">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:border-white transition-colors">
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </button>
+
+              {/* <Link 
+                href="/resume"
+                className="group mx-auto lg:mx-0 rounded-full border p-1 border-white/20 flex items-center text-sm uppercase tracking-[0.3em] font-bold text-white hover:text-white/70 transition-colors"
+              >
+                <span className='ml-5'>
+                Digital Bio-Data
+                </span>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:border-white transition-colors">
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link> */}
 
               <div className="flex items-center  mx-auto lg:mx-0 gap-4">
                 {[
@@ -126,10 +139,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative hidden lg:block"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl  transition-all duration-700 ease-out group">
+            <div className="relative aspect-3/4 w-full overflow-hidden rounded-3xl  transition-all duration-700 ease-out group">
               <Image
-                src="/images/about.jpg"
-                alt="Profile"
+                src="/images/my-profile.jpg"
+                alt="Bhanuka Gihan - Integrated Software Engineer Profile"
                 fill
                 className="object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
               />
@@ -150,7 +163,7 @@ const AboutSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-6"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/95 backdrop-blur-xl p-6"
           >
             <motion.div 
               initial={{ scale: 0.95, y: 20 }}

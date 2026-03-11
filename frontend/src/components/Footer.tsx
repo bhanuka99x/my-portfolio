@@ -98,7 +98,7 @@ export default function Footer() {
           <div className="flex items-center gap-8">
             <div className="flex flex-col items-center md:items-end gap-1">
               <span className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">Local Time</span>
-              <span className="text-xs font-mono text-white/40 uppercase">Kegalle, LK</span>
+              <span className="text-xs font-mono text-white/40 uppercase">Kegalle, Sri Lanka</span>
             </div>
             
             <motion.div 
