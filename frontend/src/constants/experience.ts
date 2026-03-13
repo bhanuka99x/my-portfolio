@@ -23,7 +23,7 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: 2,
-    title: "Software Engineer",
+    title: "Software Engineer Intern",
     company: "Oxymai(PVT) Ltd",
     location: "Kegalle, Sri Lanka",
     period: "2025 - 2026",
