@@ -501,10 +501,10 @@ const projects = [
   },
   {
     id: 7,
-    title: "Autopik - Bulk AI Image Generator Chrome Extension",
-    category: "Chrome Extension / AI Automation",
+    title: "Autopik - SaaS Product Landing Page",
+    category: "Landing Page / SEO",
     description:
-      "A production-grade Chrome Extension that automates Freepik Pikaso's AI image generation pipeline — bulk-generate hundreds of images from CSV, manual prompts, or AI-generated prompts, then auto-download them instantly. Launched on Product Hunt, with 10,000+ images generated, 5,000+ active users, and a 4.9 Chrome Web Store rating.",
+      "A high-performance, conversion-optimized SaaS landing page for the Autopik Chrome Extension. Built with React 19 and Tailwind CSS 4, it features advanced SEO implementation with JSON-LD, scroll-triggered AOS animations, and Framer Motion transitions.",
     images: [
       "/images/Autopik/p1.png",
       "/images/Autopik/p2.png",
@@ -531,7 +531,7 @@ const projects = [
     featured: true,
     color: "from-blue-500 to-cyan-400",
     longDescription:
-      "Autopik is a Chrome Extension (Manifest V3) and production-deployed landing page that fully automates the Freepik Pikaso AI image generation workflow. Instead of manually entering prompts one-by-one, Autopik lets users upload a CSV file with hundreds of prompts, type them manually, or let built-in AI generate them — then auto-feeds each prompt into Freepik Pikaso, triggers generation, and auto-downloads every output to the user's device. The landing page itself is engineered for SEO and conversion — built with React 19 + Vite + TailwindCSS 4, featuring JSON-LD structured data, AOS scroll animations, Framer Motion hero animations, animated stat counters, a YouTube demo embed, a live comparison table, FAQ accordion, and a fully responsive Navbar with hash-based scroll navigation. The product launched on Product Hunt and is live on the Chrome Web Store with 5,000+ active users and a 4.9 star rating.",
+      "Autopik is a production-grade SaaS landing page engineered for the Autopik Chrome Extension. The site is built with a focus on SEO and high conversion rates, using React 19 and Tailwind CSS 4. It features JSON-LD structured data for Google rich snippet eligibility, scroll-triggered AOS animations, and smooth Framer Motion hero transitions. The landing page serves as the primary marketing hub for the Autopik product, showcasing its features through interactive components like a live manual-vs-auto comparison table, a YouTube demo embed, and FAQ accordions. Deployed on Firebase Hosting, it ensures fast loading speeds and optimal performance. The product itself was successfully launched on Product Hunt and is available on the Chrome Web Store.",
     features: [
       {
         title: "Three Prompt Input Modes — CSV, Manual & AI-Generated",
@@ -552,7 +552,7 @@ const projects = [
         description:
           "The Autopik landing page is engineered for organic discovery and maximum conversion — structured data, animated counters, comparison table, YouTube demo, FAQ accordion, and a sticky navbar — all built to rank for 'bulk AI image generator' and 'Freepik automation' keywords.",
         implementation:
-          "The landing page uses a dedicated SEOStructuredData.jsx component that injects JSON-LD SoftwareApplication schema directly into the document head at render time, including name, description, category, and Chrome Web Store URL — giving Google rich snippet eligibility. An AOS (Animate On Scroll) library handles scroll-triggered reveals for all section elements, initialized globally in component useEffects. Framer Motion powers hero entrance animations (x-axis slide-ins per headline line, opacity transitions) and the animated stat counters in the hero use setInterval-driven state updates converging to final values (10,000+ images, 5,000+ users, 4.9 rating). The sticky Navbar with hash-based scroll navigation uses react-router-dom's useLocation + getElementById scrollIntoView for smooth section jumping from any page.",
+          "The landing page uses a dedicated SEOStructuredData.jsx component that injects JSON-LD SoftwareApplication schema directly into the document head at render time, including name, description, category, and Chrome Web Store URL — giving Google rich snippet eligibility. An AOS (Animate On Scroll) library handles scroll-triggered reveals for all section elements, initialized globally in component useEffects. Framer Motion powers hero entrance animations (x-axis slide-ins per headline line, opacity transitions) and the animated counters in the hero show growing traction. The sticky Navbar with hash-based scroll navigation uses react-router-dom's useLocation + getElementById scrollIntoView for smooth section jumping from any page.",
       },
       {
         title: "Live Comparison Table — Manual vs Autopik",
@@ -571,7 +571,7 @@ const projects = [
       {
         title: "Product Hunt Launch & Chrome Web Store Integration",
         description:
-          "Autopik was commercially launched on Product Hunt with an official badge embed in the hero section. The Chrome Web Store listing drives real installs, and the hero stat counters (10,000+ images, 5,000+ users, 4.9 rating) reflect live traction — demonstrating real-world adoption and product-market fit.",
+          "Autopik was commercially launched on Product Hunt with an official badge embed in the hero section. The Chrome Web Store listing drives real installs, and the hero section reflects live traction — demonstrating real-world adoption and product-market fit.",
         implementation:
           "The Product Hunt badge is rendered as a standard <img> tag with the official Product Hunt embed URL, wrapped in an <a> linking to the product listing — immediately establishing social proof in the first viewport. The Chrome Web Store 'Install Now' CTA button appears in the Navbar, Hero, WhyChoose section, How It Works section, and Use Cases section — creating a persistent high-density CTA presence throughout the scroll journey. The extension's Chrome Web Store URL with UTM tracking parameters is consistently used across all CTA links for attribution tracking.",
       },
@@ -801,7 +801,7 @@ function ProjectContent() {
           </div>
 
           {/* Hero Image / Slider Section */}
-          <div className="relative aspect-[16/9] w-full rounded-[2rem] overflow-hidden border border-white/5 mb-20 group bg-white/[0.01]">
+          <div className="relative aspect-video w-full rounded-[2rem] overflow-hidden border border-white/5 mb-20 group bg-white/1">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentImg}
@@ -884,7 +884,7 @@ function ProjectContent() {
                   <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-blue-400">
                     Core Engineering
                   </h2>
-                  <div className="h-px grow bg-gradient-to-r from-blue-400/20 to-transparent" />
+                  <div className="h-px grow bg-linear-to-r from-blue-400/20 to-transparent" />
                 </div>
 
                 <div className="grid grid-cols-1 gap-12">
@@ -966,7 +966,7 @@ function ProjectContent() {
                       <span className="group-hover:hidden">
                         View Source Code
                       </span>
-                      <span className="hidden group-hover:inline flex items-center gap-2">
+                      <span className="hidden group-hover:flex items-center gap-2">
                         Not allowed to view code
                       </span>
                       <Github className="w-5 h-5 opacity-50" />
