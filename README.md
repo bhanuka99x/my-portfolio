@@ -59,10 +59,10 @@ Cutting-edge AI integration for creative workflows.
 - **Tech**: React 19, Replicate AI API, WebSockets.
 
 ### **3. Browser Automation Mastery**
-High-impact Chrome Extensions with thousands of active users.
-- **Autopik & Envio**: Bulk AI image/video generation and automation tools for creators.
+High-performance automation tools and conversion-optimized landing pages.
+- **Autopik (Landing Page)**: A conversion-focused SEO-optimized marketing hub for AI automation tools.
 - **VocabVerse**: EdTech extension for smart vocabulary building with real-time DOM highlighting and auto-translation.
-- **Impact**: 5,000+ active users and 4.9+ star ratings on the Chrome Web Store.
+- **Featured**: Built for speed with advanced SEO, JSON-LD integration, and seamless UX animations.
 
 ---
 
