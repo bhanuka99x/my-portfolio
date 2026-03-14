@@ -152,10 +152,10 @@ export default function ProjectsSection() {
 },
 {
   id: 7,
-  title: "Autopik - Bulk AI Image Generator",
-  category: "Chrome Extension / Automation",
+  title: "Autopik - SaaS Product Landing Page",
+  category: "Landing Page / SEO",
   description:
-    "A production-grade Chrome Extension (MV3) that automates Freepik Pikaso's AI image generation — bulk-generate hundreds of images from CSV or manual prompts, auto-download them instantly, and scale creative workflows 10x faster. Launched on Product Hunt with 5,000+ active users.",
+    "A high-performance, conversion-optimized SaaS landing page for the Autopik Chrome Extension. Built with React 19 and Tailwind CSS 4, it features advanced SEO implementation with JSON-LD, scroll-triggered AOS animations, and Framer Motion transitions.",
   image: "/images/Autopik/p1.png",
   technologies: ["React 19", "Vite", "TailwindCSS 4", "Framer Motion", "Chrome Extension MV3", "AOS", "React Router DOM"],
   liveUrl: "https://chromewebstore.google.com/detail/autopik-bulk-ai-image-gen/begmceaedadildimpkndmbadgebigpmi",
@@ -335,7 +335,7 @@ export default function ProjectsSection() {
                 currentPage === 1 ? "text-white/20 cursor-not-allowed" : "text-white/60 hover:text-white"
               }`}
             >
-              <ArrowUpRight className="w-4 h-4 rotate-[225deg]" />
+              <ArrowUpRight className="w-4 h-4 rotate-225" />
               Prev
             </button>
             
