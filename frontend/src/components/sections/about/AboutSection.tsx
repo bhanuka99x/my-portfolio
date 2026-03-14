@@ -71,7 +71,7 @@ const AboutSection = () => {
               </h3>
               
               <p className="text-white/70 font-NeueHaas leading-relaxed text-xl md:text-2xl max-w-3xl font-light tracking-tight italic">
-                "Building on my successful tenure as a Software Engineer at Oxymai, I am a results-driven professional dedicated to architecting scalable digital solutions. I am now seeking new challenges to leverage my full-stack expertise and drive technical innovation in a fast-paced environment."
+                "Leveraging my full-stack engineering experience from Oxymai, I specialize in architecting scalable SaaS platforms and real-time web applications. I am a results-driven professional eager to bring my expertise in modern JavaScript ecosystems and AI integrations to a fast-paced global team."
               </p>
             </div>
 
