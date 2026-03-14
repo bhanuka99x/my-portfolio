@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail, X, Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Icon, Gamepad2 } from 'lucide-react';
 import Link from 'next/link';
@@ -10,12 +10,17 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
 // Configure PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const AboutSection = () => {
   const [showCV, setShowCV] = useState(false);
   const [numPages, setNumPages] = useState<number | null>(null);
   const [scale, setScale] = useState(1.0);
+  
+  const options = useMemo(() => ({
+    disableRange: true,
+    disableStream: true
+  }), []);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
@@ -42,7 +47,7 @@ const AboutSection = () => {
         <div className="flex lg:hidden justify-center   mb-15">
           <div className="relative w-40 h-40 rounded-full overflow-hidden border border-white/10">
             <Image
-              src="/images/about.jpg"
+              src="/images/my-profile.jpg"
               alt="Bhanuka Gihan - Software Engineer"
               fill
               className="object-cover "
@@ -66,7 +71,7 @@ const AboutSection = () => {
               </h3>
               
               <p className="text-white/70 font-NeueHaas leading-relaxed text-xl md:text-2xl max-w-3xl font-light tracking-tight italic">
-                "Building on my successful tenure as a Software Engineer at Oxymai, I am a results-driven professional dedicated to architecting scalable digital solutions. I am now seeking new challenges to leverage my full-stack expertise and drive technical innovation in a fast-paced environment."
+                "Leveraging my full-stack engineering experience from Oxymai, I specialize in architecting scalable SaaS platforms and real-time web applications. I am a results-driven professional eager to bring my expertise in modern JavaScript ecosystems and AI integrations to a fast-paced global team."
               </p>
             </div>
 
@@ -179,7 +184,7 @@ const AboutSection = () => {
                 </div>
                 <div className="flex gap-4">
                   <a 
-                    href="/cv/se-intern.pdf" 
+                    href="/cv/Junior_software_engineer.pdf?v=1" 
                     download 
                     className="flex items-center gap-2 px-6 h-12 rounded-full bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-white/90 transition-colors"
                   >
@@ -225,9 +230,10 @@ const AboutSection = () => {
 
                 <div className="flex flex-col gap-6 pb-20">
                   <Document
-                    file="/cv/se-intern.pdf"
+                    file="/cv/Junior_software_engineer.pdf?v=1"
                     onLoadSuccess={onDocumentLoadSuccess}
                     className="flex flex-col items-center gap-6"
+                    options={options}
                     loading={
                       <div className="w-[600px] h-[800px] flex items-center justify-center text-white/40">
                          <div className="animate-pulse flex flex-col items-center gap-4">

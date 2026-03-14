@@ -17,7 +17,7 @@ export const skillsData = [
   {
     id: 4,
     category: "Infrastructure // Cloud",
-    skills: ["Virtual Private Server (VPS)", "Web Hosting", "Load Balancing", "Continuous Integration and Continuous Delivery (CI/CD)", "Microsoft Azure", "Software Infrastructure", "GitHub", "GitHub Version Control"],
+    skills: ["Virtual Private Server (VPS)", "Web Hosting", "Continuous Integration and Continuous Delivery (CI/CD)", "Microsoft Azure", "Software Infrastructure", "GitHub", "GitHub Version Control"],
   },
   {
     id: 5,
