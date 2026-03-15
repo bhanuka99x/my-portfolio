@@ -103,6 +103,7 @@ export default function ProjectsSection() {
   id: 5,
   title: "TabTask V2 - Personal Productivity Browser Extension",
   category: "Chrome Extension / SaaS",
+  company: "Oxymai (PVT) LTD",
   description:
     "A full-stack personal productivity browser extension for Chrome and Firefox. Combines task management, Pomodoro timer, smart reminders, notes with folder organization, bookmark manager, and a productivity analytics dashboard — all synced in real time via Socket.io. Built with React 19 + Vite and a Node.js + Express + PostgreSQL backend, featuring Supabase Auth and a 4-tier freemium subscription model.",
   image: "/images/Taskbee/p1.png",
