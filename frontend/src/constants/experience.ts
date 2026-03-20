@@ -34,7 +34,7 @@ export const experiences: Experience[] = [
     achievements: [
       "Delivered 12+ full-stack client projects on time and under budget.",
       "Built a SaaS task management platform with complex Role-Based Access Control (RBAC).",
-      "Integrated Replicate AI API for automated image background removal and video reframing.",
+      "Integrated third-party AI APIs for automated image background removal and video reframing.",
       "Boosted backend performance and reduced data retrieval times using Redis caching.",
       "Hardened APIs and implemented secure authentication via Firebase and Supabase Auth.",
     ],
@@ -56,7 +56,7 @@ export const experiences: Experience[] = [
     color: "from-purple-400 to-pink-400",
     detailedDescription: `As a Software Engineer at Oxymai, I specialized in full-stack development, building secure and scalable SaaS applications using React, Node.js, Express, and Tailwind CSS. A significant part of my role involved architecting a complex task management system with intricate role-based permission levels. 
 
-I focused heavily on backend performance and security, implementing API hardening, Redis caching, and robust authentication flows utilizing both Firebase and Supabase Auth. Additionally, I integrated third-party AI services like the Replicate API for advanced media processing - including automated image background removal and video reframing - delivering high-quality, enterprise-level solutions that met exact business requirements.`,
+I focused heavily on backend performance and security, implementing API hardening, Redis caching, and robust authentication flows utilizing both Firebase and Supabase Auth. Additionally, I integrated third-party AI services for advanced media processing - including automated image background removal and video reframing - delivering high-quality, enterprise-level solutions that met exact business requirements.`,
     responsibilities: [
       "Designed and maintained scalable RESTful APIs using Node.js, Express, and modern ORMs",
       "Developed responsive and intuitive user interfaces utilizing React.js and Tailwind CSS",
@@ -75,14 +75,14 @@ I focused heavily on backend performance and security, implementing API hardenin
       {
         name: "AI Image Background Remover",
         description:
-          "Built an AI-powered SaaS application for automated image background removal, utilizing the Replicate API for processing and WebSockets for real-time status updates.",
-        technologies: ["React", "Node.js", "Express", "Firebase", "Firebase Auth", "Replicate API", "WebSocket"],
+          "Built an AI-powered SaaS application for automated image background removal, utilizing a cloud AI media processing API with WebSockets for real-time status updates.",
+        technologies: ["React", "Node.js", "Express", "Firebase", "Firebase Auth", "AI Integration", "WebSocket"],
       },
       {
         name: "AI Video Reframer Tool",
         description:
-          "Developed a video processing application that automates video reframing using the Replicate AI API, ensuring secure access via Firebase Auth and real-time progress tracking.",
-        technologies: ["React", "Node.js", "Express", "Firebase Auth", "Replicate API", "WebSocket"],
+          "Developed a video processing application that automates video reframing using an AI-powered processing API, ensuring secure access via Firebase Auth and real-time progress tracking.",
+        technologies: ["React", "Node.js", "Express", "Firebase Auth", "AI Integration", "WebSocket"],
       }
     ],
     skills: [

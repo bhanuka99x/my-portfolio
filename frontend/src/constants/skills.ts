@@ -22,6 +22,6 @@ export const skillsData = [
   {
     id: 5,
     category: "Quality // Intelligence",
-    skills: ["Jest", "Playwright", "Web Application Security", "AI Agents", "GitHub Copilot", "Postman API", "DSA", "Object-Oriented Programming (OOP)", "Collaborative Problem Solving","Performance Optimization (Redis Caching)","Atomic Transactions "],
+    skills: ["Jest", "Playwright","Unit Testing","Integration Testing", "Web Application Security", "AI Agents", "GitHub Copilot", "Postman API", "DSA", "Object-Oriented Programming (OOP)", "Collaborative Problem Solving","Performance Optimization (Redis Caching)","Atomic Transactions "],
   },
 ];
