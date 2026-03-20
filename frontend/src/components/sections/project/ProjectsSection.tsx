@@ -62,7 +62,7 @@ export default function ProjectsSection() {
   description:
     "Full-stack AI-powered background removal platform with real-time WebSocket processing, credit-based usage system, bulk folder management, and secure Firebase authentication.",
   image: "/images/bgRemove/p2.png",
-  technologies: ["React", "Node.js", "Firebase", "Socket.io", "Replicate AI"],
+  technologies: ["React", "Node.js", "Firebase", "Socket.io", "AI Integration"],
   liveUrl: "https://example.com",
   githubUrl: "https://github.com/example",
   featured: true,
@@ -77,7 +77,7 @@ export default function ProjectsSection() {
   description:
     "AI-powered video reframing SaaS with token-based monetization, multi-aspect-ratio output, Chrome extension support, Firebase Auth, and a real-time conversion dashboard.",
   image: "/images/reFramer/p1.png",
-  technologies: ["React 19", "Vite", "Node.js", "Express", "Firebase", "Replicate AI", "Framer Motion", "Tailwind CSS"],
+  technologies: ["React 19", "Vite", "Node.js", "Express", "Firebase", "AI Integration", "Framer Motion", "Tailwind CSS"],
   liveUrl: "https://example.com",
   githubUrl: "https://github.com/example",
   featured: true,

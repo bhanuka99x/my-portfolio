@@ -261,9 +261,9 @@ export default function ResumePage() {
                 <span className="text-[10px] uppercase font-bold text-gray-400">Media SaaS</span>
               </div>
               <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                AI-powered video reframing service utilizing Replicate AI API with token-based monetization and real-time processing dashboard.
+                AI-powered video reframing service utilizing a cloud-based AI processing API with token-based monetization and real-time processing dashboard.
               </p>
-              <p className="text-[10px] font-bold text-gray-400">Express · Replicate AI API · Firebase · WebSocket</p>
+              <p className="text-[10px] font-bold text-gray-400">Express · AI Integration · Firebase · WebSocket</p>
             </div>
           </div>
         </section>

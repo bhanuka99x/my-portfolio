@@ -87,8 +87,8 @@ const ContactSection = () => {
                 </div>
                 <div className="space-y-2">
                   <span className="text-white/20 font-mono text-[10px] tracking-[0.3em] uppercase">Phone {"(WhatsApp)"}</span>
-                  <a href="tel:+94752960845" className="block text-white hover:text-white/50 transition-colors text-lg">
-                    +94 75 2960845
+                  <a href="tel:+94767392747" className="block text-white hover:text-white/50 transition-colors text-lg">
+                    +94 76 7392747
                   </a>
                 </div>
               </div>

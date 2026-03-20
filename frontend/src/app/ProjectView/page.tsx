@@ -133,7 +133,7 @@ const projects = [
       "Node.js",
       "Firebase",
       "Socket.io",
-      "Replicate AI",
+      "AI Integration",
       "Tailwind CSS",
       "Vite",
     ],
@@ -142,7 +142,7 @@ const projects = [
     featured: true,
     color: "from-blue-400 to-indigo-500",
     longDescription:
-      "A production-ready SaaS platform that leverages the Replicate AI API to remove image backgrounds automatically. The system supports both single-image and bulk processing through a smart folder management system. A real-time WebSocket layer (Socket.io) delivers live progress updates to clients during AI processing. The entire platform is secured with Firebase Authentication using JWT verification, per-user rate limiting, AES-256-GCM encrypted local storage, and Firestore atomic credit transactions to prevent double-spending. The frontend is built with React 19 + Vite with a clean, responsive Tailwind design.",
+      "A production-ready SaaS platform that leverages a cloud-based AI API to remove image backgrounds automatically. The system supports both single-image and bulk processing through a smart folder management system. A real-time WebSocket layer (Socket.io) delivers live progress updates to clients during AI processing. The entire platform is secured with Firebase Authentication using JWT verification, per-user rate limiting, AES-256-GCM encrypted local storage, and Firestore atomic credit transactions to prevent double-spending. The frontend is built with React 19 + Vite with a clean, responsive Tailwind design.",
     features: [
       {
         title: "Real-Time AI Processing with WebSocket",
@@ -196,7 +196,7 @@ const projects = [
       "Node.js",
       "Express",
       "Firebase",
-      "Replicate AI",
+      "AI Integration",
       "Framer Motion",
       "Tailwind CSS",
     ],
@@ -205,21 +205,21 @@ const projects = [
     featured: true,
     color: "from-violet-500 to-indigo-500",
     longDescription:
-      "Reframer is a full-stack AI SaaS platform that intelligently reframes videos for any social media format - TikTok (9:16), YouTube (16:9), Instagram (1:1), Cinematic (21:9), and 3 more - using Luma AI's 'reframe-video' model via the Replicate API. The platform ships as both a web app and a Chrome Extension (Manifest V3) with side-panel support, sharing the same backend. The backend is a RESTful Express API secured with Firebase Admin JWT verification, per-route rate limiting, and Multer file validation (500MB cap, MIME-type checked). Users manage their account through a full profile dashboard with avatar upload to Firebase Storage, email change with verification flow, password reset, and plan management. Files are stored securely and auto-deleted after 7 days via signed URL expiry.",
+      "Reframer is a full-stack AI SaaS platform that intelligently reframes videos for any social media format - TikTok (9:16), YouTube (16:9), Instagram (1:1), Cinematic (21:9), and 3 more - using Luma AI's 'reframe-video' model via a cloud AI processing pipeline. The platform ships as both a web app and a Chrome Extension (Manifest V3) with side-panel support, sharing the same backend. The backend is a RESTful Express API secured with Firebase Admin JWT verification, per-route rate limiting, and Multer file validation (500MB cap, MIME-type checked). Users manage their account through a full profile dashboard with avatar upload to Firebase Storage, email change with verification flow, password reset, and plan management. Files are stored securely and auto-deleted after 7 days via signed URL expiry.",
     features: [
       {
-        title: "AI-Powered Video Reframing via Luma AI + Replicate",
+        title: "AI-Powered Video Reframing via Luma AI",
         description:
           "Users upload a video, pick an aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9, 9:21, 21:9), and optionally write an AI prompt - the platform intelligently reframes the shot with subject tracking, zero manual cropping.",
         implementation:
-          "The video is uploaded to Firebase Storage first, generating a signed URL. That URL is sent to the Luma 'reframe-video' model through the Replicate SDK. The controller handles the full pipeline: upload original → deduct tokens → call Replicate → download processed output → re-upload processed video to Firebase Storage → update Firestore metadata with both URLs and a 'processed' status flag. Tokens are automatically refunded server-side in the catch block if Replicate fails, preventing silent credit losses.",
+          "The video is uploaded to Firebase Storage first, generating a signed URL. That URL is sent to the Luma AI 'reframe-video' model through the AI processing SDK. The controller handles the full pipeline: upload original → deduct tokens → call AI API → download processed output → re-upload processed video to Firebase Storage → update Firestore metadata with both URLs and a 'processed' status flag. Tokens are automatically refunded server-side in the catch block if AI processing fails, preventing silent credit losses.",
       },
       {
         title: "Token-Based Usage System with Failure Refunds",
         description:
           "Each video conversion costs 5 tokens. The system blocks conversions on insufficient balance and automatically restores tokens if AI processing fails - no silent credit losses.",
         implementation:
-          "Token balance is pre-checked client-side from Firestore before hitting the API. On the server, tokens are deducted via deductTokens() only after a successful Firebase Storage upload. If the Replicate processing step throws, an addTokens() call in the catch block restores the exact deducted amount. The client also redirects to the pricing section if the user runs out - prompting an upsell without breaking the flow.",
+          "Token balance is pre-checked client-side from Firestore before hitting the API. On the server, tokens are deducted via deductTokens() only after a successful Firebase Storage upload. If the AI processing step throws, an addTokens() call in the catch block restores the exact deducted amount. The client also redirects to the pricing section if the user runs out - prompting an upsell without breaking the flow.",
       },
       {
         title: "Chrome Extension with Manifest V3 & Side Panel",
