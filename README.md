@@ -19,7 +19,7 @@
 I am a **Software Engineer** specializing in high-performance Full-Stack SaaS development, AI integration, and Browser Automation. I bridge the gap between technical complexity and premium user experiences, delivering scalable and secure digital solutions.
 
 - **Full-Stack Engineering**: Architecting robust applications with React, Next.js, and Node.js.
-- **AI & Automation**: Integrating advanced AI models (Luma, Replicate) and engineering high-impact Chrome Extensions.
+- **AI & Automation**: Integrating advanced AI models for media automation and engineering high-impact Chrome Extensions.
 - **Scale & Performance**: Optimizing data retrieval with Redis caching and securing APIs with RBAC and JWT.
 
 ---
@@ -54,9 +54,9 @@ A comprehensive productivity ecosystem.
 
 ### **2. AI Media Tools (Background Remover & Reframer)**
 Cutting-edge AI integration for creative workflows.
-- **Background Remover**: Automated image processing using Replicate AI with real-time WebSocket status updates.
+- **Background Remover**: Automated image processing using a cloud-based AI media API with real-time WebSocket status updates.
 - **Reframer**: AI-powered video resizing for social media with token-based monetization.
-- **Tech**: React 19, Replicate AI API, WebSockets.
+- **Tech**: React 19, AI Integration, WebSockets.
 
 ### **3. Browser Automation Mastery**
 High-performance automation tools and conversion-optimized landing pages.
