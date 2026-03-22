@@ -4,12 +4,16 @@ import { LoadingProvider } from "../context/LoadingContext";
 import ClientLayout from "../components/ClientLayout";
 
 export const metadata: Metadata = {
-  title: "Bhanuka Gihan | Integrated Software Engineer Portfolio",
+  title: "Bhanuka Gihan | Full Stack Software Engineer ",
   description: "Bhanuka Gihan is a results-driven Software Engineer specializing in architecting scalable digital solutions, full-stack development, and enterprise SaaS architectures.",
   keywords: [
     "Software Engineer", 
     "Web Developer", 
-    "Bhanuka Gihan", 
+    "Bhanuka Gihan",
+    "Bhanuka99x",
+    "bhanuka99x",
+    "bhanuka",
+    "gihan", 
     "Portfolio", 
     "Full Stack Developer", 
     "React Developer", 
