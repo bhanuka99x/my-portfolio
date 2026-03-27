@@ -54,7 +54,7 @@ export default function TechStackLoop() {
         logos={techLogos}
         speed={40}
         direction="left"
-        logoHeight={70}
+        logoHeight={110}
         gap={96}
         pauseOnHover={true}
         scaleOnHover
