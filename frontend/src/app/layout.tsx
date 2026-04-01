@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Bhanuka Gihan | Integrated Software Engineer",
     description: "Explore the portfolio of Bhanuka Gihan, a Software Engineer focused on building modern, high-performance web applications.",
-    url: "https://bhanuka99x.com", // Replace with actual domain if different
+    url: "https://bhanuka99x.com", 
     siteName: "Bhanuka Gihan Portfolio",
     images: [
       {
